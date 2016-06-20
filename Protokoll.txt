@@ -3,6 +3,10 @@ Protokoll vom 20.06.20116
 Themenpunkte:
 - Projekt
 - Einrichtung von Git und GitHub
+- Struktur
+- kurze Git Erläuterung
+- Genereller Ablauf
+
 
 Projekt:
 Alle Projekte 01 an Anne A. schicken für die Erstellung des Katalogs
@@ -11,6 +15,66 @@ Aufteilung der Aufgaben:
 	Anne B. schaut sich FXML an zur Einbindung in das Projekt
 	Cedric klärt die Built Dependencies und Einbindung von Travis
 	Philipp macht sich mit Gradle und Groovy warm 
+
+Struktur:
+Das Repository besitzt mindestens zwei Branches:
+	- develop
+		• eventuell auftretende merge conflicts sollen hier abgefangen werden
+		• nur funktionierenden Code dort pushen
+
+	- master	
+		• merged nur mit dem develop Branch
+
+Weitere Zweige zum erarbeiten von Methoden oder Implementierungen für die GUI 
+in lokalen feature Zweigen erzeugen.
+Können auch gepusht werden, wenn dies angekündigt ist
+
+Kurze Git Erläuterung:
+
+Erzeuge einen Branch:
+git checkout -b feature/feature_name
+	erstellt lokal den Branch feature/feature_name und wechselt direkt zu diesem
+	von nun an werden Commits nur auf diesem Branch gespeichert
+
+git push -u origin feature/feature_name
+	pusht den Branch auf das GitHub Repository
+
+git checkout develop
+	wechseln in den Branch develop
+
+git merge feature/feature_name
+	Mergen von feature/feature_name mit develop
+
+bei keinem Konflikt bietet es sich an, den Branch feature/feature_name zu löschen
+git branch -d feature/feature_name
+	damit wird der Branch gelöscht
+
+git branch
+	zeigt alle Branches an auf die man bereits gewechselt hat
+
+git branch -v
+	listet alle Branches auf mit der ersten Zeile des jeweils letzten Commits
+
+
+Genereller Ablauf:
+Es wird stehts im develop Branch begonnen
+Bevor das Projekt geöffnet wird einmal mit
+
+	git pull
+
+das Projekt im develop Branch aktualisieren
+
+Danach entweder seine Ergänzung aus einem lokalen Branch mergen oder neuen Branch erstellen
+
+Vor jedem mergen/pushen auch wieder mit 
+
+	git pull
+
+den develop Branch aktualisieren
+
+Sonstige Routine:
+Commits nach relativ wenig Veränderung machen.
+
 
 GitHub:
 Einbinden des rsa keys
@@ -21,3 +85,4 @@ erstellen des Repos
 Besprechung:
 Es gibt eine Protokoll Datei, die wöchentlich erweitert wird.
 Der neue Eintrag wird über den alten gesetzt.
+
