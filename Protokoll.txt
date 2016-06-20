@@ -51,6 +51,7 @@ git branch -d feature/feature_name
 
 git branch
 	zeigt alle Branches an auf die man bereits gewechselt hat
+   aber vorallem zeigt mittels \* an auf welchem Branch man sich befindet
 
 git branch -v
 	listet alle Branches auf mit der ersten Zeile des jeweils letzten Commits
