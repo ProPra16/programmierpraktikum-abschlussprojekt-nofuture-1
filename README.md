@@ -21,11 +21,12 @@ Nach Absprache mit der Gruppe erhält einer die Aufgabe den Merge von `develop` 
 Branch zu vollziehen.
 
 ##### Nützliche Links
-[Frank Westphal über TDD](http://www.frankwestphal.de/TestgetriebeneEntwicklung.html)
-[Git Cheatsheet](https://services.github.com/kit/downloads/github-git-cheat-sheet.pdf)
-[SourceTree](https://www.sourcetreeapp.com/) 
-	* Git GUI
-	* Lässt sich mit GitHub verbinden
-	* geclontes NoFuture Repository unter Lokal hinzufügen
+[Frank Westphal über TDD](http://www.frankwestphal.de/TestgetriebeneEntwicklung.html) <br />
+[Git Cheatsheet](https://services.github.com/kit/downloads/github-git-cheat-sheet.pdf) <br />
+[SourceTree](https://www.sourcetreeapp.com/) <br />
+	+   Git GUI
+	+   Lässt sich mit GitHub verbinden
+	+   geclontes NoFuture Repository unter Lokal hinzufügen
+	
 	* bietet bessere Übersicht über alle Branches und Veränderungen
 
