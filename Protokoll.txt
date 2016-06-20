@@ -1,0 +1,23 @@
+Protokoll vom 20.06.20116 
+
+Themenpunkte:
+- Projekt
+- Einrichtung von Git und GitHub
+
+Projekt:
+Alle Projekte 01 an Anne A. schicken für die Erstellung des Katalogs
+Aufteilung der Aufgaben:
+	Anne A. macht den Katalog
+	Anne B. schaut sich FXML an zur Einbindung in das Projekt
+	Cedric klärt die Built Dependencies und Einbindung von Travis
+	Philipp macht sich mit Gradle und Groovy warm 
+
+GitHub:
+Einbinden des rsa keys
+Erstellen des Teams nofuture und erzeugen
+erstellen des Repos
+
+
+Besprechung:
+Es gibt eine Protokoll Datei, die wöchentlich erweitert wird.
+Der neue Eintrag wird über den alten gesetzt.
