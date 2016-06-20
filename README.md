@@ -5,16 +5,16 @@
 
 ### Branch Politik:
 
-* master 
-	master merged nur mit develop
-	auf diesem Branch wird nicht gearbeitet
+* master <br />
+	master merged nur mit develop <br />
+	auf diesem Branch wird nicht gearbeitet <br />
 
-* develop
-	dient zum mergen der feature Branches
+* develop <br />
+	dient zum mergen der feature Branches <br />
 
 
 ###  Generelle Philosophie
 zur sauberen Trennung sollten feature Branches nicht gepusht werden
-sondern nach vervollständigen mit develop Branch gemerged und danach gelöscht werden.
+sondern nach Fertigstellung mit develop Branch gemerged und danach gelöscht werden.
 Da nicht jeder an jedem Branch mitarbeiten muss.
 
