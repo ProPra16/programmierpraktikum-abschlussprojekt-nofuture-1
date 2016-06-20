@@ -24,9 +24,8 @@ Branch zu vollziehen.
 [Frank Westphal über TDD](http://www.frankwestphal.de/TestgetriebeneEntwicklung.html) <br />
 [Git Cheatsheet](https://services.github.com/kit/downloads/github-git-cheat-sheet.pdf) <br />
 [SourceTree](https://www.sourcetreeapp.com/) <br />
-	+   Git GUI
-	+   Lässt sich mit GitHub verbinden
-	+   geclontes NoFuture Repository unter Lokal hinzufügen
-	
-	* bietet bessere Übersicht über alle Branches und Veränderungen
+* Git GUI
+* Lässt sich mit GitHub verbinden
+* geclontes NoFuture Repository unter Lokal hinzufügen
+* bietet bessere Übersicht über alle Branches und Veränderungen
 
