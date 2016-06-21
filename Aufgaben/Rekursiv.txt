@@ -1,0 +1,7 @@
+Gegeben sei eine Folge
+a_(n+1) = a_n + 1/2 * a_n mit a_0 = 3.
+Schreiben Sie ein Programm mit einer Methode sequence, die diese Folge rekursiv berechnet und diese in einem float
+zurueckgibt. Dabei soll das n ueber der Kommandozeile eingegeben werden. Falls die Eingabe negativ ist,
+soll in der Shell "Fehler. Bitte eine Zahl groeßer 0 waehlen." ausgegeben werden.
+Sonstige Fehler sollen nicht aufgefangen werden.
+
