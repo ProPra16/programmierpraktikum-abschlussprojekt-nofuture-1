@@ -4,6 +4,7 @@ notifications:
    email:
       recipients:
          - cedric.wolffs@hhu.de
+         - anne.abraham@hhu.de
       on_success: [always|never|change] # default: change
       on_failure: [always|never|change] # default: never
 
