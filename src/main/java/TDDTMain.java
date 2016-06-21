@@ -1,7 +1,7 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class TDDTeeMain extends Application
+public class TDDTMain extends Application
 {
    public static void main(String[] args)
    {
@@ -11,9 +11,7 @@ public class TDDTeeMain extends Application
    @Override
    public void start(Stage primaryStage) throws Exception
    {
-//      Sacht was
-      primaryStage.setTitle("Hello from the other side");
+      primaryStage.setTitle("Hello World");
       primaryStage.show();
-
    }
 }
