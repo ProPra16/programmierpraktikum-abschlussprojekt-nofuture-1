@@ -1,7 +1,12 @@
-﻿Anagramme sind Wörter, die durch das Umstellen von Buchstaben oder Silben anderer Wörter gebildet wurden.
+﻿Anagramme sind Wörter, die durch das Umstellen von
+Buchstaben oder Silben anderer Wörter gebildet wurden.
 Ein Beispiel hierfür sind die Worte "Lager" und "Regal".
-Die so erzeugten Worte müssen jedoch nicht immer Sinn ergeben. "aeglr" wäre also ebenso ein Anagramm für "Lager".
+Die so erzeugten Worte müssen jedoch nicht immer Sinn
+ergeben. "aeglr" wäre also ebenso ein Anagramm für "Lager".
 
-Schreiben Sie eine Methode isAnagramm, die zwei Strings übergeben bekommt und dann ermittelt, ob die beiden Strings Anagramme voneinander sind.
-Vernachlässigen Sie hierbei Groß- und Kleinschreibung , sowie Leerzeichen.
-Verwenden Sie für diese Aufgabe bitte KEINE Packete, die vorher importiert werden müssten.
+Schreiben Sie eine Methode isAnagramm, die zwei Strings
+übergeben bekommt und dann ermittelt, ob die beiden Strings
+Anagramme voneinander sind.
+Vernachlässigen Sie hierbei Groß- und Kleinschreibung ,
+sowie Leerzeichen. Verwenden Sie für diese Aufgabe bitte
+KEINE Packete, die vorher importiert werden müssten.

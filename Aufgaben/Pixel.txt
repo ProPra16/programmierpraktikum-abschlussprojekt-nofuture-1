@@ -1,7 +1,11 @@
-﻿Berechnen Sie die PPI (Pixel per Inch) eines Smartphone-Displays. Die PPI werden berechnet mit der Formel sqrt(w²+h²)/z wobei 
-w die Anzahl der Pixel in horizontaler Richtung angeben h
- die Anzahl der Pixel in vertikaler Richtung angeben 
-z die Display Diagonal in Zoll darstellt.
-Es soll eine Eingabe mit den Argumenten "Breite Höhe Zoll" angenommen werden.
-Überlegen Sie auch welcher Datentyp für die Variablen sinnvoll erscheint. Das Ergebnis soll schlicht als gerundete Zahl
+﻿Berechnen Sie die PPI (Pixel per Inch) eines
+Smartphone-Displays. Die PPI werden berechnet mit
+der Formel sqrt(w²+h²)/z wobei w die Anzahl der Pixel
+in horizontaler Richtung angeben h die Anzahl der Pixel
+in vertikaler Richtung angeben  z die Display
+Diagonal in Zoll darstellt.
+Es soll eine Eingabe mit den Argumenten
+"Breite Höhe Zoll" angenommen werden.
+Überlegen Sie auch welcher Datentyp für die Variablen
+sinnvoll erscheint. Das Ergebnis soll schlicht als gerundete Zahl
 ausgegeben werden.
