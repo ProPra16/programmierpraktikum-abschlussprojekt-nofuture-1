@@ -1,13 +1,18 @@
 import javafx.event.ActionEvent;
+import javafx.geometry.*;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,7 +21,7 @@ import java.io.IOException;
  * Created by Anne01 on 21.06.2016.
  */
 public class Katalog extends Parent{
-    Text t = new Text();
+    Text t;
 public Katalog() {
     Stage primaryStage = new Stage();
     MenuBar menuBar = new MenuBar();
@@ -33,9 +38,18 @@ public Katalog() {
     menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
     BorderPane borderPane = new BorderPane();
     borderPane.setTop(menuBar);
-    anagramm.setOnAction((ActionEvent e)->{
-        t.setText(readTxt("./Aufgaben/Anagramm.txt"));
-        });
+    t = new Text();
+    anagramm.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Anagramm.txt")));
+    array.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Array.txt")));
+    fuhrpark.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Fuhrpark.txt")));
+    nullzeile.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Nullzeile.txt")));
+    pixel.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Pixel.txt")));
+    recursive.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Rekursiv.txt")));
+    reptile.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Reptil.txt")));
+    VBox vBox = new VBox(20);
+    vBox.setPadding(new Insets(20));
+    vBox.getChildren().add(t);
+    borderPane.setLeft(vBox);
 
     Scene root = new Scene(borderPane, 500, 600);
     primaryStage.setScene(root);

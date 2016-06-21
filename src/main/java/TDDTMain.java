@@ -14,7 +14,7 @@ public class TDDTMain extends Application
    public void start(Stage primaryStage) throws Exception
    {
       new Katalog();
-      primaryStage.setTitle("Hello World");
-      primaryStage.show();
+      //primaryStage.setTitle("Hello World");
+      //primaryStage.show();
    }
 }
