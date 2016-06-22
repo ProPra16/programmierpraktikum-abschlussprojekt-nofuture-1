@@ -1,5 +1,8 @@
 
 
+import org.junit.Test;
+import vk.core.api.CompilationUnit;
+
 import static org.junit.Assert.*;
 
 public class TDDTMainTest
@@ -30,4 +33,9 @@ public class TDDTMainTest
     }
 
  */
+
+   /* @Test
+    public void test() throws Exception {
+        CompilationUnit compilationUnit = new CompilationUnit(?, ?, true);
+    }   */
 }

@@ -22,6 +22,8 @@ public class Katalog extends Parent{
     Text t;
 public Katalog() {
     Stage primaryStage = new Stage();
+    BorderPane borderPane = new BorderPane();
+    Scene root = new Scene(borderPane, 500, 600);
     MenuBar menuBar = new MenuBar();
     Menu fileMenu = new Menu("Aufgaben");
     MenuItem anagramm = new MenuItem("Anagramm");
@@ -34,7 +36,7 @@ public Katalog() {
     fileMenu.getItems().addAll(anagramm, array, fuhrpark, nullzeile, pixel, recursive, reptile);
     menuBar.getMenus().add(fileMenu);
     menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
-    BorderPane borderPane = new BorderPane();
+
     borderPane.setTop(menuBar);
     t = new Text();
     t.setFont(Font.font ("Georgia", 13));
@@ -50,7 +52,6 @@ public Katalog() {
     vBox.getChildren().add(t);
     borderPane.setLeft(vBox);
 
-    Scene root = new Scene(borderPane, 500, 600, Color.LIGHTGREY);
     primaryStage.setScene(root);
     primaryStage.setTitle("Katalog");
     primaryStage.show();
