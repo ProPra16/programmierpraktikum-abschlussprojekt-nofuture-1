@@ -3,7 +3,7 @@
 import org.junit.Test;
 import vk.core.api.CompilationUnit;
 
-import static org.junit.Assert.*;
+git import static org.junit.Assert.*;
 
 public class TDDTMainTest
 {
@@ -19,7 +19,7 @@ public class TDDTMainTest
 
                     @Override
                     public void run() {
-                        new Main().start(new Stage()); // Create and
+                        new TDDTMain().start(new Stage()); // Create and
                                                         // initialize
 
 

@@ -33,7 +33,9 @@ public Katalog() {
     MenuItem pixel = new MenuItem("Pixel");
     MenuItem recursive = new MenuItem("Rekursiv");
     MenuItem reptile = new MenuItem("Reptil");
-    fileMenu.getItems().addAll(anagramm, array, fuhrpark, nullzeile, pixel, recursive, reptile);
+    MenuItem inter = new MenuItem("Interface");
+    MenuItem sort = new MenuItem("Sortieren");
+    fileMenu.getItems().addAll(anagramm, array, fuhrpark, nullzeile, pixel, recursive, reptile, inter, sort);
     menuBar.getMenus().add(fileMenu);
     menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
 
@@ -47,6 +49,10 @@ public Katalog() {
     pixel.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Pixel.txt")));
     recursive.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Rekursiv.txt")));
     reptile.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Reptil.txt")));
+    inter.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Interface.txt")));
+    sort.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Sortieren.txt")));
+
+
     VBox vBox = new VBox();
     vBox.setPadding(new Insets(20));
     vBox.getChildren().add(t);
