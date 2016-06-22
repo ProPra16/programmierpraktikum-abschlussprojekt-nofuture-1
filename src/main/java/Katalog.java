@@ -7,6 +7,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.FileNotFoundException;
@@ -35,6 +37,7 @@ public Katalog() {
     BorderPane borderPane = new BorderPane();
     borderPane.setTop(menuBar);
     t = new Text();
+    t.setFont(Font.font ("Georgia", 13));
     anagramm.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Anagramm.txt")));
     array.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Array.txt")));
     fuhrpark.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Fuhrpark.txt")));
@@ -42,19 +45,19 @@ public Katalog() {
     pixel.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Pixel.txt")));
     recursive.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Rekursiv.txt")));
     reptile.setOnAction((ActionEvent e)-> t.setText(readTxt("./Aufgaben/Reptil.txt")));
-    VBox vBox = new VBox(20);
+    VBox vBox = new VBox();
     vBox.setPadding(new Insets(20));
     vBox.getChildren().add(t);
     borderPane.setLeft(vBox);
 
-    Scene root = new Scene(borderPane, 500, 600);
+    Scene root = new Scene(borderPane, 500, 600, Color.LIGHTGREY);
     primaryStage.setScene(root);
-    primaryStage.setTitle("Aufgaben");
+    primaryStage.setTitle("Katalog");
     primaryStage.show();
 }
 
     public String readTxt(String file) {
-        String zusammen = "";
+        String text = "";
         try
         {
             StringBuffer buffer = new StringBuffer();
@@ -62,7 +65,7 @@ public Katalog() {
             for (int n;(n = in.read()) != -1;buffer.append((char) n));
             in.close();
 
-            zusammen = buffer.toString();
+            text = buffer.toString();
         }
         catch(FileNotFoundException e)
         {
@@ -71,6 +74,6 @@ public Katalog() {
         {
         }
 
-   return zusammen;
+   return text;
     }
 }
