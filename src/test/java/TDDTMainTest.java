@@ -3,11 +3,11 @@
 import org.junit.Test;
 import vk.core.api.CompilationUnit;
 
-git import static org.junit.Assert.*;
+ import static org.junit.Assert.*;
 
 public class TDDTMainTest
 {
-/*
+/*   Allgemeinen Test für JavaFX
 @Test
     public void testA() throws InterruptedException {
         Thread thread = new Thread(new Runnable() {
@@ -33,7 +33,7 @@ public class TDDTMainTest
     }
 
  */
-
+   // Probe
    /* @Test
     public void test() throws Exception {
         CompilationUnit compilationUnit = new CompilationUnit(?, ?, true);

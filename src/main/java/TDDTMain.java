@@ -13,6 +13,7 @@ public class TDDTMain extends Application
    @Override
    public void start(Stage primaryStage) throws Exception
    {
+      //Katalog initalisieren
       new Katalog();
       //primaryStage.setTitle("Hello World");
       //primaryStage.show();
