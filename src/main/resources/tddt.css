@@ -1,0 +1,21 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+
+
+.button {
+	-fx-font-size: 24px;
+	-fx-font-family: "Arial";
+	-fx-background-color:  #008CBA;
+    -fx-webkit-transition-duration: 0.4s;
+    -fx-transition-duration: 0.4s;
+}
+
+
+.button:hover {
+    -fx-background-color: #4CAF50;
+    -fx-color: white;
+}
+
+
+
+
