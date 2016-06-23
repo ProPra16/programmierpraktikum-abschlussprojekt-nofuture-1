@@ -1,5 +1,7 @@
 ## programmierpraktikum-abschlussprojekt-nofuture-1
 
+[![Build Status](https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-nofuture-1.svg?branch=master)](https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-nofuture-1)
+
 ### Arbeitsweise:
 ![Meaning of Git](https://imgs.xkcd.com/comics/git.png)
 
