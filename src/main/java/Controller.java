@@ -116,10 +116,10 @@ public class Controller {
                         */
 
                     }
-                   // status.setText("Make the test pass");
-                   // status.setStyle("-fx-fill: GREEN;");
-                   // testCode.setEditable(false);
-                   // code.setEditable(true);
+                    status.setText("Make the test pass");
+                    status.setStyle("-fx-fill: GREEN;");
+                    testCode.setEditable(false);
+                    code.setEditable(true);
                 } else {
                     // testen ob mehrere Tests fehl schlagen
 
