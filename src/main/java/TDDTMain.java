@@ -1,3 +1,5 @@
+
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -11,7 +13,9 @@ public class TDDTMain extends Application
    @Override
    public void start(Stage primaryStage) throws Exception
    {
-      primaryStage.setTitle("Hello World");
-      primaryStage.show();
+      //Katalog initalisieren
+      new Katalog();
+      //primaryStage.setTitle("Hello World");
+      //primaryStage.show();
    }
 }

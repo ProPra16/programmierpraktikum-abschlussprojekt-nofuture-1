@@ -1,0 +1,7 @@
+Schreiben Sie eine statische Methode methode, die eine
+Zahl p zwischen 0 und 100 und ein Array von positiven
+ganzen Zahlen (die Null ist erlaubt) als Argumente uebernimmt.
+Die Methode soll die Anzahl der Zahlen zurueckgeben,
+die groeßer sind als p% der Summe der Zahlen des Arrays.
+Die Methode soll beendet werden und -1 zurueckgeben,
+falls die Eingabe inkorrekt ist.
