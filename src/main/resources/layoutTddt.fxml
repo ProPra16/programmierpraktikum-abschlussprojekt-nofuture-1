@@ -30,17 +30,6 @@
 
 
 
-		<Text text="name of your java test class (without '.java')"
-			GridPane.columnIndex="0" GridPane.rowIndex="2"
-			GridPane.columnSpan="1"/>
-
-		<Text fx:id="errorTestClassName"
-			GridPane.columnIndex="1" GridPane.rowIndex="2"
-			GridPane.columnSpan="1"/>
-
-		<TextField fx:id="testClassName"
-			GridPane.columnIndex="0" GridPane.rowIndex="3" />
-
 		<Text text="your test code:"
 		  	GridPane.columnIndex="0" GridPane.rowIndex="4"
 		  	GridPane.columnSpan="1"/>
@@ -49,12 +38,11 @@
 		  	GridPane.columnIndex="1" GridPane.rowIndex="4"
 		  	GridPane.columnSpan="1"/>
 
-		<TextArea fx:id="testCode" text="${'Multi\nLine\tTab'}"
+		<TextArea fx:id="testCode"
+			text="import static org.junit.Assert.*;
+			import org.junit.Test;\npublic class Test {\n  @Test\n  public void test() {\n    // TODO\n  }\n}"
 			GridPane.columnIndex="0" GridPane.rowIndex="5"
 			GridPane.columnSpan="2"/>
-
-
-
 
 
 		<Text text="name of your java class (without '.java')"
@@ -83,11 +71,13 @@
 
 
 
+		<Button text="back to writing tests"
+			GridPane.columnIndex="2" GridPane.rowIndex="6"
+		/>
 
 
 
-
-		<Button text="Save"
+		<Button text="Run"
 			GridPane.columnIndex="0" GridPane.rowIndex="6"
 			onAction="#handleSaveButton" />
 
