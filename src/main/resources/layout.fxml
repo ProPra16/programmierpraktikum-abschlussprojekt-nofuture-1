@@ -3,10 +3,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-
-
-
-
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Label?>
 <GridPane
 	fx:controller="Controller"
 	xmlns:fx="http://javafx.com/fxml"
@@ -18,20 +21,90 @@
 		<Insets top="25" right="25" bottom="10" left="25" />
 	</padding>
 
-		<Button fx:id="button" text="Exit"
-			GridPane.columnIndex="2" GridPane.rowIndex="0"
-			GridPane.columnSpan="1"
-			onAction="#handleExitButton" />
+		<HBox alignment="center"
+		  	GridPane.columnIndex="1" GridPane.rowIndex="0"
+		  	GridPane.columnSpan="4">
+			<Text fx:id="status" text="Write a failing test" />
+		</HBox>
 
-		<Button text="Uebungskatalog"
-				GridPane.columnIndex="1" GridPane.rowIndex="0"
-				GridPane.columnSpan="1"
-				onAction="#handleKatalogButton" />
 
-	<Button text="Start"
-			GridPane.columnIndex="0" GridPane.rowIndex="0"
-			GridPane.columnSpan="1"
-			onAction="#handleStartButton" />
+    <MenuBar fx:id="menuBar"
+        GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <menus>
+            <Menu text="Aufgaben">
+                <items>
+                    <MenuItem text="Anagramm" onAction="#showAnagram"/>
+                    <MenuItem text="Array" onAction="#showArray"/>
+                    <MenuItem text="Fuhrpark" onAction="#showFuhrpark"/>
+                    <MenuItem text="Nullzeile" onAction="#showNullzeile"/>
+                    <MenuItem text="Pixel" onAction="#showPixel"/>
+                    <MenuItem text="Rekursiv" onAction="#showRekursiv"/>
+                    <MenuItem text="Reptil" onAction="#showReptil"/>
+                    <MenuItem text="Interface" onAction="#showInterface"/>
+                    <MenuItem text="Sortieren" onAction="#showSortieren"/>
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+
+    <Label fx:id="task"
+        GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.rowSpan="4"
+        prefWidth="450" prefHeight="500"/>
+
+    <Button text="Start"
+        GridPane.columnIndex="0" GridPane.rowIndex="6"
+        onAction="#handleStartButton"/>
+
+
+    <Text text="your test code:"
+        GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+    <TextArea fx:id="testCode"
+        prefHeight="500" prefWidth="500"
+        GridPane.columnIndex="1" GridPane.rowIndex="4"
+        Editable="false"/>
+
+    <Label fx:id="errorsTestCode"
+        GridPane.columnIndex="1" GridPane.rowIndex="5"
+        prefWidth="500" prefHeight="200"/>
+
+
+
+
+    <Text text="your code:"
+        GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+
+    <TextArea fx:id="code"
+        prefHeight="500" prefWidth="500"
+        GridPane.columnIndex="3" GridPane.rowIndex="4"
+        Editable="false"/>
+
+    <Label fx:id="ErrorsCode"
+        GridPane.columnIndex="3" GridPane.rowIndex="5"
+        prefWidth="500" prefHeight="200"/>
+
+
+
+
+    <HBox alignment="center_right"
+        GridPane.columnIndex="1" GridPane.rowIndex="6"
+        spacing="50">
+
+        <Button text="run"
+            onAction="#handleRunButton" />
+        <Button text="back to writing tests"
+            onAction="#handleBackButton" />
+    </HBox>
+
+    <HBox alignment="center_right"
+        GridPane.columnIndex="3" GridPane.rowIndex="6">
+        <Button fx:id="button" text="Exit"
+            onAction="#handleExitButton" />
+    </HBox>
+
+
+
+
 
 </GridPane>
 

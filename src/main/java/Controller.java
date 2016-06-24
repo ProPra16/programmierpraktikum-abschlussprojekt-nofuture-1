@@ -1,14 +1,13 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 import vk.core.api.*;
-
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collection;
 
@@ -21,50 +20,59 @@ public class Controller {
         System.exit(0);
     }
 
-    public void handleBackButton() {
-        root.getScene().getWindow().hide();
+
+
+
+    public String readTxt(String file) {
+        String text = "";
+        try
+        {
+            StringBuffer buffer = new StringBuffer();
+            FileReader in = new FileReader(file);
+            for (int n;(n = in.read()) != -1;buffer.append((char) n));
+            in.close();
+
+            text = buffer.toString();
+        }
+        catch(FileNotFoundException e) {}
+        catch(IOException e) {}
+        return text;
     }
 
-    public void handleKatalogButton() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("layoutKatalog.fxml"));
-        Scene scene = new Scene(root, 500, 500);
-        String stylesheet = getClass().getResource("tddt.css").toExternalForm();
-        scene.getStylesheets().add(stylesheet);
-        Stage katalogStage = new Stage();
-        katalogStage.setScene(scene);
-        katalogStage.setTitle("Uebungskatalog");
-        katalogStage.show();
-    }
+    @FXML
+    Label task;
 
-    public void handleStartButton() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("layoutTddt.fxml"));
-        Scene scene = new Scene(root, 1200, 500);
-        String stylesheet = getClass().getResource("tddt.css").toExternalForm();
-        scene.getStylesheets().add(stylesheet);
-        Stage katalogStage = new Stage();
-        katalogStage.setScene(scene);
-        katalogStage.setTitle("Uebungskatalog");
-        katalogStage.show();
-    }
+    public void showAnagram(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Anagramm.txt")); }
+
+    public void showArray(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Array.txt")); }
+
+    public void showFuhrpark(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Fuhrpark.txt")); }
+
+    public void showNullzeile(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Nullzeile.txt")); }
+
+    public void showPixel(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Pixel.txt")); }
+
+    public void showRekursiv(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Rekursiv.txt")); }
+
+    public void showReptil(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Reptil.txt")); }
+
+    public void showInterface(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Interface.txt")); }
+
+    public void showSortieren(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Sortieren.txt")); }
+
+
 
     @FXML
     Text status;
     @FXML
-    TextField className;
-    @FXML
     TextArea code;
-    @FXML
-    Text errorClassName;
     @FXML
     Text errorCode;
 
 
-    @FXML
-    TextField testClassName;
+
     @FXML
     TextArea testCode;
-    @FXML
-    Text errorTestClassName;
     @FXML
     Text errorTestCode;
 
@@ -74,12 +82,17 @@ public class Controller {
         if(status.getText().equals("Write a failing test")) handleTestCode();
 
 
-
-
-
-
-
     }
+
+
+    @FXML
+    TextField testClassName;
+    @FXML
+    TextField className;
+    @FXML
+    Text errorClassName;
+    @FXML
+    Text errorTestClassName;
 
     private void handleTestCode() {
         if(testClassName.getText().equals("")) {
@@ -156,4 +169,20 @@ public class Controller {
     }
 
 
+    public void handleStartButton() {
+
+        testCode.setWrapText(true);
+        testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class Test {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
+        testCode.setEditable(true);
+        code.setWrapText(true);
+        code.setText("public class Class {\n  // TODO\n}");
+    }
+
+
+    public void handleBackButton() {
+    }
+
+
+    public void handleRunButton(ActionEvent actionEvent) {
+    }
 }
