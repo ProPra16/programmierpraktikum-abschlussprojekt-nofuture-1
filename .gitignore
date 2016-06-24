@@ -3,3 +3,5 @@
 out/
 build/
 .gradle/2.9/
+gradle/wrapper/gradle-wrapper.properties
+
