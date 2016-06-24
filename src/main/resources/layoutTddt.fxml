@@ -49,7 +49,7 @@
 		  	GridPane.columnIndex="1" GridPane.rowIndex="4"
 		  	GridPane.columnSpan="1"/>
 
-		<TextArea fx:id="testCode"
+		<TextArea fx:id="testCode" text="${'Multi\nLine\tTab'}"
 			GridPane.columnIndex="0" GridPane.rowIndex="5"
 			GridPane.columnSpan="2"/>
 
