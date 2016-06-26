@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
+import vk.core.api.CompilationUnit;
 
 public class TDDTMain extends Application
 {
