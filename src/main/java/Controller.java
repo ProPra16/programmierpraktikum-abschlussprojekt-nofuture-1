@@ -1,6 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -20,10 +21,15 @@ public class Controller {
         System.exit(0);
     }
 
+    @FXML
+    Label errorExercise;
 
+    @FXML
+    MenuBar menuBar;
 
 
     public String readTxt(String file) {
+        errorExercise.setText("");
         String text = "";
         try
         {
@@ -40,25 +46,38 @@ public class Controller {
     }
 
     @FXML
-    Label task;
+    Label exercise;
 
-    public void showAnagram(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Anagramm.txt")); }
+    public void handleStartButton() {
+        if(exercise.getText().equals("")) errorExercise.setText("You need to choose an exercise");
+        else {
+            //  menuBar.getMenus().get(1).getItems().
+            menuBar.setDisable(true);
+            testCode.setWrapText(true);
+            testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class Test {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
+            testCode.setEditable(true);
+            code.setWrapText(true);
+            code.setText("public class Class {\n  // TODO\n}");
+        }
+    }
 
-    public void showArray(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Array.txt")); }
+    public void showAnagram(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Anagramm.txt")); }
 
-    public void showFuhrpark(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Fuhrpark.txt")); }
+    public void showArray(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Array.txt")); }
 
-    public void showNullzeile(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Nullzeile.txt")); }
+    public void showFuhrpark(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Fuhrpark.txt")); }
 
-    public void showPixel(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Pixel.txt")); }
+    public void showNullzeile(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Nullzeile.txt")); }
 
-    public void showRekursiv(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Rekursiv.txt")); }
+    public void showPixel(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Pixel.txt")); }
 
-    public void showReptil(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Reptil.txt")); }
+    public void showRekursiv(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Rekursiv.txt")); }
 
-    public void showInterface(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Interface.txt")); }
+    public void showReptil(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Reptil.txt")); }
 
-    public void showSortieren(ActionEvent actionEvent) { task.setText(readTxt("./Aufgaben/Sortieren.txt")); }
+    public void showInterface(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Interface.txt")); }
+
+    public void showSortieren(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Sortieren.txt")); }
 
 
 
@@ -169,14 +188,7 @@ public class Controller {
     }
 
 
-    public void handleStartButton() {
 
-        testCode.setWrapText(true);
-        testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class Test {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
-        testCode.setEditable(true);
-        code.setWrapText(true);
-        code.setText("public class Class {\n  // TODO\n}");
-    }
 
 
     public void handleBackButton() {

@@ -28,3 +28,15 @@
     -fx-font-weight: bold;
     -fx-fill: RED;
 }
+
+#errorExercise {
+    -fx-font-weight: bold;
+    -fx-fill: RED;
+}
+
+
+#exerciseBox {
+    -fx-border-color: #979fa7;
+    -fx-border-width: 2px;
+
+}

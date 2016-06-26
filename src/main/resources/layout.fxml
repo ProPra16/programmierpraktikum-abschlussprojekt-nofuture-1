@@ -10,50 +10,56 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
 <GridPane
 	fx:controller="Controller"
 	xmlns:fx="http://javafx.com/fxml"
 	alignment="center"
-	hgap="10"
-	vgap="10">	
+	hgap="30"
+	vgap="10">
 	
 	<padding>
 		<Insets top="25" right="25" bottom="10" left="25" />
 	</padding>
 
-		<HBox alignment="center"
-		  	GridPane.columnIndex="1" GridPane.rowIndex="0"
-		  	GridPane.columnSpan="4">
-			<Text fx:id="status" text="Write a failing test" />
-		</HBox>
+	<HBox alignment="center"
+	  	GridPane.columnIndex="1" GridPane.rowIndex="0"
+	  	GridPane.columnSpan="4">
+		<Text fx:id="status" text="Write a failing test" />
+	</HBox>
 
+    <VBox fx:id="exerciseBox"
+        GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="5">
+        <MenuBar fx:id="menuBar">
+            <menus>
+                <Menu text="Aufgaben">
+                    <items>
+                        <MenuItem text="Anagramm" onAction="#showAnagram"/>
+                        <MenuItem text="Array" onAction="#showArray"/>
+                        <MenuItem text="Fuhrpark" onAction="#showFuhrpark"/>
+                        <MenuItem text="Nullzeile" onAction="#showNullzeile"/>
+                        <MenuItem text="Pixel" onAction="#showPixel"/>
+                        <MenuItem text="Rekursiv" onAction="#showRekursiv"/>
+                        <MenuItem text="Reptil" onAction="#showReptil"/>
+                        <MenuItem text="Interface" onAction="#showInterface"/>
+                        <MenuItem text="Sortieren" onAction="#showSortieren"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
 
-    <MenuBar fx:id="menuBar"
-        GridPane.columnIndex="0" GridPane.rowIndex="0">
-        <menus>
-            <Menu text="Aufgaben">
-                <items>
-                    <MenuItem text="Anagramm" onAction="#showAnagram"/>
-                    <MenuItem text="Array" onAction="#showArray"/>
-                    <MenuItem text="Fuhrpark" onAction="#showFuhrpark"/>
-                    <MenuItem text="Nullzeile" onAction="#showNullzeile"/>
-                    <MenuItem text="Pixel" onAction="#showPixel"/>
-                    <MenuItem text="Rekursiv" onAction="#showRekursiv"/>
-                    <MenuItem text="Reptil" onAction="#showReptil"/>
-                    <MenuItem text="Interface" onAction="#showInterface"/>
-                    <MenuItem text="Sortieren" onAction="#showSortieren"/>
-                </items>
-            </Menu>
-        </menus>
-    </MenuBar>
+        <Label fx:id="exercise"
+            prefWidth="450" prefHeight="500"/>
 
-    <Label fx:id="task"
-        GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.rowSpan="4"
-        prefWidth="450" prefHeight="500"/>
+    </VBox>
+
+    <Label fx:id="errorExercise"
+           GridPane.columnIndex="0" GridPane.rowIndex="5"/>
 
     <Button text="Start"
-        GridPane.columnIndex="0" GridPane.rowIndex="6"
-        onAction="#handleStartButton"/>
+            GridPane.columnIndex="0" GridPane.rowIndex="6"
+            onAction="#handleStartButton"/>
+
 
 
     <Text text="your test code:"
