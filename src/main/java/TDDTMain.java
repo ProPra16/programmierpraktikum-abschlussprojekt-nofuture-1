@@ -23,7 +23,7 @@ public class TDDTMain extends Application
       String stylesheet = getClass().getResource("tddt.css").toExternalForm();
       scene.getStylesheets().add(stylesheet);
       primaryStage.setScene(scene);
-      primaryStage.setTitle("Hello World");
+      primaryStage.setTitle("Test Driven Development Trainer");
       primaryStage.show();
 
    }
