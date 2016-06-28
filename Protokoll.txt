@@ -1,4 +1,12 @@
-Protokoll vom 20.06.20116 
+Protokoll vom 28.06.2016
+
+Themenpunkte:
+- Git Probleme gelöst
+- Addon ATDD Funktionsweise und mögliche Arten der Implementierung besprochen
+
+
+
+Protokoll vom 20.06.2016 
 
 Themenpunkte:
 - Projekt
