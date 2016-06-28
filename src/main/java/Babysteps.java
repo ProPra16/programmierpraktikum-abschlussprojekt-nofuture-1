@@ -2,12 +2,13 @@
  * Created by Anne01 on 28.06.2016.
  */
 public class Babysteps {
-
+    String phase;
     public void babysteps(){
+
         Timer timer = new Timer();
         int setTime =120; // soll variable sein
        int passedTime = timer.passedTime();
-        String phase = timer.getPhase();
+
         switch (phase){
 
             case "RED":
@@ -31,4 +32,12 @@ public class Babysteps {
         }
 
     }
+    public void setPhase(String s){
+        phase = s;
+    }
+
+    public String getPhase(){
+        return phase;
+    }
+
 }
