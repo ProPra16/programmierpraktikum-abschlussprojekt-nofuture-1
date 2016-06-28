@@ -3,6 +3,11 @@
  */
 public class Babysteps {
     String phase;
+
+    /* public Babysteps(String phase) {
+       this.phase = phase;
+    }   */
+
     public void babysteps(){
 
         Timer timer = new Timer();
@@ -33,10 +38,12 @@ public class Babysteps {
 
     }
     public void setPhase(String s){
+
         phase = s;
     }
 
     public String getPhase(){
+
         return phase;
     }
 
