@@ -2,20 +2,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.layout.GridPane;
 import vk.core.api.*;
 
 import java.io.IOException;
 import java.util.Collection;
 
-public class Controller {
+public class ATDDFeature {
 
     @FXML
-    GridPane root;
+    SplitPane root;
+
 
     public void handleExitButton() {
         System.exit(0);
@@ -37,7 +40,7 @@ public class Controller {
     }
 
     public void handleStartButton() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("layoutTddt.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("layoutATDD.fxml"));
         Scene scene = new Scene(root, 1200, 500);
         String stylesheet = getClass().getResource("tddt.css").toExternalForm();
         scene.getStylesheets().add(stylesheet);

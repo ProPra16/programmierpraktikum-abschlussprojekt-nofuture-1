@@ -10,7 +10,7 @@
 
 <GridPane
 	fx:id="root"
-	fx:controller="Controller"
+	fx:controller="TDDT"
 	xmlns:fx="http://javafx.com/fxml"
 	alignment="center"
 	hgap="10"
@@ -29,16 +29,3 @@
 			  GridPane.columnIndex="0" GridPane.rowIndex="1"
 			  GridPane.columnSpan="1" />
 </GridPane>
-
-
-
-
-
-
-
-
-
-
-
-
-

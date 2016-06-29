@@ -11,7 +11,7 @@
 
 <GridPane
 	fx:id="root"
-	fx:controller="Controller"
+	fx:controller="TDDT"
 	xmlns:fx="http://javafx.com/fxml"
 	alignment="center"
 	hgap="10"

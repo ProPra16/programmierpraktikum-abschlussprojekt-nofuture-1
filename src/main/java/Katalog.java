@@ -77,11 +77,11 @@ public Katalog() {
 
             text = buffer.toString();
         }
-        catch(FileNotFoundException e)
-        {
+        catch(FileNotFoundException e) {
+            System.out.println("Die Katalog TXT-Dateien fehlen!");
         }
-        catch(IOException e)
-        {
+        catch(IOException e) {
+            e.printStackTrace();
         }
 
    return text;
