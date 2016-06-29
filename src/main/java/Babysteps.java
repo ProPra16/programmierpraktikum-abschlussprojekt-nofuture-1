@@ -11,27 +11,33 @@ public class Babysteps {
     public void babysteps(){
 
         Timer timer = new Timer();
-        int setTime =120; // soll variable sein
+        Controller controller = new Controller();
+        int setTime =120; //Variable als Textfeld mit getText abfragen
        int passedTime = timer.passedTime();
 
         switch (phase){
 
             case "RED":
+             //   if (passedTime<setTime && Test passed )
                 phase="GREEN";
-                if(passedTime==setTime) {
-                    //Code löschen und in Phase GREEN gehen
+                if(passedTime>=setTime) {
+                    ///Code löschen
+                    //GOTO Phase REFACTOR
                 }
                 break;
             case "GREEN":
-               phase="REFACTOR";
-                if (passedTime == setTime) {
-                    //Code löschen und in REFACTOR gehen
+                //   if (passedTime<setTime && Test passed )
+                phase="REFACTOR";
+                if (passedTime >= setTime) {
+                   //Code löschen
+                    //GOTO RED
                 }
 
                 break;
             case "REFACTOR":
+                //   if (passedTime<setTime && Test passed )
                 phase="RED";
-               //in RED zurückwechseln
+               //Kein Zeitlimit
                 break;
 
         }
