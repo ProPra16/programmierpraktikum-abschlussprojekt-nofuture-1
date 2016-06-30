@@ -83,7 +83,7 @@ public class Controller {
 
     private void handleTestCode() {
         if(testClassName.getText().equals("")) {
-            errorTestClassName.setText("you need to enter a class name");
+            errorTestClassName.setText("you need to enter a class phase");
         } else if(testCode.getText().equals("")) {
             errorTestClassName.setText("");
             errorTestCode.setText("you need to enter code");
