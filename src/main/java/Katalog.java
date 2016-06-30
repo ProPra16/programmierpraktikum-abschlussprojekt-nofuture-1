@@ -65,7 +65,7 @@ public Katalog() {
     primaryStage.setTitle("Katalog");
     primaryStage.show();
 }
-
+    //text einlesen
     public String readTxt(String file) {
         String text = "";
         try
