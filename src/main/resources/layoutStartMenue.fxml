@@ -11,6 +11,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <GridPane
 	fx:controller="Controller"
 	xmlns:fx="http://javafx.com/fxml"
@@ -22,11 +24,6 @@
 		<Insets top="25" right="25" bottom="10" left="25" />
 	</padding>
 
-	<HBox alignment="center"
-	  	GridPane.columnIndex="1" GridPane.rowIndex="0"
-	  	GridPane.columnSpan="4">
-		<Text fx:id="status" text="Write a failing test" />
-	</HBox>
 
     <VBox fx:id="exerciseBox"
         GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="5">
@@ -55,60 +52,48 @@
 
     </VBox>
 
-    <Label fx:id="errorExercise"
-           GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+
+    <HBox
+        GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <fx:define>
+            <ToggleGroup fx:id="babystepTimeGroup"/>
+        </fx:define>
+        <RadioButton fx:id="2" text="2" toggleGroup="$babystepTimeGroup"/>
+        <RadioButton fx:id="3" text="3" toggleGroup="$babystepTimeGroup"/>
+        <RadioButton fx:id="4" text="4" toggleGroup="$babystepTimeGroup"/>
+        <RadioButton fx:id="5" text="5" toggleGroup="$babystepTimeGroup"/>
+        <RadioButton fx:id="6" text="6" toggleGroup="$babystepTimeGroup"/>
+    </HBox>
+
+    <Button text="babysteps"
+        GridPane.columnIndex="1" GridPane.rowIndex="1"
+        onAction="#handleBabystepButton"/>
+
+    <Button text="ATDD"
+            GridPane.columnIndex="1" GridPane.rowIndex="0"
+            onAction="#handleATDDButton"/>
+
+
 
     <Button text="Start"
             GridPane.columnIndex="0" GridPane.rowIndex="6"
-            onAction="#handleStartMenuButton"/>
-
-
-
-    <Text text="your test code:"
-        GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-
-    <TextArea fx:id="testCode"
-        prefHeight="500" prefWidth="500"
-        GridPane.columnIndex="1" GridPane.rowIndex="4"
-        Editable="false"/>
-
-    <Label fx:id="errorsTestCode"
-        GridPane.columnIndex="1" GridPane.rowIndex="5"
-        prefWidth="500" prefHeight="200"/>
-
-
-
-
-    <Text text="your code:"
-        GridPane.columnIndex="3" GridPane.rowIndex="3"/>
-
-    <TextArea fx:id="code"
-        prefHeight="500" prefWidth="500"
-        GridPane.columnIndex="3" GridPane.rowIndex="4"
-        Editable="false"/>
-
-    <Label fx:id="errorsCode"
-        GridPane.columnIndex="3" GridPane.rowIndex="5"
-        prefWidth="500" prefHeight="200"/>
-
-
-
+            onAction="#handleStartButton"/>
 
     <HBox alignment="center_right"
-        GridPane.columnIndex="1" GridPane.rowIndex="6"
-        spacing="50">
-
-        <Button text="run"
-            onAction="#handleRunButton" />
-        <Button text="back to writing tests"
-            onAction="#handleBackButton" />
-    </HBox>
-
-    <HBox alignment="center_right"
-        GridPane.columnIndex="3" GridPane.rowIndex="6">
+          GridPane.columnIndex="3" GridPane.rowIndex="6">
         <Button fx:id="button" text="Exit"
-            onAction="#handleExitButton" />
+                onAction="#handleExitButton" />
     </HBox>
+
+
+
+
+
+
+
+
+
+
 
 
 

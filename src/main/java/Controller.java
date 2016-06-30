@@ -1,9 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.scene.layout.GridPane;
 import vk.core.api.*;
@@ -107,10 +105,14 @@ public class Controller {
         CompilerResult compilerResult = compiler.getCompilerResult();
         TestResult testResult = compiler.getTestResult();
         if(compilerResult.hasCompileErrors()) {
-            //Collection<CompileError> compileErrors = compilerResult.getCompilerErrorsForCompilationUnit(testClass);
-            //for (CompileError ce : compileErrors) {
-            //    System.out.println(ce);
-            //}
+            Collection<CompileError> compileErrors = compilerResult.getCompilerErrorsForCompilationUnit(testClass);
+
+
+            for (CompileError ce : compileErrors) {
+                if(ce.getMessage().contains("cannot find symbol")) {}
+
+                System.out.println(ce);
+            }
 
         }else if(testResult.getNumberOfFailedTests() > 0) {
 
@@ -210,6 +212,27 @@ public class Controller {
     public void handleBackButton() {
     }
 
+    @FXML
+    ToggleGroup babystepTimeGroup;
+
+    boolean atdd = false;
+    boolean babysteps = false;
+    int babystepTime;
+
+    public void handleBabystepButton() {
+        babysteps = true;
+
+    }
+
+    public void handleATDDButton(ActionEvent actionEvent) {
+        atdd = true;
+    }
+
+    public void handleStartMenuButton(ActionEvent actionEvent) {
+        RadioButton selectedButton = (RadioButton) babystepTimeGroup.getSelectedToggle();
+        babystepTime = Integer.parseInt(selectedButton.getText());
 
 
+
+    }
 }

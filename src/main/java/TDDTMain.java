@@ -16,7 +16,8 @@ public class TDDTMain extends Application
    {
      // new Katalog();
 
-      Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
+    //  Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
+      Parent root = FXMLLoader.load(getClass().getResource("layoutStartMenue.fxml"));
       Scene scene = new Scene(root);
       //primaryStage.setFullScreen(true);
       primaryStage.setMaximized(true);
