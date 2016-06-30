@@ -3,10 +3,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
 
 repositories {
     mavenCentral()
