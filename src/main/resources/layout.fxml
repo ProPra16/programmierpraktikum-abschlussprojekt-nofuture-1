@@ -30,6 +30,8 @@
 
     <VBox fx:id="exerciseBox"
         GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="5">
+        <!--GridPane.hgrow="ALWAYS"
+        GridPane.vgrow="ALWAYS"-->
         <MenuBar fx:id="menuBar">
             <menus>
                 <Menu text="Aufgaben">
@@ -85,7 +87,7 @@
         GridPane.columnIndex="3" GridPane.rowIndex="4"
         Editable="false"/>
 
-    <Label fx:id="ErrorsCode"
+    <Label fx:id="errorsCode"
         GridPane.columnIndex="3" GridPane.rowIndex="5"
         prefWidth="500" prefHeight="200"/>
 

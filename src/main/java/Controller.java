@@ -28,14 +28,14 @@ public class Controller {
     MenuBar menuBar;
 
 
-    public String readTxt(String file) {
+    private String readTxt(String file) {
         errorExercise.setText("");
         String text = "";
         try
         {
             StringBuffer buffer = new StringBuffer();
             FileReader in = new FileReader(file);
-            for (int n;(n = in.read()) != -1;buffer.append((char) n));
+            for (int n; (n = in.read()) != -1; buffer.append((char) n));
             in.close();
 
             text = buffer.toString();
@@ -51,10 +51,9 @@ public class Controller {
     public void handleStartButton() {
         if(exercise.getText().equals("")) errorExercise.setText("You need to choose an exercise");
         else {
-            //  menuBar.getMenus().get(1).getItems().
             menuBar.setDisable(true);
             testCode.setWrapText(true);
-            testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class Test {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
+            testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
             testCode.setEditable(true);
             code.setWrapText(true);
             code.setText("public class Class {\n  // TODO\n}");
@@ -86,22 +85,47 @@ public class Controller {
     @FXML
     TextArea code;
     @FXML
-    Text errorCode;
-
-
-
+    Label errorsCode;
     @FXML
     TextArea testCode;
     @FXML
-    Text errorTestCode;
+    Label errorsTestCode;
 
 
 
-    public void handleSaveButton() {
-        if(status.getText().equals("Write a failing test")) handleTestCode();
+    public void handleRunButton() {
+        String error = "";
+        if(status.getText().equals("Write a failing test")) error = compileTestCode(testCode.getText(), code.getText());
+        errorsTestCode.setText(error);
+    }
 
+    private String compileTestCode(String testCode, String code) {
+        CompilationUnit testClass = new CompilationUnit("TestClass", testCode, true);
+        CompilationUnit mainClass = new CompilationUnit("Class", code, false);
+        JavaStringCompiler compiler = CompilerFactory.getCompiler(testClass, mainClass);
+        compiler.compileAndRunTests();
+        CompilerResult compilerResult = compiler.getCompilerResult();
+        TestResult testResult = compiler.getTestResult();
+        if(compilerResult.hasCompileErrors()) {
+            //Collection<CompileError> compileErrors = compilerResult.getCompilerErrorsForCompilationUnit(testClass);
+            //for (CompileError ce : compileErrors) {
+            //    System.out.println(ce);
+            //}
+
+        }else if(testResult.getNumberOfFailedTests() > 0) {
+
+
+        }else {
+            return("You need to write a failing test");
+
+
+        }
+
+        return("");
 
     }
+
+
 
 
     @FXML
@@ -114,14 +138,6 @@ public class Controller {
     Text errorTestClassName;
 
     private void handleTestCode() {
-        if(testClassName.getText().equals("")) {
-            errorTestClassName.setText("you need to enter a class name");
-        } else if(testCode.getText().equals("")) {
-            errorTestClassName.setText("");
-            errorTestCode.setText("you need to enter code");
-        }else {
-            errorTestClassName.setText("");
-            errorTestCode.setText("");
             if (status.getText().equals("Write a failing test")) {
                 CompilationUnit compilationUnit = new CompilationUnit(testClassName.getText(), testCode.getText(), true);
                 JavaStringCompiler compiler = CompilerFactory.getCompiler(compilationUnit);
@@ -179,7 +195,7 @@ public class Controller {
                     //  }
 */
 
-            }
+
 
         }
 
@@ -195,6 +211,5 @@ public class Controller {
     }
 
 
-    public void handleRunButton(ActionEvent actionEvent) {
-    }
+
 }
