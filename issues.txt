@@ -3,3 +3,4 @@ Ideen Philipp:
  -> ArrayListe/Liste die per Knopfdruck in eine Datei "Katalog" hinzugefügt wird (nur schönheitsfehler, nicht relevant für bestehen)
 - atdd in separater gui oder per knopfdruck an-/abschaltbar
 - Katalog in Programmierfenster anzeigen und ausblendbar machen
+- Fenster in Vollbild starten

@@ -6,7 +6,7 @@
 
 
 <GridPane
-	fx:controller="ATDDFeature"
+	fx:controller="TDDTStart"
 	xmlns:fx="http://javafx.com/fxml"
 	alignment="center"
 	hgap="10"
@@ -16,15 +16,15 @@
 		<Insets top="25" right="25" bottom="10" left="25" />
 	</padding>
 
-		<Button fx:id="button" text="Exit"
+	<Button fx:id="button" text="Exit"
 			GridPane.columnIndex="2" GridPane.rowIndex="0"
 			GridPane.columnSpan="1"
 			onAction="#handleExitButton" />
 
-		<Button text="Uebungskatalog"
-				GridPane.columnIndex="1" GridPane.rowIndex="0"
-				GridPane.columnSpan="1"
-				onAction="#handleKatalogButton" />
+	<Button text="Uebungskatalog"
+			GridPane.columnIndex="1" GridPane.rowIndex="0"
+			GridPane.columnSpan="1"
+			onAction="#handleKatalogButton" />
 
 	<Button text="Start"
 			GridPane.columnIndex="0" GridPane.rowIndex="0"

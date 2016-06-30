@@ -19,7 +19,6 @@ public class ATDDFeature {
     @FXML
     SplitPane root;
 
-
     public void handleExitButton() {
         System.exit(0);
     }
@@ -47,6 +46,7 @@ public class ATDDFeature {
         Stage katalogStage = new Stage();
         katalogStage.setScene(scene);
         katalogStage.setTitle("Uebungskatalog");
+        katalogStage.sizeToScene();
         katalogStage.show();
     }
 
