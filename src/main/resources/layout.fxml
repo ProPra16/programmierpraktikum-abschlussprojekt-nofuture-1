@@ -41,9 +41,6 @@
                         <MenuItem text="Fuhrpark" onAction="#showFuhrpark"/>
                         <MenuItem text="Nullzeile" onAction="#showNullzeile"/>
                         <MenuItem text="Pixel" onAction="#showPixel"/>
-                        <MenuItem text="Rekursiv" onAction="#showRekursiv"/>
-                        <MenuItem text="Reptil" onAction="#showReptil"/>
-                        <MenuItem text="Interface" onAction="#showInterface"/>
                         <MenuItem text="Sortieren" onAction="#showSortieren"/>
                     </items>
                 </Menu>

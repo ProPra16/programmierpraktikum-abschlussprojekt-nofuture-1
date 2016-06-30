@@ -70,12 +70,6 @@ public class Controller {
 
     public void showPixel(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Pixel.txt")); }
 
-    public void showRekursiv(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Rekursiv.txt")); }
-
-    public void showReptil(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Reptil.txt")); }
-
-    public void showInterface(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Interface.txt")); }
-
     public void showSortieren(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Sortieren.txt")); }
 
 
@@ -91,7 +85,9 @@ public class Controller {
     @FXML
     Label errorsTestCode;
 
-
+    public void babysteps(){
+        Babysteps babysteps = new Babysteps(status.getText(),code,testCode);
+    }
 
     public void handleRunButton() {
         String error = "";
@@ -99,6 +95,11 @@ public class Controller {
         errorsTestCode.setText(error);
     }
 
+    // in "String testCode, String code" steckt jeweils der source code für test und source
+    // testCode und code global definieren und mit einer setter Methode in dieser Klasse (Controller)
+    // aus der Babysteps Klasse neu definieren.
+    // Wenn zeit abgelaufen dann überschreibe testCode oder code mit dem vorher zwischengespeicherten String,
+    // um den String in der Controller Klasse zu überscheiben
     private String compileTestCode(String testCode, String code) {
         CompilationUnit testClass = new CompilationUnit("TestClass", testCode, true);
         CompilationUnit mainClass = new CompilationUnit("Class", code, false);

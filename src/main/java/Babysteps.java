@@ -1,20 +1,25 @@
+import javafx.scene.control.TextArea;
+
 /**
  * Created by Anne01 on 28.06.2016.
  */
 public class Babysteps {
+    TextArea  code, testCode;
     String phase;
 
-    /* public Babysteps(String phase) {
+
+     public Babysteps(String phase, TextArea code, TextArea testCode) {
        this.phase = phase;
-    }   */
+         this.code = code;
+         this.testCode = testCode;
+    }
 
     public void babysteps(){
 
         Timer timer = new Timer();
-        Controller controller = new Controller();
-        int setTime =120; //Variable als Textfeld mit getText abfragen
-       int passedTime = timer.passedTime();
-
+        int setTime = 120; //Variable als Textfeld mit getText abfragen
+        int passedTime = timer.passedTime();
+        //timeline durchlaufen bis time == 0 dann switch
         switch (phase){
 
             case "RED":
