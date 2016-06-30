@@ -1,0 +1,17 @@
+Schreiben Sie eine Klasse "Reptile".
+Diese soll einen Namen enthalten, sowie eine Groeße (in double)
+und eine Geschwindigkeit (auch in double).
+Diese sollen als private deklariert werden.
+Implementieren Sie die Funktionen wiefolgt:
+- getsize() : gibt die Groeße zurueck
+- fast(): gibt zurueck, ob das Reptil schnell
+  ist unter folgenden Bedingungen:
+  unter 5 km/h soll der Name des Reptils +
+   " is slow." zurueckgegeben werden.
+  unter 20 km/h "    "   "    "    "    +
+  " is not slow but not fast either." zurueckgegeben werden.
+  unter 25 km/h"    "   "    "    "     +
+  " is fast." zurueckgegeben werden.
+  darueber       "    "   "    "    "   +
+  " is very fast." zurueckgegeben werden.
+

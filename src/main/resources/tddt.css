@@ -1,0 +1,30 @@
+.button {
+	-fx-font-size: 24px;
+	-fx-font-family: "Arial";
+	-fx-background-color:  #008CBA;
+    -fx-webkit-transition-duration: 0.4s;
+    -fx-transition-duration: 0.4s;
+}
+
+
+.button:hover {
+    -fx-background-color: #4CAF50;
+    -fx-color: white;
+}
+
+#status {
+    -fx-fill: RED;
+    -fx-font-size:30px;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+}
+
+#errorTestClassName {
+    -fx-font-weight: bold;
+    -fx-fill: RED;
+}
+
+#errorTestCode {
+    -fx-font-weight: bold;
+    -fx-fill: RED;
+}
