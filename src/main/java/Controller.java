@@ -78,6 +78,7 @@ public class Controller {
 
 
 
+
     @FXML
     Text status;
     @FXML
@@ -89,7 +90,9 @@ public class Controller {
     @FXML
     Label errorsTestCode;
 
-
+    public void babysteps(){
+        Babysteps babysteps = new Babysteps(status.getText(),code,testCode);
+    }
 
     public void handleRunButton() {
         /*String error = "";
@@ -97,6 +100,11 @@ public class Controller {
         errorsTestCode.setText(error);*/
     }
 
+    // in "String testCode, String code" steckt jeweils der source code für test und source
+    // testCode und code global definieren und mit einer setter Methode in dieser Klasse (Controller)
+    // aus der Babysteps Klasse neu definieren.
+    // Wenn zeit abgelaufen dann überschreibe testCode oder code mit dem vorher zwischengespeicherten String,
+    // um den String in der Controller Klasse zu überscheiben
     private String compileTestCode(String testCode, String code) {
         CompilationUnit testClass = new CompilationUnit("TestClass", testCode, true);
         CompilationUnit mainClass = new CompilationUnit("Class", code, false);
