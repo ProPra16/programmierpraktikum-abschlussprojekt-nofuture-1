@@ -22,41 +22,19 @@
 		<Insets top="25" right="25" bottom="10" left="25" />
 	</padding>
 
+    <Label fx:id="exerciseTDDT"
+        GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="5"
+        prefWidth="600" prefHeight="500"/>
+
 	<HBox alignment="center"
 	  	GridPane.columnIndex="1" GridPane.rowIndex="0"
 	  	GridPane.columnSpan="4">
 		<Text fx:id="status" text="Write a failing test" />
 	</HBox>
 
-    <VBox fx:id="exerciseBox"
-        GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="5">
-        <!--GridPane.hgrow="ALWAYS"
-        GridPane.vgrow="ALWAYS"-->
-        <MenuBar fx:id="menuBar">
-            <menus>
-                <Menu text="Aufgaben">
-                    <items>
-                        <MenuItem text="Anagramm" onAction="#showAnagram"/>
-                        <MenuItem text="Array" onAction="#showArray"/>
-                        <MenuItem text="Fuhrpark" onAction="#showFuhrpark"/>
-                        <MenuItem text="Nullzeile" onAction="#showNullzeile"/>
-                        <MenuItem text="Pixel" onAction="#showPixel"/>
-                        <MenuItem text="Rekursiv" onAction="#showRekursiv"/>
-                        <MenuItem text="Reptil" onAction="#showReptil"/>
-                        <MenuItem text="Interface" onAction="#showInterface"/>
-                        <MenuItem text="Sortieren" onAction="#showSortieren"/>
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
 
-        <Label fx:id="exercise"
-            prefWidth="450" prefHeight="500"/>
 
-    </VBox>
 
-    <Label fx:id="errorExercise"
-           GridPane.columnIndex="0" GridPane.rowIndex="5"/>
 
     <Button text="Start"
             GridPane.columnIndex="0" GridPane.rowIndex="6"
@@ -68,6 +46,7 @@
         GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 
     <TextArea fx:id="testCode"
+        wrapText="true"
         prefHeight="500" prefWidth="500"
         GridPane.columnIndex="1" GridPane.rowIndex="4"
         Editable="false"/>
@@ -83,6 +62,7 @@
         GridPane.columnIndex="3" GridPane.rowIndex="3"/>
 
     <TextArea fx:id="code"
+        wrapText="true"
         prefHeight="500" prefWidth="500"
         GridPane.columnIndex="3" GridPane.rowIndex="4"
         Editable="false"/>
@@ -101,13 +81,13 @@
         <Button text="run"
             onAction="#handleRunButton" />
         <Button text="back to writing tests"
-            onAction="#handleBackButton" />
+            onAction="#handleBackToTestsButton" />
     </HBox>
 
     <HBox alignment="center_right"
         GridPane.columnIndex="3" GridPane.rowIndex="6">
-        <Button fx:id="button" text="Exit"
-            onAction="#handleExitButton" />
+        <Button fx:id="button" text="Back"
+            onAction="#handleBackButton" />
     </HBox>
 
 

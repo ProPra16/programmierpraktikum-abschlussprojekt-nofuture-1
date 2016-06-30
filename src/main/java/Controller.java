@@ -1,9 +1,13 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import vk.core.api.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -46,7 +50,21 @@ public class Controller {
     @FXML
     Label exercise;
 
-    public void handleStartButton() {
+    public void showAnagram() { exercise.setText(readTxt("./Aufgaben/Anagramm.txt")); }
+
+    public void showArray() { exercise.setText(readTxt("./Aufgaben/Array.txt")); }
+
+    public void showFuhrpark() { exercise.setText(readTxt("./Aufgaben/Fuhrpark.txt")); }
+
+    public void showNullzeile() { exercise.setText(readTxt("./Aufgaben/Nullzeile.txt")); }
+
+    public void showPixel() { exercise.setText(readTxt("./Aufgaben/Pixel.txt")); }
+
+    public void showSortieren() { exercise.setText(readTxt("./Aufgaben/Sortieren.txt")); }
+
+
+
+    public void handleStartButton() { // muss geändert werden
         if(exercise.getText().equals("")) errorExercise.setText("You need to choose an exercise");
         else {
             menuBar.setDisable(true);
@@ -57,24 +75,6 @@ public class Controller {
             code.setText("public class Class {\n  // TODO\n}");
         }
     }
-
-    public void showAnagram(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Anagramm.txt")); }
-
-    public void showArray(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Array.txt")); }
-
-    public void showFuhrpark(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Fuhrpark.txt")); }
-
-    public void showNullzeile(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Nullzeile.txt")); }
-
-    public void showPixel(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Pixel.txt")); }
-
-    public void showRekursiv(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Rekursiv.txt")); }
-
-    public void showReptil(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Reptil.txt")); }
-
-    public void showInterface(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Interface.txt")); }
-
-    public void showSortieren(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Sortieren.txt")); }
 
 
 
@@ -92,9 +92,9 @@ public class Controller {
 
 
     public void handleRunButton() {
-        String error = "";
+        /*String error = "";
         if(status.getText().equals("Write a failing test")) error = compileTestCode(testCode.getText(), code.getText());
-        errorsTestCode.setText(error);
+        errorsTestCode.setText(error);*/
     }
 
     private String compileTestCode(String testCode, String code) {
@@ -106,23 +106,15 @@ public class Controller {
         TestResult testResult = compiler.getTestResult();
         if(compilerResult.hasCompileErrors()) {
             Collection<CompileError> compileErrors = compilerResult.getCompilerErrorsForCompilationUnit(testClass);
-
-
             for (CompileError ce : compileErrors) {
                 if(ce.getMessage().contains("cannot find symbol")) {}
 
                 System.out.println(ce);
             }
-
         }else if(testResult.getNumberOfFailedTests() > 0) {
-
-
         }else {
             return("You need to write a failing test");
-
-
         }
-
         return("");
 
     }
@@ -130,86 +122,10 @@ public class Controller {
 
 
 
-    @FXML
-    TextField testClassName;
-    @FXML
-    TextField className;
-    @FXML
-    Text errorClassName;
-    @FXML
-    Text errorTestClassName;
 
-    private void handleTestCode() {
-            if (status.getText().equals("Write a failing test")) {
-                CompilationUnit compilationUnit = new CompilationUnit(testClassName.getText(), testCode.getText(), true);
-                JavaStringCompiler compiler = CompilerFactory.getCompiler(compilationUnit);
-                compiler.compileAndRunTests();
-                CompilerResult compilerResult = compiler.getCompilerResult();
-                TestResult testResult = compiler.getTestResult();
-                // was wenn, es nicht kompiliert wegen Fehler im TestCode?
-                // Fehler ausgeben
-                // Exception?
-                if(compilerResult.hasCompileErrors()) {
-                    Collection<CompileError> compileErrors = compilerResult.getCompilerErrorsForCompilationUnit(compilationUnit);
-                    for (CompileError ce : compileErrors) {
-                        System.out.println(ce);
-                        if(ce.getMessage().contains("should be declared in a file named")) {}
-
-
-                        if(ce.getMessage().contains("cannot find symbol")) {}
-                        //"cannot find symbol\n  symbol:   class Test"    import org.junit.Test;   fehlt
-
-                        /*
-                        kein error, wenn
-                        import static org.junit.Assert.*;
-                        fehlt
-                        */
-
-                    }
-                    status.setText("Make the test pass");
-                    status.setStyle("-fx-fill: GREEN;");
-                    testCode.setEditable(false);
-                    code.setEditable(true);
-                } else {
-                    // testen ob mehrere Tests fehl schlagen
-
-                    // testResult.getNumberOfFailedTests() == 1
-
-                }
-
-
-                /*
-                CompilerResult compilerResult = compiler.getCompilerResult();
-                if(compilerResult.hasCompileErrors()) {
-                    Collection<CompileError> compileErrors = compilerResult.getCompilerErrorsForCompilationUnit(compilationUnit);
-                    for (CompileError ce : compileErrors) System.out.println(ce);
-                } else {
-
-                    //assertFalse(TestHelpers.getErrorMessages(compiler, compilerResult),
-                    //        compilerResult.hasCompileErrors());
-                    TestResult testResult = compiler.getTestResult();
-                    //   int x = testResult.getNumberOfSuccessfulTests();
-
-                    System.out.println(testResult.getNumberOfFailedTests());
-                    //      if(testResult.getNumberOfFailedTests() > 0) {
-                    //         Collection<TestFailure> testFailures = testResult.getTestFailures();
-                    //       for (TestFailure tf : testFailures) System.out.println(tf);
-                    //  }
-*/
-
-
-
-        }
-
-
-
-    }
-
-
-
-
-
-    public void handleBackButton() {
+    public void handleBackButton() { // funktioniert nicht?
+        tddtStage.close();
+        menuStage.show();
     }
 
     @FXML
@@ -220,19 +136,54 @@ public class Controller {
     int babystepTime;
 
     public void handleBabystepButton() {
-        babysteps = true;
+        babysteps = !babysteps;
 
     }
 
     public void handleATDDButton(ActionEvent actionEvent) {
-        atdd = true;
+        atdd = !atdd;
     }
 
-    public void handleStartMenuButton(ActionEvent actionEvent) {
-        RadioButton selectedButton = (RadioButton) babystepTimeGroup.getSelectedToggle();
-        babystepTime = Integer.parseInt(selectedButton.getText());
+    Stage menuStage;
+    Stage tddtStage;
+
+    @FXML
+    Label exerciseTDDT;
+
+    public void handleStartMenuButton(ActionEvent actionEvent) throws IOException {
+        if(exercise.getText().equals("")) errorExercise.setText("You need to choose an exercise");
+        else {
+            if(babysteps == true) {
+                // überprüfen, ob überhaupt ein RadioButton ausgewählt wurde
+                RadioButton selectedButton = (RadioButton) babystepTimeGroup.getSelectedToggle();
+                babystepTime = Integer.parseInt(selectedButton.getText());
+            }
+            String exerciseText = exercise.getText();
+
+            // hide menu
+            menuStage = TDDTMain.getStage();
+            menuStage.hide();
+
+            // stage for tddt
+            tddtStage = new Stage();
+            Parent rootTDDT = FXMLLoader.load(getClass().getResource("layoutTDDT.fxml"));
+            Scene scene = new Scene(rootTDDT);
+            tddtStage.setMaximized(true);
 
 
+            // gibt Fehlermeldung
+            exerciseTDDT.setText(exerciseText);
 
+            String stylesheet = getClass().getResource("tddt.css").toExternalForm();
+            scene.getStylesheets().add(stylesheet);
+            tddtStage.setScene(scene);
+            tddtStage.setTitle("TDDT");
+            tddtStage.show();
+        }
+
+    }
+
+    public void handleBackToTestsButton(ActionEvent actionEvent) {
+        // TODO
     }
 }

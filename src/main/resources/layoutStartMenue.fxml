@@ -18,7 +18,7 @@
 	xmlns:fx="http://javafx.com/fxml"
 	alignment="center"
 	hgap="30"
-	vgap="10">
+	vgap="30">
 	
 	<padding>
 		<Insets top="25" right="25" bottom="10" left="25" />
@@ -27,8 +27,6 @@
 
     <VBox fx:id="exerciseBox"
         GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="5">
-        <!--GridPane.hgrow="ALWAYS"
-        GridPane.vgrow="ALWAYS"-->
         <MenuBar fx:id="menuBar">
             <menus>
                 <Menu text="Aufgaben">
@@ -38,9 +36,6 @@
                         <MenuItem text="Fuhrpark" onAction="#showFuhrpark"/>
                         <MenuItem text="Nullzeile" onAction="#showNullzeile"/>
                         <MenuItem text="Pixel" onAction="#showPixel"/>
-                        <MenuItem text="Rekursiv" onAction="#showRekursiv"/>
-                        <MenuItem text="Reptil" onAction="#showReptil"/>
-                        <MenuItem text="Interface" onAction="#showInterface"/>
                         <MenuItem text="Sortieren" onAction="#showSortieren"/>
                     </items>
                 </Menu>
@@ -48,10 +43,19 @@
         </MenuBar>
 
         <Label fx:id="exercise"
-            prefWidth="450" prefHeight="500"/>
-
+            prefWidth="600" prefHeight="500"/>
     </VBox>
 
+    <Label fx:id="errorExercise"
+           GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+
+    <RadioButton text="ATDD"
+                 GridPane.columnIndex="1" GridPane.rowIndex="0"
+                 onAction="#handleATDDButton"/>
+
+    <RadioButton text="Babysteps"
+                 GridPane.columnIndex="1" GridPane.rowIndex="1"
+                 onAction="#handleBabystepButton"/>
 
     <HBox
         GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -65,19 +69,15 @@
         <RadioButton fx:id="6" text="6" toggleGroup="$babystepTimeGroup"/>
     </HBox>
 
-    <Button text="babysteps"
-        GridPane.columnIndex="1" GridPane.rowIndex="1"
-        onAction="#handleBabystepButton"/>
 
-    <Button text="ATDD"
-            GridPane.columnIndex="1" GridPane.rowIndex="0"
-            onAction="#handleATDDButton"/>
+
+
 
 
 
     <Button text="Start"
             GridPane.columnIndex="0" GridPane.rowIndex="6"
-            onAction="#handleStartButton"/>
+            onAction="#handleStartMenuButton"/>
 
     <HBox alignment="center_right"
           GridPane.columnIndex="3" GridPane.rowIndex="6">

@@ -38,5 +38,7 @@
 #exerciseBox {
     -fx-border-color: #979fa7;
     -fx-border-width: 2px;
+    -fx-font-size: 16px;
 
 }
+

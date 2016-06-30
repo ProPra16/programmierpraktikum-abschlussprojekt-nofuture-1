@@ -11,22 +11,23 @@ public class TDDTMain extends Application
       launch(args);
    }
 
+   static Stage stage;
+
    @Override
    public void start(Stage primaryStage) throws Exception
    {
-     // new Katalog();
-
-    //  Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
+      stage = primaryStage;
       Parent root = FXMLLoader.load(getClass().getResource("layoutStartMenue.fxml"));
       Scene scene = new Scene(root);
-      //primaryStage.setFullScreen(true);
-      primaryStage.setMaximized(true);
+      stage.setMaximized(true);
 
       String stylesheet = getClass().getResource("tddt.css").toExternalForm();
       scene.getStylesheets().add(stylesheet);
-      primaryStage.setScene(scene);
-      primaryStage.setTitle("TDDT");
-      primaryStage.show();
+      stage.setScene(scene);
+      stage.setTitle("TDDT");
+      stage.show();
 
    }
+
+   public static Stage getStage() {return stage;}
 }
