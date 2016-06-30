@@ -16,8 +16,6 @@ public class TDDTMain extends Application
    @Override
    public void start(Stage primaryStage) throws Exception
    {
-      new Katalog();
-
       Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
       Scene scene = new Scene(root, 500, 500);
       String stylesheet = getClass().getResource("tddt.css").toExternalForm();
