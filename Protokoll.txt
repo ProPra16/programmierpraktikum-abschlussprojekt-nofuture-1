@@ -1,3 +1,21 @@
+Protokoll vom 30.06.2016
+
+neues Mitglied: Tim Matussek, tim.matussek@hhu.de
+
+Themenpunkte:
+- GUI erstellt
+- Babysteps besprochen
+
+- Interfaces erstellt:
+Interface TDDT:
+- String getPhase();
+- void setPhase (String phase);
+
+Interface ADTT:
+- void TestFinished();
+- boolean TestCompiled();
+
+
 Protokoll vom 28.06.2016
 
 Themenpunkte:
