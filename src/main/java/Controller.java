@@ -1,14 +1,14 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 import vk.core.api.*;
-
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collection;
 
@@ -21,75 +21,123 @@ public class Controller {
         System.exit(0);
     }
 
-    public void handleBackButton() {
-        root.getScene().getWindow().hide();
+    @FXML
+    Label errorExercise;
+
+    @FXML
+    MenuBar menuBar;
+
+
+    private String readTxt(String file) {
+        errorExercise.setText("");
+        String text = "";
+        try
+        {
+            StringBuffer buffer = new StringBuffer();
+            FileReader in = new FileReader(file);
+            for (int n; (n = in.read()) != -1; buffer.append((char) n));
+            in.close();
+
+            text = buffer.toString();
+        }
+        catch(FileNotFoundException e) {}
+        catch(IOException e) {}
+        return text;
     }
 
-    public void handleKatalogButton() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("layoutKatalog.fxml"));
-        Scene scene = new Scene(root, 500, 500);
-        String stylesheet = getClass().getResource("tddt.css").toExternalForm();
-        scene.getStylesheets().add(stylesheet);
-        Stage katalogStage = new Stage();
-        katalogStage.setScene(scene);
-        katalogStage.setTitle("Uebungskatalog");
-        katalogStage.show();
+    @FXML
+    Label exercise;
+
+    public void handleStartButton() {
+        if(exercise.getText().equals("")) errorExercise.setText("You need to choose an exercise");
+        else {
+            menuBar.setDisable(true);
+            testCode.setWrapText(true);
+            testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
+            testCode.setEditable(true);
+            code.setWrapText(true);
+            code.setText("public class Class {\n  // TODO\n}");
+        }
     }
 
-    public void handleStartButton() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("layoutTddt.fxml"));
-        Scene scene = new Scene(root, 1200, 500);
-        String stylesheet = getClass().getResource("tddt.css").toExternalForm();
-        scene.getStylesheets().add(stylesheet);
-        Stage katalogStage = new Stage();
-        katalogStage.setScene(scene);
-        katalogStage.setTitle("Uebungskatalog");
-        katalogStage.show();
-    }
+    public void showAnagram(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Anagramm.txt")); }
+
+    public void showArray(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Array.txt")); }
+
+    public void showFuhrpark(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Fuhrpark.txt")); }
+
+    public void showNullzeile(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Nullzeile.txt")); }
+
+    public void showPixel(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Pixel.txt")); }
+
+    public void showRekursiv(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Rekursiv.txt")); }
+
+    public void showReptil(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Reptil.txt")); }
+
+    public void showInterface(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Interface.txt")); }
+
+    public void showSortieren(ActionEvent actionEvent) { exercise.setText(readTxt("./Aufgaben/Sortieren.txt")); }
+
+
 
     @FXML
     Text status;
     @FXML
-    TextField className;
-    @FXML
     TextArea code;
     @FXML
-    Text errorClassName;
+    Label errorsCode;
     @FXML
-    Text errorCode;
+    TextArea testCode;
+    @FXML
+    Label errorsTestCode;
+
+
+
+    public void handleRunButton() {
+        String error = "";
+        if(status.getText().equals("Write a failing test")) error = compileTestCode(testCode.getText(), code.getText());
+        errorsTestCode.setText(error);
+    }
+
+    private String compileTestCode(String testCode, String code) {
+        CompilationUnit testClass = new CompilationUnit("TestClass", testCode, true);
+        CompilationUnit mainClass = new CompilationUnit("Class", code, false);
+        JavaStringCompiler compiler = CompilerFactory.getCompiler(testClass, mainClass);
+        compiler.compileAndRunTests();
+        CompilerResult compilerResult = compiler.getCompilerResult();
+        TestResult testResult = compiler.getTestResult();
+        if(compilerResult.hasCompileErrors()) {
+            //Collection<CompileError> compileErrors = compilerResult.getCompilerErrorsForCompilationUnit(testClass);
+            //for (CompileError ce : compileErrors) {
+            //    System.out.println(ce);
+            //}
+
+        }else if(testResult.getNumberOfFailedTests() > 0) {
+
+
+        }else {
+            return("You need to write a failing test");
+
+
+        }
+
+        return("");
+
+    }
+
+
 
 
     @FXML
     TextField testClassName;
     @FXML
-    TextArea testCode;
+    TextField className;
+    @FXML
+    Text errorClassName;
     @FXML
     Text errorTestClassName;
-    @FXML
-    Text errorTestCode;
-
-
-
-    public void handleSaveButton() {
-        if(status.getText().equals("Write a failing test")) handleTestCode();
-
-
-
-
-
-
-
-    }
 
     private void handleTestCode() {
-        if(testClassName.getText().equals("")) {
-            errorTestClassName.setText("you need to enter a class phase");
-        } else if(testCode.getText().equals("")) {
-            errorTestClassName.setText("");
-            errorTestCode.setText("you need to enter code");
-        }else {
-            errorTestClassName.setText("");
-            errorTestCode.setText("");
             if (status.getText().equals("Write a failing test")) {
                 CompilationUnit compilationUnit = new CompilationUnit(testClassName.getText(), testCode.getText(), true);
                 JavaStringCompiler compiler = CompilerFactory.getCompiler(compilationUnit);
@@ -147,13 +195,21 @@ public class Controller {
                     //  }
 */
 
-            }
+
 
         }
 
 
 
     }
+
+
+
+
+
+    public void handleBackButton() {
+    }
+
 
 
 }

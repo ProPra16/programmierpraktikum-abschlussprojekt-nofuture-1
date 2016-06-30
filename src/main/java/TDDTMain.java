@@ -1,5 +1,3 @@
-
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,14 +14,17 @@ public class TDDTMain extends Application
    @Override
    public void start(Stage primaryStage) throws Exception
    {
-      new Katalog();
+     // new Katalog();
 
       Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
-      Scene scene = new Scene(root, 500, 500);
+      Scene scene = new Scene(root);
+      //primaryStage.setFullScreen(true);
+      primaryStage.setMaximized(true);
+
       String stylesheet = getClass().getResource("tddt.css").toExternalForm();
       scene.getStylesheets().add(stylesheet);
       primaryStage.setScene(scene);
-      primaryStage.setTitle("Hello World");
+      primaryStage.setTitle("TDDT");
       primaryStage.show();
 
    }
