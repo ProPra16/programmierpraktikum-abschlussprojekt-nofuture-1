@@ -4,6 +4,10 @@ public class Phases implements InterfaceTDDT{
 
     private String phase;
 
+    public Phases(String phase){
+        setPhase(phase);
+    }
+
     public String getPhase() {
         return phase;
     }
