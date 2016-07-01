@@ -86,7 +86,9 @@ public class Controller {
     Label errorsTestCode;
 
     public void babysteps(){
-        Babysteps babysteps = new Babysteps(status.getText(),code,testCode);
+        Babysteps babysteps = new Babysteps(status.getText(),code.getText(),testCode.getText());
+        code = new TextArea(babysteps.getCode());
+        testCode = new TextArea (babysteps.getTestCode());
     }
 
     public void handleRunButton() {
