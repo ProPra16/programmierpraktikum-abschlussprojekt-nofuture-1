@@ -33,6 +33,7 @@ public class Timer {
     int timer = 0;
     Text time2 = new Text();    //muss noch in fxml eingebaut werden
     Timeline timeline = new Timeline();
+
     public void timeline() {
 
 

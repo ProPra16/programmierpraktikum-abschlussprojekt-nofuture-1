@@ -1,8 +1,6 @@
 import javafx.scene.control.TextArea;
 
-/**
- * Created by Anne01 on 28.06.2016.
- */
+
 public class Babysteps {
     String  code, testCode;
     String phase;
@@ -12,6 +10,7 @@ public class Babysteps {
        this.phase = phase;
          this.code = code;
          this.testCode = testCode;
+         babysteps();
     }
 
     public void babysteps(){
