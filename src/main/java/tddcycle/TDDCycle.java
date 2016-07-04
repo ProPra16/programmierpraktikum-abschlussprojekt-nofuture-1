@@ -21,7 +21,18 @@ public class TDDCycle extends Phases{
             Collection<CompileError> compileErrors = compilerResult.getCompilerErrorsForCompilationUnit(testUnit);
             compileErrors.addAll(compilerResult.getCompilerErrorsForCompilationUnit(codeUnit));
             compileErrors.forEach(System.out::println);
+            return null;
         }
         return compiler.getTestResult();
+    }
+
+    public boolean isCompiling(String code, String test){
+        TestResult t = compile(code, test);
+        return t != null;
+    }
+
+    public boolean isTestfailing(String code, String test){
+        TestResult t = compile(code, test);
+        return t != null && t.getNumberOfFailedTests() > 0;
     }
 }
