@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <GridPane
-	fx:controller="Controller"
+	fx:controller="LayoutMenuController"
 	xmlns:fx="http://javafx.com/fxml"
 	alignment="center"
 	hgap="30"

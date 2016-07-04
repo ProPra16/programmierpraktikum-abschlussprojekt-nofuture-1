@@ -14,11 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collection;
 
-public class Controller {
-
-    public void handleExitButton() {
-        Platform.exit();
-    }
+public class LayoutMenuController {
 
     @FXML
     Label errorExercise;
@@ -38,7 +34,9 @@ public class Controller {
 
             text = buffer.toString();
         }
-        catch(FileNotFoundException e) {}
+        catch(FileNotFoundException e) {
+            System.out.println("File not found: "+file);
+        }
         catch(IOException e) {}
         return text;
     }
@@ -46,7 +44,7 @@ public class Controller {
     @FXML
     Label exercise;
 
-    public void showAnagram() { exercise.setText(readTxt("./Aufgaben/Anagramm.txt")); }
+    public void showAnagram() { exercise.setText(readTxt("./Aufgaben/Anagram.txt")); }
 
     public void showArray() { exercise.setText(readTxt("./Aufgaben/Array.txt")); }
 
@@ -70,16 +68,16 @@ public class Controller {
         }
     }
 
+    public void handleExitButton() {
+        Platform.exit();
+    }
+
     @FXML
     Text status;
     @FXML
     TextArea code;
     @FXML
-    Label errorsCode;
-    @FXML
     TextArea testCode;
-    @FXML
-    Label errorsTestCode;
 
     public void babysteps(){
         Babysteps babysteps = new Babysteps(status.getText(),code,testCode);
@@ -89,33 +87,6 @@ public class Controller {
         /*String error = "";
         if(status.getText().equals("Write a failing test")) error = compileTestCode(testCode.getText(), code.getText());
         errorsTestCode.setText(error);*/
-    }
-
-    // in "String testCode, String code" steckt jeweils der source code für test und source
-    // testCode und code global definieren und mit einer setter Methode in dieser Klasse (Controller)
-    // aus der Babysteps Klasse neu definieren.
-    // Wenn zeit abgelaufen dann überschreibe testCode oder code mit dem vorher zwischengespeicherten String,
-    // um den String in der Controller Klasse zu überscheiben
-    private String compileTestCode(String testCode, String code) {
-        CompilationUnit testClass = new CompilationUnit("TestClass", testCode, true);
-        CompilationUnit mainClass = new CompilationUnit("Class", code, false);
-        JavaStringCompiler compiler = CompilerFactory.getCompiler(testClass, mainClass);
-        compiler.compileAndRunTests();
-        CompilerResult compilerResult = compiler.getCompilerResult();
-        TestResult testResult = compiler.getTestResult();
-        if(compilerResult.hasCompileErrors()) {
-            Collection<CompileError> compileErrors = compilerResult.getCompilerErrorsForCompilationUnit(testClass);
-            for (CompileError ce : compileErrors) {
-                if(ce.getMessage().contains("cannot find symbol")) {}
-
-                System.out.println(ce);
-            }
-        }else if(testResult.getNumberOfFailedTests() > 0) {
-        }else {
-            return("You need to write a failing test");
-        }
-        return("");
-
     }
 
     public void handleBackButton() { // funktioniert nicht?
@@ -180,5 +151,13 @@ public class Controller {
 
     public void handleBackToTestsButton(ActionEvent actionEvent) {
         // TODO
+    }
+
+    public Stage getTddtStage () {
+        return tddtStage;
+    }
+
+    public Stage getMenuStage() {
+        return menuStage;
     }
 }
