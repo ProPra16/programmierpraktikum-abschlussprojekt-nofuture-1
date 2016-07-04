@@ -13,8 +13,8 @@ public class TDDCycle extends Phases{
     }
 
     private TestResult compile(String code, String test){
-        CompilationUnit codeUnit = new CompilationUnit("Code", code, false);
-        CompilationUnit testUnit = new CompilationUnit("Test", test, true);
+        CompilationUnit codeUnit = new CompilationUnit("Class", code, false);
+        CompilationUnit testUnit = new CompilationUnit("TestClass", test, true);
         JavaStringCompiler compiler = CompilerFactory.getCompiler(codeUnit, testUnit);
         compiler.compileAndRunTests();
         CompilerResult compilerResult = compiler.getCompilerResult();
