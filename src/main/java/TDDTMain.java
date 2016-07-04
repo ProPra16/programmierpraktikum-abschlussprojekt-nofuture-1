@@ -1,5 +1,3 @@
-
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,16 +11,25 @@ public class TDDTMain extends Application
       launch(args);
    }
 
+   static Stage stage;
+
    @Override
    public void start(Stage primaryStage) throws Exception
    {
-      Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
-      Scene scene = new Scene(root, 500, 500);
+
+      stage = primaryStage;
+      Parent root = FXMLLoader.load(getClass().getResource("layoutStartMenue.fxml"));
+      Scene scene = new Scene(root);
+      stage.setMaximized(true);
+
       String stylesheet = getClass().getResource("tddt.css").toExternalForm();
       scene.getStylesheets().add(stylesheet);
-      primaryStage.setScene(scene);
-      primaryStage.setTitle("Test Driven Development Trainer");
-      primaryStage.show();
+      stage.setScene(scene);
+      stage.setTitle("TDDT");
+      stage.show();
+
 
    }
+
+   public static Stage getStage() {return stage;}
 }

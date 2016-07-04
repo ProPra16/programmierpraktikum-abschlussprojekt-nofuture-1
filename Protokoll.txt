@@ -1,4 +1,13 @@
-Protokoll vom 20.06.20116 
+Protokoll vom 28.06.2016
+
+Themenpunkte:
+- Git Probleme gelöst
+- Addon ATDD Funktionsweise und mögliche Arten der Implementierung besprochen
+ATDD soll zusätzlich zu dem TDD Zyklus einen weiteren übergeordneten Zyklus erzwingen. Der Akzeptanztest im ATTD Zyklus soll angelehnt sein an eine oder mehrere User-Storys, welche sozusagen als übergeordnete Ziele anzusehen sind, die implementiert werden sollen. Die User-Stories sollen sozusagen vom Kunden kommen, der das Programm/Projekt/... bestellt/implementiert haben möchte.
+Eine Implementierung ist eventuell als eigene GUI mit 3 Textfeldern machbar (viel copy&paste) oder als Erweiterung der bereits bestehen GUI mit 2 Textfeldern, also vor dem Start der GUI an- und abschaltbar.
+
+
+Protokoll vom 20.06.2016 
 
 Themenpunkte:
 - Projekt

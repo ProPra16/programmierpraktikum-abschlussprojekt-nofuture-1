@@ -1,7 +1,0 @@
-Schreiben sie das Interface Zahlen mit den Klassen 
-schnitt(): Berechnet den Durchschnitt von 5 double 
-Werten und gibt es aus.
-und summe(): Berechnet die Summe von 5 double werten
-und gibt es aus. Schreiben Sie die Methoden 
-double schnitt() und double summe(). Achten sie hierbei 
-auf die korrekte Implementierung des Interfaces!
