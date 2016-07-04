@@ -4,7 +4,8 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
-public class LayoutTDDTController {
+public class LayoutTDDTController
+{
 
    @FXML
    Label exerciseTDDT;
@@ -22,6 +23,20 @@ public class LayoutTDDTController {
       {
          e.printStackTrace();
       }
+   }
 
+   public void handleRunButton()
+   {
+//      TODO noch ergänzen
+   }
+
+   public void handleBackToTestsButton()
+   {
+//      TODO noch ergänzen
+   }
+
+   public void handleBackButton()
+   {
+//      TODO noch ergänzen
    }
 }
