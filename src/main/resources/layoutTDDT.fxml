@@ -35,9 +35,9 @@
 
 
 
-    <Button text="Start"
-            GridPane.columnIndex="0" GridPane.rowIndex="6"
-            onAction="#handleStartMenuButton"/>
+    <!--<Button text="Start"-->
+            <!--GridPane.columnIndex="0" GridPane.rowIndex="6"-->
+            <!--onAction="#handleStartMenuButton"/>-->
 
 
 
@@ -78,9 +78,9 @@
         spacing="50">
 
         <Button text="run"
-            onAction="#handleRunButton" />
+            onAction="#handleRunButton"  prefWidth="170"/>
         <Button text="back to writing tests"
-            onAction="#handleBackToTestsButton" />
+            onAction="#handleBackToTestsButton" prefWidth="350"/>
     </HBox>
 
     <HBox alignment="center_right"

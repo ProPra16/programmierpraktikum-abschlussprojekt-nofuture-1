@@ -176,11 +176,11 @@ public class Controller {
             tddtStage = new Stage();
             Parent rootTDDT = FXMLLoader.load(getClass().getResource("layoutTDDT.fxml"));
             Scene scene = new Scene(rootTDDT);
-            tddtStage.setMaximized(true);
+            tddtStage.setMaximized(false);
 
 
             // gibt Fehlermeldung
-            exerciseTDDT.setText(exerciseText);
+//            exerciseTDDT.setText(exerciseText);
 
             String stylesheet = getClass().getResource("tddt.css").toExternalForm();
             scene.getStylesheets().add(stylesheet);
