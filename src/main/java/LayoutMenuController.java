@@ -113,8 +113,7 @@ public class LayoutMenuController {
     Stage menuStage;
     Stage tddtStage;
 
-    @FXML
-    Label exerciseTDDT;
+
 
     public void handleStartMenuButton(ActionEvent actionEvent) throws IOException {
         if(exercise.getText().equals("")) errorExercise.setText("You need to choose an exercise");
@@ -137,8 +136,9 @@ public class LayoutMenuController {
             tddtStage.setMaximized(false);
 
 
+            LayoutTDDTController.setzeAufgabe(exerciseText);
             // gibt Fehlermeldung
-            exerciseTDDT.setText(exerciseText);
+//            exerciseTDDT.setText(exerciseText);
 
             String stylesheet = getClass().getResource("tddt.css").toExternalForm();
             scene.getStylesheets().add(stylesheet);
