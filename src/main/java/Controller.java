@@ -4,20 +4,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import vk.core.api.*;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collection;
 
 public class Controller {
-
-    @FXML
-    GridPane root;
 
     public void handleExitButton() {
         System.exit(0);
@@ -28,7 +24,6 @@ public class Controller {
 
     @FXML
     MenuBar menuBar;
-
 
     private String readTxt(String file) {
         errorExercise.setText("");
@@ -62,8 +57,6 @@ public class Controller {
 
     public void showSortieren() { exercise.setText(readTxt("./Aufgaben/Sortieren.txt")); }
 
-
-
     public void handleStartButton() { // muss geändert werden
         if(exercise.getText().equals("")) errorExercise.setText("You need to choose an exercise");
         else {
@@ -75,9 +68,6 @@ public class Controller {
             code.setText("public class Class {\n  // TODO\n}");
         }
     }
-
-
-
 
     @FXML
     Text status;
@@ -126,10 +116,6 @@ public class Controller {
         return("");
 
     }
-
-
-
-
 
     public void handleBackButton() { // funktioniert nicht?
         tddtStage.close();
