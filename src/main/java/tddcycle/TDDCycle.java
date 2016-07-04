@@ -4,6 +4,7 @@ import phases.Phases;
 import vk.core.api.*;
 
 import java.util.Collection;
+import java.util.Objects;
 
 public class TDDCycle extends Phases{
 
@@ -34,5 +35,21 @@ public class TDDCycle extends Phases{
     public boolean isTestfailing(String code, String test){
         TestResult t = compile(code, test);
         return t != null && t.getNumberOfFailedTests() > 0;
+    }
+
+    public void next(String code, String test){
+        if(Objects.equals(getPhase(), "red")){
+            if(isCompiling(code, test) && isTestfailing(code, test)){
+                setPhase("green");
+            }
+        }else if(Objects.equals(getPhase(), "green")){
+            if(!isTestfailing(code, test)){
+                setPhase("refactor");
+            }
+        }else if(Objects.equals(getPhase(), "refactor")){
+            if(!isTestfailing(code, test)){
+                setPhase("red");
+            }
+        }
     }
 }
