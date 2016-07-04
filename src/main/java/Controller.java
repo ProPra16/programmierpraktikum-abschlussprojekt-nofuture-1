@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,7 @@ public class Controller {
     GridPane root;
 
     public void handleExitButton() {
-        System.exit(0);
+        Platform.exit();
     }
 
     @FXML
@@ -180,7 +181,7 @@ public class Controller {
 
 
             // gibt Fehlermeldung
-//            exerciseTDDT.setText(exerciseText);
+            exerciseTDDT.setText(exerciseText);
 
             String stylesheet = getClass().getResource("tddt.css").toExternalForm();
             scene.getStylesheets().add(stylesheet);
