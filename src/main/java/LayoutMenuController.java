@@ -83,17 +83,6 @@ public class LayoutMenuController {
         Babysteps babysteps = new Babysteps(status.getText(),code,testCode);
     }
 
-    public void handleRunButton() {
-        /*String error = "";
-        if(status.getText().equals("Write a failing test")) error = compileTestCode(testCode.getText(), code.getText());
-        errorsTestCode.setText(error);*/
-    }
-
-    public void handleBackButton() { // funktioniert nicht?
-        tddtStage.close();
-        menuStage.show();
-    }
-
     @FXML
     ToggleGroup babystepTimeGroup;
 
@@ -109,12 +98,7 @@ public class LayoutMenuController {
     public void handleATDDButton(ActionEvent actionEvent) {
         atdd = !atdd;
     }
-
-    Stage menuStage;
-    Stage tddtStage;
-
-
-
+    
     public void handleStartMenuButton(ActionEvent actionEvent) throws IOException {
         if(exercise.getText().equals("")) errorExercise.setText("You need to choose an exercise");
         else {
@@ -127,15 +111,12 @@ public class LayoutMenuController {
             Parent areaLoad = FXMLLoader.load(getClass().getResource("layoutTest.fxml"));
             Scene testArea = new Scene(areaLoad);
 
-            menuStage = TDDTMain.getStage();
+            Stage menuStage = TDDTMain.getStage();
             menuStage.setScene(testArea);
-            //enuStage.setMaximized(true);
+            menuStage.setMaximized(true);
 
             String stylesheet = getClass().getResource("tddt.css").toExternalForm();
             testArea.getStylesheets().add(stylesheet);
-
-
-
 
 //            LayoutTDDTController.setzeAufgabe(exerciseText);
             // gibt Fehlermeldung
@@ -147,13 +128,5 @@ public class LayoutMenuController {
 
     public void handleBackToTestsButton(ActionEvent actionEvent) {
         // TODO
-    }
-
-    public Stage getTddtStage () {
-        return tddtStage;
-    }
-
-    public Stage getMenuStage() {
-        return menuStage;
     }
 }
