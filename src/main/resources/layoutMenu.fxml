@@ -65,7 +65,7 @@
 
     <HBox alignment="center_right"
           GridPane.columnIndex="3" GridPane.rowIndex="6">
-        <Button fx:id="button" text="Exit"
+        <Button text="Exit"
                 onAction="#handleExitButton" />
     </HBox>
 

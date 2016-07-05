@@ -95,18 +95,19 @@ public class LayoutMenuController {
 
     }
 
-    public void handleATDDButton(ActionEvent actionEvent) {
+    public void handleATDDButton() {
         atdd = !atdd;
     }
-    
-    public void handleStartMenuButton(ActionEvent actionEvent) throws IOException {
+
+    public void handleStartMenuButton() throws IOException {
         if(exercise.getText().equals("")) errorExercise.setText("You need to choose an exercise");
         else {
-            if(babysteps == true) {
+/*            if(babysteps == true) {
                 // überprüfen, ob überhaupt ein RadioButton ausgewählt wurde
                 RadioButton selectedButton = (RadioButton) babystepTimeGroup.getSelectedToggle();
                 babystepTime = Integer.parseInt(selectedButton.getText());
-            }
+            }*/
+
             String exerciseText = exercise.getText();
             Parent areaLoad = FXMLLoader.load(getClass().getResource("layoutTest.fxml"));
             Scene testArea = new Scene(areaLoad);
