@@ -80,7 +80,10 @@ public class LayoutMenuController {
     TextArea testCode;
 
     public void babysteps(){
-        Babysteps babysteps = new Babysteps(status.getText(),code,testCode);
+        Babysteps babysteps = new Babysteps(status.getText(),code.getText(),testCode.getText());
+        babysteps.getCode();
+        babysteps.getTestCode();
+
     }
 
     public void handleRunButton() {

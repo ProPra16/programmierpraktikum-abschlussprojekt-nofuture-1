@@ -15,7 +15,7 @@ public class TDDTMain extends Application
 
    @Override
    public void start(Stage primaryStage) throws Exception
-   {
+   {   new Timer();
       stage = primaryStage;
       Parent root = FXMLLoader.load(getClass().getResource("layoutMenu.fxml"));
       Scene scene = new Scene(root);

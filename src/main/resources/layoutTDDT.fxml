@@ -23,6 +23,7 @@
 	  	GridPane.columnIndex="1" GridPane.rowIndex="0"
 	  	GridPane.columnSpan="4">
 		<Text fx:id="status" text="Write a failing test" />
+    <Label fx:id="time" text="120" GridPane.columnIndex="2" GridPane.rowIndex="0" />
 	</HBox>
 
     <!--<Button text="Start"-->

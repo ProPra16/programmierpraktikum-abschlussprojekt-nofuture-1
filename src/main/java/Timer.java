@@ -1,7 +1,11 @@
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -13,6 +17,9 @@ public class Timer {
     long start = 0;
     long ende = 0;
     public Timer(){
+
+        test();
+        timeline();
     }
 
     public void start() {
@@ -30,8 +37,8 @@ public class Timer {
         return zeit;
     }
 
-    int timer = 0;
-    Text time2 = new Text();    //muss noch in fxml eingebaut werden
+    Integer timer = 120;
+    Label time2 = new Label();    //muss noch in fxml eingebaut werden
     Timeline timeline = new Timeline();
 
     public void timeline() {
@@ -41,11 +48,25 @@ public class Timer {
         timeline.getKeyFrames().addAll(
                 new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
 
-                    time2.setText(String.valueOf(timer));
-                    timer++;
+                    time2.setText(timer.toString());
+                    timer--;
                 }));
         timeline.play();
 
+    }
+    public void test(){
+        Stage primaryStage = new Stage();
+        StackPane root = new StackPane();
+        root.getChildren().add(time2);
+
+        Scene scene = new Scene(root, 300, 250);
+
+        if(timer==0){
+            timeline.stop();
+        }
+        primaryStage.setTitle("Timer");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
 

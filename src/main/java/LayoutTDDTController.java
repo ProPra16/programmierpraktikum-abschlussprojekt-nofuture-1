@@ -1,6 +1,7 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
@@ -9,15 +10,20 @@ public class LayoutTDDTController
 
    @FXML
    Label exerciseTDDT;
+   @FXML
+
+   Label time;
 
    public static void setzeAufgabe(String exerciseText)
    {
       FXMLLoader fxmlLoader = new FXMLLoader(LayoutTDDTController.class.getResource("layoutTDDT.fxml"));
       try
       {
+
          fxmlLoader.load();
          LayoutTDDTController tddtController = fxmlLoader.getController();
          tddtController.exerciseTDDT.setText(exerciseText);
+
       } catch (IOException e)
       {
          e.printStackTrace();
@@ -26,6 +32,7 @@ public class LayoutTDDTController
 
    public void handleRunButton()
    {
+
 //      TODO noch ergänzen
    }
 
