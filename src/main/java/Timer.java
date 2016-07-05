@@ -18,8 +18,7 @@ public class Timer {
     long ende = 0;
     public Timer(){
 
-        test();
-        timeline();
+
     }
 
     public void start() {
@@ -37,7 +36,7 @@ public class Timer {
         return zeit;
     }
 
-    Integer timer = 120;
+   /* Integer timer = 120;
     Label time2 = new Label();    //muss noch in fxml eingebaut werden
     Timeline timeline = new Timeline();
 
@@ -53,8 +52,8 @@ public class Timer {
                 }));
         timeline.play();
 
-    }
-    public void test(){
+    }   */
+   /* public void test(){
         Stage primaryStage = new Stage();
         StackPane root = new StackPane();
         root.getChildren().add(time2);
@@ -67,7 +66,7 @@ public class Timer {
         primaryStage.setTitle("Timer");
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
+    }   */
 
 
 }
