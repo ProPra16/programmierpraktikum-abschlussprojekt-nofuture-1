@@ -16,7 +16,6 @@ public class LayoutTDDTController
       try
       {
          fxmlLoader.load();
-         fxmlLoader.getController();
          LayoutTDDTController tddtController = fxmlLoader.getController();
          tddtController.exerciseTDDT.setText(exerciseText);
       } catch (IOException e)
