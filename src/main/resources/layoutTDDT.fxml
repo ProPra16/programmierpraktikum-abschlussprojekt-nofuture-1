@@ -17,7 +17,7 @@
 
     <Label fx:id="exerciseTDDT"
         GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="5"
-        prefWidth="600" prefHeight="500"/>
+        prefWidth="33.0" prefHeight="100.0"/>
 
 	<HBox alignment="center"
 	  	GridPane.columnIndex="1" GridPane.rowIndex="0"
@@ -34,20 +34,18 @@
 
     <TextArea fx:id="testCode"
         wrapText="true"
-        prefHeight="500" prefWidth="500"
         GridPane.columnIndex="1" GridPane.rowIndex="4"
         Editable="false"/>
 
     <Label fx:id="errorsTestCode"
         GridPane.columnIndex="1" GridPane.rowIndex="5"
-        prefWidth="500" prefHeight="200"/>
+        prefWidth="200" prefHeight="200"/>
 
     <Text text="your code:"
         GridPane.columnIndex="3" GridPane.rowIndex="3"/>
 
     <TextArea fx:id="code"
         wrapText="true"
-        prefHeight="500" prefWidth="500"
         GridPane.columnIndex="3" GridPane.rowIndex="4"
         Editable="false"/>
 

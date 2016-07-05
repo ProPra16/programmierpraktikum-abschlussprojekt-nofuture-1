@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<BorderPane
+        fx:controller="LayoutTDDTController"
+        xmlns:fx="http://javafx.com/fxml">
+
+    <Text BorderPane.alignment="BOTTOM_RIGHT" fx:id="status" text="Write a failing test" />
+
+    <!--<Button text="Start"-->
+    <!--GridPane.columnIndex="0" GridPane.rowIndex="6"-->
+    <!--onAction="#handleStartMenuButton"/>-->
+
+    <!--<HBox BorderPane.alignment="CENTER">-->
+
+        <!--<Label fx:id="exerciseTDDT"/>-->
+
+        <!--<Text text="your test code:"/>-->
+
+        <!--<TextArea fx:id="testCode"-->
+                  <!--wrapText="true"-->
+                  <!--Editable="false"/>-->
+
+        <!--<Label fx:id="errorsTestCode"/>-->
+
+        <!--<Text text="your code:"/>-->
+
+        <!--<TextArea fx:id="code"-->
+                  <!--wrapText="true"-->
+                  <!--Editable="false"/>-->
+
+        <!--<Label fx:id="errorsCode"/>-->
+
+    <!--</HBox>-->
+
+    <!--<HBox alignment="center_right"-->
+          <!--spacing="50" BorderPane.alignment="BOTTOM_CENTER">-->
+
+        <!--<Button text="run"-->
+                <!--onAction="#handleRunButton"/>-->
+        <!--<Button text="back to writing tests"-->
+                <!--onAction="#handleBackToTestsButton"/>-->
+    <!--</HBox>-->
+
+    <!--<HBox alignment="center_right">-->
+        <!--<Button fx:id="button" text="Back"-->
+                <!--onAction="#handleBackButton" />-->
+    <!--</HBox>-->
+
+</BorderPane>

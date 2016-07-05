@@ -124,12 +124,12 @@ public class LayoutMenuController {
                 babystepTime = Integer.parseInt(selectedButton.getText());
             }
             String exerciseText = exercise.getText();
-            Parent areaLoad = FXMLLoader.load(getClass().getResource("layoutTDDT.fxml"));
+            Parent areaLoad = FXMLLoader.load(getClass().getResource("layoutTest.fxml"));
             Scene testArea = new Scene(areaLoad);
 
             menuStage = TDDTMain.getStage();
             menuStage.setScene(testArea);
-            menuStage.setMaximized(true);
+            //enuStage.setMaximized(true);
 
             String stylesheet = getClass().getResource("tddt.css").toExternalForm();
             testArea.getStylesheets().add(stylesheet);
