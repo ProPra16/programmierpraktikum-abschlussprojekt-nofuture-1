@@ -18,7 +18,7 @@ public class LayoutTDDTController
    Label time;
 
    Babysteps babysteps;
-   int timer = 12;
+   int timer = 120;
    Timeline timeline = new Timeline();
 
    public static void setzeAufgabe(String exerciseText)
