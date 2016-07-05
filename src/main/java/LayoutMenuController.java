@@ -79,12 +79,12 @@ public class LayoutMenuController {
     @FXML
     TextArea testCode;
 
-    public void babysteps(){
-        Babysteps babysteps = new Babysteps(status.getText(),code.getText(),testCode.getText());
+  /*  public void babysteps(){
+        Babysteps babysteps = new Babysteps(status.getText(),code.getText(),testCode.getText(), 120);
         babysteps.getCode();
         babysteps.getTestCode();
 
-    }
+    }*/
 
     public void handleRunButton() {
         /*String error = "";
@@ -125,6 +125,7 @@ public class LayoutMenuController {
                 // überprüfen, ob überhaupt ein RadioButton ausgewählt wurde
                 RadioButton selectedButton = (RadioButton) babystepTimeGroup.getSelectedToggle();
                 babystepTime = Integer.parseInt(selectedButton.getText());
+
             }
             String exerciseText = exercise.getText();
 
@@ -140,6 +141,7 @@ public class LayoutMenuController {
 
 
             LayoutTDDTController.setzeAufgabe(exerciseText);
+
             // gibt Fehlermeldung
 //            exerciseTDDT.setText(exerciseText);
 

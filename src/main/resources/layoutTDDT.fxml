@@ -19,11 +19,16 @@
         GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="5"
         prefWidth="600" prefHeight="500"/>
 
+    <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" >
+    <Label fx:id="zeit" text="Verbleibende Zeit: " />
+    <Label fx:id="time" text="120"  />
+    </HBox>
+
 	<HBox alignment="center"
 	  	GridPane.columnIndex="1" GridPane.rowIndex="0"
-	  	GridPane.columnSpan="4">
+	  	GridPane.columnSpan="4" >
 		<Text fx:id="status" text="Write a failing test" />
-    <Label fx:id="time" text="120" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+
 	</HBox>
 
     <!--<Button text="Start"-->
@@ -60,10 +65,11 @@
         GridPane.columnIndex="1" GridPane.rowIndex="6"
         spacing="50">
 
-        <Button text="run"
+        <Button  fx:id="run" text=" run"
             onAction="#handleRunButton"  prefWidth="170"/>
         <Button text="back to writing tests"
             onAction="#handleBackToTestsButton" prefWidth="350"/>
+
     </HBox>
 
     <HBox alignment="center_right"

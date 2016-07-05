@@ -2,24 +2,23 @@ import javafx.scene.control.TextArea;
 
 
 public class Babysteps {
+    int timer;
     String  code, testCode;
     String phase;
 
-
-     public Babysteps(String phase, String code, String testCode) {
+     public Babysteps(String phase, String code, String testCode, int timer) {
        this.phase = phase;
          this.code = code;
          this.testCode = testCode;
+         this.timer = timer;
          babysteps();
     }
 
     public void babysteps(){
 
-        Timer timer = new Timer();
-        int setTime = 120; //Variable als Textfeld mit getText abfragen
-        timer.timeline();
-
-        while(timer.timer>=setTime) {
+        System.out.println("timer"+timer);
+        System.out.println(code + " "+ testCode+" "+phase);
+       if (timer==0) {
             switch (phase) {
 
                 case "RED":
@@ -27,26 +26,28 @@ public class Babysteps {
 
                     setCode(" ");
                     setTestCode(" ");
-                    timer.timeline.stop();
+
+
                         //Code löschen
                         //GOTO Phase REFACTOR
 
                     break;
                 case "GREEN":
 
-                    phase = "RED";
+                    setPhase("RED");
 
                     setCode(" ");
                     setTestCode(" ");
-                    timer.timeline.stop();
+
                         //Code löschen
                         //GOTO RED
 
 
                     break;
 
-
+                default: break;
             }
+           System.out.println("phase "+phase);
         }
     }
     public void setPhase(String s){
