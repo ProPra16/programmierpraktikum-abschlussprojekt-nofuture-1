@@ -1,52 +1,53 @@
 import javafx.scene.control.TextArea;
 
-/**
- * Created by Anne01 on 28.06.2016.
- */
+
 public class Babysteps {
-    TextArea  code, testCode;
+    String  code, testCode;
     String phase;
 
 
-     public Babysteps(String phase, TextArea code, TextArea testCode) {
+     public Babysteps(String phase, String code, String testCode) {
        this.phase = phase;
          this.code = code;
          this.testCode = testCode;
+         babysteps();
     }
 
     public void babysteps(){
 
         Timer timer = new Timer();
         int setTime = 120; //Variable als Textfeld mit getText abfragen
-        int passedTime = timer.passedTime();
-        //timeline durchlaufen bis time == 0 dann switch
-        switch (phase){
+        timer.timeline();
 
-            case "RED":
-             //   if (passedTime<setTime && Test passed )
-                phase="GREEN";
-                if(passedTime>=setTime) {
-                    ///Code löschen
-                    //GOTO Phase REFACTOR
-                }
-                break;
-            case "GREEN":
-                //   if (passedTime<setTime && Test passed )
-                phase="REFACTOR";
-                if (passedTime >= setTime) {
-                   //Code löschen
-                    //GOTO RED
-                }
+        while(timer.timer>=setTime) {
+            switch (phase) {
 
-                break;
-            case "REFACTOR":
-                //   if (passedTime<setTime && Test passed )
-                phase="RED";
-               //Kein Zeitlimit
-                break;
+                case "RED":
+                   setPhase("REFACTOR");
 
+                    setCode(" ");
+                    setTestCode(" ");
+                    timer.timeline.stop();
+                        //Code löschen
+                        //GOTO Phase REFACTOR
+
+                    break;
+                case "GREEN":
+
+                    phase = "RED";
+
+                    setCode(" ");
+                    setTestCode(" ");
+                    timer.timeline.stop();
+                        //Code löschen
+                        //GOTO RED
+
+
+                    break;
+
+
+            }
         }
-
     }
     public void setPhase(String s){
 
@@ -58,4 +59,19 @@ public class Babysteps {
         return phase;
     }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setTestCode(String testCode) {
+        this.testCode = testCode;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getTestCode() {
+        return testCode;
+    }
 }
