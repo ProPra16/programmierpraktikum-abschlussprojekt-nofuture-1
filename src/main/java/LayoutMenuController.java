@@ -44,7 +44,7 @@ public class LayoutMenuController {
     @FXML
     Label exercise;
 
-    public void showAnagram() { exercise.setText(readTxt("./Aufgaben/Anagram.txt")); }
+    public void showAnagram() { exercise.setText(readTxt("./Aufgaben/Anagramm.txt")); }
 
     public void showArray() { exercise.setText(readTxt("./Aufgaben/Array.txt")); }
 
