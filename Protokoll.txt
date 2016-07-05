@@ -1,3 +1,14 @@
+Protokoll vom 5.7.2016
+
+- Besprechung allgemeiner Aufbau und Erreichung der Ziele
+- Probleme lösen
+- GUI weiter bearbeiten
+-> insbesondere Lauffähigkeit(Lösen von Exception), Einbettung mehrerer Stages, Funktionenvergabe
+- Timer in fxml einbinden
+- Timer testen
+- Babysteps integrieren
+- Vergabe von weiteren Aufgaben
+
 Protokoll vom 30.06.2016
 
 neues Mitglied: Tim Matussek, tim.matussek@hhu.de
