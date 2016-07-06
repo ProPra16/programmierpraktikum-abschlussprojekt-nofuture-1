@@ -136,6 +136,7 @@ public class LayoutMenuController {
             Scene testArea = new Scene(areaLoad);
 
             Stage menuStage = TDDTMain.getStage();
+//            Stage menuStage = new Stage();
             menuStage.setScene(testArea);
             menuStage.setMaximized(true);
 
@@ -146,6 +147,7 @@ public class LayoutMenuController {
 //            gibt Fehlermeldung
 //            exerciseTDDT.setText(exerciseText);
 
+            menuStage.show();
         }
 
     }
