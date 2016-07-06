@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
-<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LayoutMenuController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
@@ -21,7 +19,7 @@
          <children>
             <CheckBox mnemonicParsing="false" text="ATTD"
                       GridPane.columnIndex="1" GridPane.rowIndex="1"
-                      onAction="#handleATDDButton">
+                      onAction="#handleATDD">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -39,7 +37,7 @@
             </Label>
             <CheckBox mnemonicParsing="false" text="Babysteps"
                       GridPane.rowIndex="1"
-                      onAction="#handleBabystepButton">
+                      onAction="#handleBabystep">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -68,7 +66,9 @@
                          <fx:define>
                              <ToggleGroup fx:id="babystepTimeGroup"/>
                          </fx:define>
-                        <RadioButton fx:id="two" mnemonicParsing="false" text="2" toggleGroup="$babystepTimeGroup">
+                        <RadioButton fx:id="two" mnemonicParsing="false" text="2"
+                                     toggleGroup="$babystepTimeGroup"
+                                     onAction="#setTimerToTwo">
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
@@ -76,7 +76,9 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                         </RadioButton>
-                        <RadioButton fx:id="three" mnemonicParsing="false" text="3" toggleGroup="$babystepTimeGroup">
+                        <RadioButton fx:id="three" mnemonicParsing="false" text="3"
+                                     toggleGroup="$babystepTimeGroup"
+                                     onAction="#setTimerToThree">>
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
@@ -84,7 +86,9 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </RadioButton>
-                        <RadioButton fx:id="four" mnemonicParsing="false" text="4" toggleGroup="$babystepTimeGroup">
+                        <RadioButton fx:id="four" mnemonicParsing="false" text="4"
+                                     toggleGroup="$babystepTimeGroup"
+                                     onAction="#setTimerToFour">>
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
@@ -92,7 +96,9 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                         </RadioButton>
-                        <RadioButton fx:id="five" mnemonicParsing="false" text="5" toggleGroup="$babystepTimeGroup">
+                        <RadioButton fx:id="five" mnemonicParsing="false" text="5"
+                                     toggleGroup="$babystepTimeGroup"
+                                     onAction="#setTimerToFive">>
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>

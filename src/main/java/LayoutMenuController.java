@@ -16,13 +16,24 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class LayoutMenuController {
-
+    // FXML
     @FXML
     Label errorExercise;
-
     @FXML
     MenuBar menuBar;
+    @FXML
+    Label exercise;
+    @FXML
+    Text status;
+    @FXML
+    TextArea code;
+    @FXML
+    TextArea testCode;
+    @FXML
+    ToggleGroup babystepTimeGroup;
 
+
+    // TXT Einlesen
     private String readTxt(String file) {
         errorExercise.setText("");
         String text = "";
@@ -42,9 +53,7 @@ public class LayoutMenuController {
         return text;
     }
 
-    @FXML
-    Label exercise;
-
+    // Aufgaben in Label anzeigen
     public void showAnagram() { exercise.setText(readTxt("./Aufgaben/Anagramm.txt")); }
 
     public void showArray() { exercise.setText(readTxt("./Aufgaben/Array.txt")); }
@@ -57,6 +66,37 @@ public class LayoutMenuController {
 
     public void showSortieren() { exercise.setText(readTxt("./Aufgaben/Sortieren.txt")); }
 
+    // Checkboxen Handles
+    public void babysteps() {
+        Babysteps babysteps = new Babysteps(status.getText(),code,testCode);
+    }
+
+    public void setTimerToTwo () {
+        //TODO
+    }
+
+    public void setTimerToThree () {
+        //TODO
+    }
+
+    public void setTimerToFour () {
+        //TODO
+    }
+
+    public void setTimerToFive () {
+        //TODO
+    }
+
+    public void handleBabystep() {
+        // TODO
+    }
+
+    public void handleATDD() {
+        // TODO
+    }
+
+
+    // Buttonhandles
     public void handleStartButton() { // muss geändert werden
         if(exercise.getText().equals("")) errorExercise.setText("You need to choose an exercise");
         else {
@@ -73,41 +113,16 @@ public class LayoutMenuController {
         Platform.exit();
     }
 
-    @FXML
-    Text status;
-    @FXML
-    TextArea code;
-    @FXML
-    TextArea testCode;
-
-    public void babysteps(){
-        Babysteps babysteps = new Babysteps(status.getText(),code,testCode);
-    }
-
-    @FXML
-    ToggleGroup babystepTimeGroup;
-
-    boolean atdd = false;
-    boolean babysteps = false;
-    int babystepTime;
-
-    public void handleBabystepButton() {
-        babysteps = !babysteps;
-
-    }
-
-    public void handleATDDButton() {
-        atdd = !atdd;
-    }
-
     public void handleStartMenuButton() throws IOException {
         if(exercise.getText().equals("")) errorExercise.setText("You need to choose an exercise");
+
         else {
 /*            if(babysteps == true) {
                 // überprüfen, ob überhaupt ein RadioButton ausgewählt wurde
                 RadioButton selectedButton = (RadioButton) babystepTimeGroup.getSelectedToggle();
                 babystepTime = Integer.parseInt(selectedButton.getText());
-            }*/
+            }
+*/
 
             String exerciseText = exercise.getText();
             Parent areaLoad = FXMLLoader.load(getClass().getResource("layoutTest.fxml"));
@@ -121,8 +136,8 @@ public class LayoutMenuController {
             testArea.getStylesheets().add(stylesheet);
 
 //            LayoutTDDTController.setzeAufgabe(exerciseText);
-            // gibt Fehlermeldung
-            //exerciseTDDT.setText(exerciseText);
+//            gibt Fehlermeldung
+//            exerciseTDDT.setText(exerciseText);
 
         }
 
