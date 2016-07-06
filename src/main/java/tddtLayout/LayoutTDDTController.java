@@ -1,3 +1,5 @@
+package tddtLayout;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -12,7 +14,7 @@ public class LayoutTDDTController
 
    public static void setzeAufgabe(String exerciseText)
    {
-      FXMLLoader fxmlLoader = new FXMLLoader(LayoutTDDTController.class.getResource("layoutTDDT.fxml"));
+      FXMLLoader fxmlLoader = new FXMLLoader(LayoutTDDTController.class.getResource("layoutTDDT2.fxml"));
       try
       {
          fxmlLoader.load();

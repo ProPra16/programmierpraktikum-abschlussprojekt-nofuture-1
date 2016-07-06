@@ -1,4 +1,7 @@
+package babysteps;
+
 import javafx.scene.control.TextArea;
+import timer.Timer;
 
 /**
  * Created by Anne01 on 28.06.2016.

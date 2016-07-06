@@ -1,3 +1,5 @@
+package tddtMain;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,7 +26,7 @@ public class TDDTMain extends Application
       String stylesheet = getClass().getResource("tddt.css").toExternalForm();
       scene.getStylesheets().add(stylesheet);
       stage.setScene(scene);
-      stage.setTitle("TDDT");
+      stage.setTitle("Test Driven Development Trainer");
       stage.show();
 
    }

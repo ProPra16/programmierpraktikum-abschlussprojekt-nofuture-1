@@ -1,3 +1,6 @@
+package tddtLayout;
+
+import babysteps.Babysteps;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import tddtMain.TDDTMain;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,11 +22,7 @@ import java.io.IOException;
 public class LayoutMenuController {
     // FXML
     @FXML
-    Label errorExercise;
-    @FXML
     MenuBar menuBar;
-    @FXML
-    Label exercise;
     @FXML
     Text status;
     @FXML
@@ -31,7 +31,10 @@ public class LayoutMenuController {
     TextArea testCode;
     @FXML
     ToggleGroup babystepTimeGroup;
-
+    @FXML
+    Label errorExercise;
+    @FXML
+    Label exercise;
 
     // TXT Einlesen
     private String readTxt(String file) {
@@ -65,6 +68,7 @@ public class LayoutMenuController {
     public void showPixel() { exercise.setText(readTxt("./Aufgaben/Pixel.txt")); }
 
     public void showSortieren() { exercise.setText(readTxt("./Aufgaben/Sortieren.txt")); }
+
 
     // Checkboxen Handles
     public void babysteps() {
@@ -114,7 +118,9 @@ public class LayoutMenuController {
     }
 
     public void handleStartMenuButton() throws IOException {
-        if(exercise.getText().equals("")) errorExercise.setText("You need to choose an exercise");
+        if("".equals(exercise.getText())){
+            errorExercise.setText("You need to choose an exercise");
+        }
 
         else {
 /*            if(babysteps == true) {
@@ -125,7 +131,7 @@ public class LayoutMenuController {
 */
 
             String exerciseText = exercise.getText();
-            Parent areaLoad = FXMLLoader.load(getClass().getResource("layoutTest.fxml"));
+            Parent areaLoad = FXMLLoader.load(getClass().getResource("layoutTDDT2.fxml"));
             Scene testArea = new Scene(areaLoad);
 
             Stage menuStage = TDDTMain.getStage();
