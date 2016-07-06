@@ -18,9 +18,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class LayoutMenuController {
+
     // Globale Variablen
     static boolean hasAddt = false;
-
 
     // FXML
     @FXML
@@ -95,7 +95,12 @@ public class LayoutMenuController {
     }
 
     public void handleATDD() {
-        // TODO
+        if (!hasAddt) {
+            hasAddt = true;
+        }
+        else {
+            hasAddt = false;
+        }
     }
 
 
@@ -106,10 +111,10 @@ public class LayoutMenuController {
     }
 
     public void handleStartMenuButton() throws IOException {
-        if("".equals(exercise.getText())){
+        if ("".equals(exercise.getText())) {
             errorExercise.setText("You need to choose an exercise");
-        }
 
+        }
         else {
 /*            if(babysteps == true) {
                 // überprüfen, ob überhaupt ein RadioButton ausgewählt wurde
@@ -117,33 +122,65 @@ public class LayoutMenuController {
                 babystepTime = Integer.parseInt(selectedButton.getText());
             }
 */
+            if (!hasAddt) {
 
-// Muss in dieser Methode passieren, da FXMLLoader nicht in einer anderen
-// static Methode aufgerufen werden kann
-// layoutTDDT2.fxml ist die schönste variante
-            Parent areaLoad = FXMLLoader.load(getClass().getResource("/layoutTDDT2.fxml"));
-            Scene testArea = new Scene(areaLoad);
+                // Muss in dieser Methode passieren, da FXMLLoader nicht in einer anderen
+                // static Methode aufgerufen werden kann
+                // layoutTDDT2.fxml ist die schönste variante
+                Parent areaLoad = FXMLLoader.load(getClass().getResource("/layoutTDDT2.fxml"));
+                Scene testArea = new Scene(areaLoad);
 
-//            statt die selbe stage zu nutzen:
-//            Stage menuStage = new Stage();
+                // statt die selbe stage zu nutzen:
+                // Stage menuStage = new Stage();
 
-            Stage menuStage = TDDTMain.getStage();
-            menuStage.setScene(testArea);
-            menuStage.setMaximized(true);
+                Stage menuStage = TDDTMain.getStage();
+                menuStage.setScene(testArea);
+                menuStage.setMaximized(true);
 
-            String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
-            testArea.getStylesheets().add(stylesheet);
+                String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
+                testArea.getStylesheets().add(stylesheet);
 
-            String exerciseText = exercise.getText();
-//            gibt Fehlermeldung
-//            exerciseTxt.setText(exerciseText);
-            LayoutTDDTController.initialize();
-            menuStage.show();
+                String exerciseText = exercise.getText();
+
+                // geben Fehlermeldung
+                // exerciseTxt.setText(exerciseText);
+                // LayoutTDDTController.initialize();
+
+                menuStage.show();
+            }
+
+            else {
+                Parent areaLoad = FXMLLoader.load(getClass().getResource("/layoutATDD.fxml"));
+                Scene testArea = new Scene(areaLoad);
+
+                // statt die selbe stage zu nutzen:
+                // Stage menuStage = new Stage();
+
+                Stage menuStage = TDDTMain.getStage();
+                menuStage.setScene(testArea);
+                menuStage.setMaximized(true);
+
+                String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
+                testArea.getStylesheets().add(stylesheet);
+
+                String exerciseText = exercise.getText();
+
+                // geben Fehlermeldung
+                // exerciseTxt.setText(exerciseText);
+                // LayoutTDDTController.initialize();
+
+                menuStage.show();
+            }
+
         }
+    }
+
+    public void handleBackToTestsButton(ActionEvent actionEvent) throws IOException {
 
     }
 
-    public void handleBackToTestsButton(ActionEvent actionEvent) {
-        // TODO
-    }
+
+    // getter-setter Bereich
+
+
 }

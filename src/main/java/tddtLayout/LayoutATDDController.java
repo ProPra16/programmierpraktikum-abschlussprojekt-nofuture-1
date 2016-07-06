@@ -1,13 +1,19 @@
 package tddtLayout;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import tddtMain.TDDTMain;
+
+import java.io.IOException;
 
 public class LayoutATDDController {
     @FXML
-    Label exerciseTDDT;
+    TextArea exerciseTxt;
     @FXML
     Text status;
     @FXML
@@ -16,6 +22,7 @@ public class LayoutATDDController {
     static TextArea testCode;
 
     public static void initialize () {
+        // gibt Fehler da static
         testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
         testCode.setEditable(true);
         sourceCode.setText("public class Class {\n  // TODO\n}");
@@ -31,8 +38,18 @@ public class LayoutATDDController {
 //      TODO noch ergänzen
     }
 
-    public void handleBackButton()
-    {
-//      TODO noch ergänzen
-    }
+    public void handleBackButton() throws IOException {
+        Parent areaLoad = FXMLLoader.load(getClass().getResource("/layoutMenu.fxml"));
+        Scene testArea = new Scene(areaLoad);
+
+        // statt die selbe stage zu nutzen:
+        // Stage menuStage = new Stage();
+
+        Stage menuStage = TDDTMain.getStage();
+        menuStage.setScene(testArea);
+        menuStage.setMaximized(true);
+
+        String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
+        testArea.getStylesheets().add(stylesheet);
+        menuStage.show();    }
 }
