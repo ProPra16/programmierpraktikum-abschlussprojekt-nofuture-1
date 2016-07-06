@@ -1,6 +1,5 @@
 package tddtLayout;
 
-import babysteps.Babysteps;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tddtMain.TDDTMain;
 
@@ -20,21 +18,22 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class LayoutMenuController {
+    // Globale Variablen
+    static boolean hasAddt = false;
+
+
     // FXML
     @FXML
     MenuBar menuBar;
-    @FXML
-    Text status;
-    @FXML
-    TextArea code;
-    @FXML
-    TextArea testCode;
     @FXML
     ToggleGroup babystepTimeGroup;
     @FXML
     Label errorExercise;
     @FXML
     Label exercise;
+    @FXML
+    TextArea exerciseTxt;
+
 
     // TXT Einlesen
     private String readTxt(String file) {
@@ -72,7 +71,7 @@ public class LayoutMenuController {
 
     // Checkboxen Handles
     public void babysteps() {
-        Babysteps babysteps = new Babysteps(status.getText(),code,testCode);
+//        Babysteps babysteps = new Babysteps(status.getText(),code,testCode);
     }
 
     public void setTimerToTwo () {
@@ -101,17 +100,6 @@ public class LayoutMenuController {
 
 
     // Buttonhandles
-    public void handleStartButton() { // muss geändert werden
-        if(exercise.getText().equals("")) errorExercise.setText("You need to choose an exercise");
-        else {
-            menuBar.setDisable(true);
-            testCode.setWrapText(true);
-            testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
-            testCode.setEditable(true);
-            code.setWrapText(true);
-            code.setText("public class Class {\n  // TODO\n}");
-        }
-    }
 
     public void handleExitButton() {
         Platform.exit();
@@ -130,13 +118,16 @@ public class LayoutMenuController {
             }
 */
 
-            // Muss in dieser Methode passieren, da FXMLLoader nicht in einer anderen
-            // static Methode aufgerufen werden kann
+// Muss in dieser Methode passieren, da FXMLLoader nicht in einer anderen
+// static Methode aufgerufen werden kann
+// layoutTDDT2.fxml ist die schönste variante
             Parent areaLoad = FXMLLoader.load(getClass().getResource("/layoutTDDT2.fxml"));
             Scene testArea = new Scene(areaLoad);
 
-            Stage menuStage = TDDTMain.getStage();
+//            statt die selbe stage zu nutzen:
 //            Stage menuStage = new Stage();
+
+            Stage menuStage = TDDTMain.getStage();
             menuStage.setScene(testArea);
             menuStage.setMaximized(true);
 
@@ -145,8 +136,8 @@ public class LayoutMenuController {
 
             String exerciseText = exercise.getText();
 //            gibt Fehlermeldung
-//            exerciseTDDT.setText(exerciseText);
-
+//            exerciseTxt.setText(exerciseText);
+            LayoutTDDTController.initialize();
             menuStage.show();
         }
 

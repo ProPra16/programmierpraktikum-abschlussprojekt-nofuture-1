@@ -14,12 +14,12 @@ public class TDDTMain extends Application
    }
 
    static Stage stage;
-
+   static Parent root;
    @Override
    public void start(Stage primaryStage) throws Exception
    {
       stage = primaryStage;
-      Parent root = FXMLLoader.load(getClass().getResource("/layoutMenu.fxml"));
+      root = FXMLLoader.load(getClass().getResource("/layoutMenu.fxml"));
       Scene scene = new Scene(root);
       stage.setMaximized(true);
 
