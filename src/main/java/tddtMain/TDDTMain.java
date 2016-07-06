@@ -19,11 +19,11 @@ public class TDDTMain extends Application
    public void start(Stage primaryStage) throws Exception
    {
       stage = primaryStage;
-      Parent root = FXMLLoader.load(getClass().getResource("layoutMenu.fxml"));
+      Parent root = FXMLLoader.load(getClass().getResource("/layoutMenu.fxml"));
       Scene scene = new Scene(root);
       stage.setMaximized(true);
 
-      String stylesheet = getClass().getResource("tddt.css").toExternalForm();
+      String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
       scene.getStylesheets().add(stylesheet);
       stage.setScene(scene);
       stage.setTitle("Test Driven Development Trainer");
