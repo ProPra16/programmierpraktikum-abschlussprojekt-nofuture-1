@@ -130,18 +130,19 @@ public class LayoutMenuController {
             }
 */
 
-            String exerciseText = exercise.getText();
-            Parent areaLoad = FXMLLoader.load(getClass().getResource("layoutTDDT2.fxml"));
+            // Muss in dieser Methode passieren, da FXMLLoader nicht in einer anderen
+            // static Methode aufgerufen werden kann
+            Parent areaLoad = FXMLLoader.load(getClass().getResource("/layoutTDDT2.fxml"));
             Scene testArea = new Scene(areaLoad);
 
             Stage menuStage = TDDTMain.getStage();
             menuStage.setScene(testArea);
             menuStage.setMaximized(true);
 
-            String stylesheet = getClass().getResource("tddt.css").toExternalForm();
+            String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
             testArea.getStylesheets().add(stylesheet);
 
-//            LayoutTDDTController.setzeAufgabe(exerciseText);
+            String exerciseText = exercise.getText();
 //            gibt Fehlermeldung
 //            exerciseTDDT.setText(exerciseText);
 
