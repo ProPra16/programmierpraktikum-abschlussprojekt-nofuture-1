@@ -18,7 +18,7 @@ public class TDDTMain extends Application
    public void start(Stage primaryStage) throws Exception
    {
       stage = primaryStage;
-      Parent root = FXMLLoader.load(getClass().getResource("layoutMenu.fxml"));
+      Parent root = FXMLLoader.load(getClass().getResource("layoutMenu2.fxml"));
       Scene scene = new Scene(root);
       //stage.setMaximized(true);
 
