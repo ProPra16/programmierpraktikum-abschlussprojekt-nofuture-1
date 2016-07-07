@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import tddtMain.TDDTMain;
@@ -31,9 +30,6 @@ public class LayoutMenuController {
     Label errorExercise;
     @FXML
     Label exercise;
-    @FXML
-    TextArea exerciseTxt;
-
 
     // TXT Einlesen
     private String readTxt(String file) {
