@@ -16,7 +16,7 @@ public class TDDTMain extends Application
    static Stage stage;
    static Parent root;
 
-   boolean isMaximized = true;
+   boolean isMaximized = false;
 
    @Override
    public void start(Stage primaryStage) throws Exception
