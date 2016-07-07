@@ -1,5 +1,9 @@
 package tddtLayout;
 
+import babysteps.Babysteps;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import tddtMain.TDDTMain;
 
 import java.io.IOException;
@@ -33,6 +38,10 @@ public class LayoutTDDTController {
    @FXML
    Label labelRefactor;
 
+   Timeline timeline = new Timeline();
+   int timer = 120;
+   Babysteps babysteps;
+
    public static void initialize()
    {
       // gibt Fehler da static
@@ -42,7 +51,7 @@ public class LayoutTDDTController {
    }
 
    public void handleRunButton()
-   {
+   { timeline();
 //      TODO noch ergänzen
    }
 
@@ -67,4 +76,31 @@ public class LayoutTDDTController {
       //testArea.getStylesheets().add(stylesheet);
       menuStage.show();
    }
+
+   String phase= "GREEN";
+   String code = "123";
+   String testCode2 = "456";
+   public void timeline() {
+
+
+      timeline.setCycleCount(Timeline.INDEFINITE);
+      timeline.getKeyFrames().addAll(
+              new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
+
+                 labelTime.setText(String.valueOf(timer));
+                 timer--;
+                 babysteps = new Babysteps(phase,code,testCode2, timer);
+                 code= babysteps.getCode();
+                 testCode2=babysteps.getTestCode();
+                 phase=babysteps.getPhase();
+                 if (timer==0){
+                    timeline.stop();
+                    System.out.println("code"+ code+"testcode"+testCode2+"phase"+phase);
+                 }
+              }));
+      timeline.play();
+
+
+   }
+
 }
