@@ -1,3 +1,15 @@
+Protokoll vom 7.7.2016
+
+- Gradle Probleme (compiliert nicht mehr)
+ -> müssen behoben werden
+
+-GUI Überarbeitung
+	- Fortschrittsanzeige
+	- Tabs
+	- Buttons verschieben
+
+-> TODO: GUI muss mit Logik verbunden werden
+
 Protokoll vom 5.7.2016
 
 - Besprechung allgemeiner Aufbau und Erreichung der Ziele
