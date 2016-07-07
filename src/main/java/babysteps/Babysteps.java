@@ -1,55 +1,53 @@
 package babysteps;
 
-import javafx.scene.control.TextArea;
-import timer.Timer;
-
-/**
- * Created by Anne01 on 28.06.2016.
- */
 public class Babysteps {
-    TextArea  code, testCode;
+    int timer;
+    String  code, testCode;
     String phase;
 
-
-     public Babysteps(String phase, TextArea code, TextArea testCode) {
-       this.phase = phase;
-         this.code = code;
-         this.testCode = testCode;
+    public Babysteps(String phase, String code, String testCode, int timer) {
+        this.phase = phase;
+        this.code = code;
+        this.testCode = testCode;
+        this.timer = timer;
+        babysteps();
     }
 
     public void babysteps(){
 
-        Timer timer = new Timer();
-        int setTime = 120; //Variable als Textfeld mit getText abfragen
-        int passedTime = timer.passedTime();
-        //timeline durchlaufen bis time == 0 dann switch
-        switch (phase){
+        System.out.println("timer"+timer);
+        System.out.println(code + " "+ testCode+" "+phase);
+        if (timer==0) {
+            switch (phase) {
 
-            case "RED":
-             //   if (passedTime<setTime && Test passed )
-                phase="GREEN";
-                if(passedTime>=setTime) {
-                    ///Code löschen
+                case "RED":
+                    setPhase("REFACTOR");
+
+                    setCode(" ");
+                    setTestCode(" ");
+
+
+                    //Code löschen
                     //GOTO Phase REFACTOR
-                }
-                break;
-            case "GREEN":
-                //   if (passedTime<setTime && Test passed )
-                phase="REFACTOR";
-                if (passedTime >= setTime) {
-                   //Code löschen
+
+                    break;
+                case "GREEN":
+
+                    setPhase("RED");
+
+                    setCode(" ");
+                    setTestCode(" ");
+
+                    //Code löschen
                     //GOTO RED
-                }
 
-                break;
-            case "REFACTOR":
-                //   if (passedTime<setTime && Test passed )
-                phase="RED";
-               //Kein Zeitlimit
-                break;
 
+                    break;
+
+                default: break;
+            }
+            System.out.println("phase "+phase);
         }
-
     }
     public void setPhase(String s){
 
@@ -61,4 +59,19 @@ public class Babysteps {
         return phase;
     }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setTestCode(String testCode) {
+        this.testCode = testCode;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getTestCode() {
+        return testCode;
+    }
 }
