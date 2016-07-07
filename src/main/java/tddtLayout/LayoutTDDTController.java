@@ -12,7 +12,8 @@ import tddtMain.TDDTMain;
 
 import java.io.IOException;
 
-public class LayoutTDDTController {
+public class LayoutTDDTController
+{
    @FXML
    TextArea exerciseTxt;
    @FXML
@@ -23,7 +24,10 @@ public class LayoutTDDTController {
    @FXML
    static TextArea testCode;
 
-   public static void initialize () {
+   boolean isMaximized = false;
+
+   public static void initialize()
+   {
       // gibt Fehler da static
       testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
       testCode.setEditable(true);
@@ -40,7 +44,8 @@ public class LayoutTDDTController {
 //      TODO noch ergänzen
    }
 
-   public void handleBackButton() throws IOException {
+   public void handleBackButton() throws IOException
+   {
       Parent areaLoad = FXMLLoader.load(getClass().getResource("/layoutMenu.fxml"));
       Scene testArea = new Scene(areaLoad);
 
@@ -49,7 +54,7 @@ public class LayoutTDDTController {
 
       Stage menuStage = TDDTMain.getStage();
       menuStage.setScene(testArea);
-      menuStage.setMaximized(true);
+      menuStage.setMaximized(isMaximized);
 
       //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
       //testArea.getStylesheets().add(stylesheet);

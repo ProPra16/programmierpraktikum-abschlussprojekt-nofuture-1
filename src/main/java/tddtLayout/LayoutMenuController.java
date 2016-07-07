@@ -21,6 +21,7 @@ public class LayoutMenuController {
 
     // Globale Variablen
     static boolean hasAddt = false;
+    boolean isMaximized = false;
 
     // FXML
     @FXML
@@ -135,7 +136,7 @@ public class LayoutMenuController {
 
                 Stage menuStage = TDDTMain.getStage();
                 menuStage.setScene(testArea);
-                menuStage.setMaximized(true);
+                menuStage.setMaximized(isMaximized);
 
                 //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
                 //testArea.getStylesheets().add(stylesheet);
@@ -158,7 +159,7 @@ public class LayoutMenuController {
 
                 Stage menuStage = TDDTMain.getStage();
                 menuStage.setScene(testArea);
-                menuStage.setMaximized(true);
+                menuStage.setMaximized(isMaximized);
 
                 //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
                 //testArea.getStylesheets().add(stylesheet);
