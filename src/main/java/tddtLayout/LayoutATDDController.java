@@ -4,12 +4,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tddtMain.TDDTMain;
 
 import java.io.IOException;
+
 
 public class LayoutATDDController
 {
@@ -18,10 +20,18 @@ public class LayoutATDDController
    @FXML
    Text status;
    @FXML
-   static TextArea sourceCode;
+   Label labelTime;
+   public static TextArea sourceCode;
    @FXML
-   static TextArea testCode;
-
+   public static TextArea testCode;
+   @FXML
+   public static TextArea acceptanceTest;
+   @FXML
+   Label labelTestCode;
+   @FXML
+   Label labelSourceCode;
+   @FXML
+   Label labelRefactor;
    boolean isMaximized = false;
 
    public static void initialize()

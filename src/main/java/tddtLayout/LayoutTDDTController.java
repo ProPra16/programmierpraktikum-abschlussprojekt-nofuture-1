@@ -19,10 +19,17 @@ public class LayoutTDDTController
    @FXML
    Text status;
    @FXML
-   Label time;
-   static TextArea sourceCode;
+   Label labelTime;
+   public static TextArea sourceCode;
    @FXML
-   static TextArea testCode;
+   public static TextArea testCode;
+   @FXML
+   Label labelTestCode;
+   @FXML
+   Label labelSourceCode;
+   @FXML
+   Label labelRefactor;
+
 
    boolean isMaximized = false;
 
