@@ -31,25 +31,25 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0">
                            <children>
-                              <TextArea fx:id="testCode" prefHeight="530.0" prefWidth="941.0" />
+                              <TextArea fx:id="acceptanceTestCode" prefHeight="556.0" prefWidth="940.0" />
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab fx:id="testCode" text="Test Code">
+                <Tab text="Test Code">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextArea fx:id="sourceCode" prefHeight="556.0" prefWidth="939.0" />
+                              <TextArea fx:id="testCode" prefHeight="556.0" prefWidth="940.0" />
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab fx:id="sourceCode" text="Source Code">
+                  <Tab text="Source Code">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextArea fx:id="sourceCode1" prefHeight="556.0" prefWidth="939.0" />
+                              <TextArea fx:id="sourceCode" prefHeight="556.0" prefWidth="940.0" />
                            </children>
                         </AnchorPane>
                      </content>
