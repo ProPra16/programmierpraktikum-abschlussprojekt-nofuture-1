@@ -18,9 +18,9 @@ import java.io.IOException;
 
 public class LayoutMenuController {
 
-    // Globale Variablen
+    // Variablen
     static boolean hasAddt = false;
-    boolean isMaximized = false;
+    boolean isMaximized = true;
 
     // FXML
     @FXML
@@ -128,7 +128,7 @@ public class LayoutMenuController {
                 Scene testArea = new Scene(areaLoad);
 
                 // statt die selbe stage zu nutzen:
-                // Stage menuStage = new Stage();
+                //Stage menuStage = new Stage();
 
                 Stage menuStage = TDDTMain.getStage();
                 menuStage.setScene(testArea);

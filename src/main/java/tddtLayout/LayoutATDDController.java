@@ -12,9 +12,12 @@ import tddtMain.TDDTMain;
 
 import java.io.IOException;
 
+public class LayoutATDDController {
 
-public class LayoutATDDController
-{
+    // Variablen
+    boolean isMaximized = false;
+
+    // FXML
    @FXML
    TextArea exerciseTxt;
    @FXML
@@ -32,7 +35,6 @@ public class LayoutATDDController
    Label labelSourceCode;
    @FXML
    Label labelRefactor;
-   boolean isMaximized = false;
 
    public static void initialize()
    {
