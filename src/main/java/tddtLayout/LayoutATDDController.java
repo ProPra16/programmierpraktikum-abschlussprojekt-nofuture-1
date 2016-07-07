@@ -49,7 +49,7 @@ public class LayoutATDDController {
         menuStage.setScene(testArea);
         menuStage.setMaximized(true);
 
-        String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
-        testArea.getStylesheets().add(stylesheet);
+        //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
+        //testArea.getStylesheets().add(stylesheet);
         menuStage.show();    }
 }
