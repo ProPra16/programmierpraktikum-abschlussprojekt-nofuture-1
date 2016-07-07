@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -17,6 +18,7 @@ public class LayoutTDDTController {
    @FXML
    Text status;
    @FXML
+   Label time;
    static TextArea sourceCode;
    @FXML
    static TextArea testCode;
@@ -49,8 +51,8 @@ public class LayoutTDDTController {
       menuStage.setScene(testArea);
       menuStage.setMaximized(true);
 
-      String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
-      testArea.getStylesheets().add(stylesheet);
+      //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
+      //testArea.getStylesheets().add(stylesheet);
       menuStage.show();
    }
 }

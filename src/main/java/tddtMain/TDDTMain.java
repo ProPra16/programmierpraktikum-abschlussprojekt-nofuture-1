@@ -23,8 +23,8 @@ public class TDDTMain extends Application
       Scene scene = new Scene(root);
       stage.setMaximized(true);
 
-      String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
-      scene.getStylesheets().add(stylesheet);
+      //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
+      //scene.getStylesheets().add(stylesheet);
       stage.setScene(scene);
       stage.setTitle("Test Driven Development Trainer");
       stage.show();
