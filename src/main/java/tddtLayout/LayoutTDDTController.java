@@ -14,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import phases.Phases;
 import tddtMain.TDDTMain;
 
 import java.io.IOException;
@@ -43,7 +44,10 @@ public class LayoutTDDTController {
    int timer = 120;
    Babysteps babysteps;
 
+   Phases phases = new Phases("red");
+
    public void initialize() {
+      labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
       exerciseTxt.setText(LayoutMenuController.getExerciseText());
       testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
       testCode.setEditable(true);
@@ -51,9 +55,19 @@ public class LayoutTDDTController {
       sourceCode.setEditable(false);
    }
 
-   public void handleRunButton()
-   { timeline();
-//      TODO noch ergänzen
+   public void handleRunButton() {
+      timeline();
+      if(phases.getPhase().equals("red")) {
+         // writing tests
+         // sollte nicht kompilieren oder ein test soll fehl schlagen
+
+
+      } else if(phases.getPhase().equals("green")) {
+
+      } else if(phases.getPhase().equals("refactor")) {
+
+      }
+
    }
 
    public void handleBackToTestsButton()
