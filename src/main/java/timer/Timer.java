@@ -1,6 +1,5 @@
-/**
- * Created by Anne01 on 28.06.2016.
- */
+package timer;
+
 public class Timer {
 
     int zeit;

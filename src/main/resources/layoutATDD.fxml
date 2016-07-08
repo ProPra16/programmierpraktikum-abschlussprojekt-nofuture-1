@@ -13,7 +13,7 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="163.0" minHeight="0.0" prefHeight="43.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="594.0" minHeight="10.0" prefHeight="545.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="594.0" minHeight="10.0" prefHeight="550.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <TextArea fx:id="exerciseTxt" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
@@ -24,24 +24,33 @@
             </Text>
             <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <tabs>
-                <Tab text="Test Code">
+                <Tab fx:id="acceptanceTest" text="Acceptance Test">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0">
                            <children>
-                              <TextArea fx:id="testCode" prefHeight="540.0" prefWidth="941.0" />
+                              <TextArea fx:id="acceptanceTestCode" prefHeight="556.0" prefWidth="940.0" />
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="Source Code">
+                <Tab text="Test Code">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextArea fx:id="sourceCode" prefHeight="540.0" prefWidth="939.0" />
+                              <TextArea fx:id="testCode" prefHeight="556.0" prefWidth="940.0" />
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
+                  <Tab text="Source Code">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea fx:id="sourceCode" prefHeight="556.0" prefWidth="940.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
               </tabs>
             </TabPane>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">

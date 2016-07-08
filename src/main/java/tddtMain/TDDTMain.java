@@ -1,3 +1,5 @@
+package tddtMain;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,19 +14,22 @@ public class TDDTMain extends Application
    }
 
    static Stage stage;
+   static Parent root;
+
+   boolean isMaximized = false;
 
    @Override
    public void start(Stage primaryStage) throws Exception
    {
       stage = primaryStage;
-      Parent root = FXMLLoader.load(getClass().getResource("layoutStartMenue.fxml"));
+      root = FXMLLoader.load(getClass().getResource("/layoutMenu.fxml"));
       Scene scene = new Scene(root);
-      stage.setMaximized(true);
+      stage.setMaximized(isMaximized);
 
-      String stylesheet = getClass().getResource("tddt.css").toExternalForm();
-      scene.getStylesheets().add(stylesheet);
+      //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
+      //scene.getStylesheets().add(stylesheet);
       stage.setScene(scene);
-      stage.setTitle("TDDT");
+      stage.setTitle("Test Driven Development Trainer");
       stage.show();
 
    }
