@@ -111,6 +111,8 @@ public class LayoutMenuController {
         Platform.exit();
     }
 
+    static String exerciseText;
+
     public void handleStartMenuButton() throws IOException {
         if ("".equals(exercise.getText())) {
             errorExercise.setText("You need to choose an exercise");
@@ -124,6 +126,7 @@ public class LayoutMenuController {
             }
 */
             if (!hasAddt) {
+                exerciseText = exercise.getText();
 
                 // Muss in dieser Methode passieren, da FXMLLoader nicht in einer anderen
                 // static Methode aufgerufen werden kann
@@ -141,7 +144,6 @@ public class LayoutMenuController {
                 //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
                 //testArea.getStylesheets().add(stylesheet);
 
-                String exerciseText = exercise.getText();
 
                 // geben Fehlermeldung
                 // exerciseTxt.setText(exerciseText);
@@ -151,6 +153,8 @@ public class LayoutMenuController {
             }
 
             else {
+                String exerciseText = exercise.getText();
+
                 Parent areaLoad = FXMLLoader.load(getClass().getResource("/layoutATDD.fxml"));
                 Scene testArea = new Scene(areaLoad);
 
@@ -164,7 +168,6 @@ public class LayoutMenuController {
                 //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
                 //testArea.getStylesheets().add(stylesheet);
 
-                String exerciseText = exercise.getText();
 
                 // geben Fehlermeldung
                 // exerciseTxt.setText(exerciseText);
@@ -180,6 +183,11 @@ public class LayoutMenuController {
 
     }
 
+
+    public static String getExerciseText() {
+        return exerciseText;
+
+    }
 
     // getter-setter Bereich
 

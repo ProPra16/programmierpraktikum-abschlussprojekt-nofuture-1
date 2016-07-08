@@ -36,12 +36,12 @@ public class LayoutATDDController {
    @FXML
    Label labelRefactor;
 
-   public static void initialize()
-   {
-      // gibt Fehler da static
+   public void initialize() {
+      exerciseTxt.setText(LayoutMenuController.getExerciseText());
       testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
       testCode.setEditable(true);
       sourceCode.setText("public class Class {\n  // TODO\n}");
+      sourceCode.setEditable(false);
    }
 
    public void handleRunButton()

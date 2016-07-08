@@ -4,6 +4,7 @@ import babysteps.Babysteps;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,9 +29,9 @@ public class LayoutTDDTController {
    Text status;
    @FXML
    Label labelTime;
-   public static TextArea sourceCode;
+   public TextArea sourceCode;
    @FXML
-   public static TextArea testCode;
+   public TextArea testCode;
    @FXML
    Label labelTestCode;
    @FXML
@@ -42,12 +43,12 @@ public class LayoutTDDTController {
    int timer = 120;
    Babysteps babysteps;
 
-   public static void initialize()
-   {
-      // gibt Fehler da static
+   public void initialize() {
+      exerciseTxt.setText(LayoutMenuController.getExerciseText());
       testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
       testCode.setEditable(true);
       sourceCode.setText("public class Class {\n  // TODO\n}");
+      sourceCode.setEditable(false);
    }
 
    public void handleRunButton()
@@ -102,5 +103,7 @@ public class LayoutTDDTController {
 
 
    }
+
+
 
 }
