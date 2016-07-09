@@ -35,6 +35,10 @@ public class LayoutATDDController {
    Label labelSourceCode;
    @FXML
    Label labelRefactor;
+   @FXML
+   TextArea compilationError;
+   @FXML
+   Label statusCycle;
 
    public void initialize() {
       exerciseTxt.setText(LayoutMenuController.getExerciseText());

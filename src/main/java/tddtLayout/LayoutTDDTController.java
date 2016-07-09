@@ -30,6 +30,8 @@ public class LayoutTDDTController {
    Phases phases = new Phases("red");
    boolean initialized = false;
    String oldSourceCode;
+   Timeline timeline = new Timeline();
+   Babysteps babysteps;
 
    @FXML
    TextArea exerciseTxt;
@@ -49,9 +51,10 @@ public class LayoutTDDTController {
    Label labelSourceCode;
    @FXML
    Label labelRefactor;
-
-   Timeline timeline = new Timeline();
-   Babysteps babysteps;
+   @FXML
+   TextArea compilationError;
+   @FXML
+   Label statusCycle;
 
 
    public void initialize() {

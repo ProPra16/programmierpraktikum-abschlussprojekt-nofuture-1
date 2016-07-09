@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tddtLayout.LayoutTDDTController">
    <center>
-      <GridPane prefHeight="588.0" prefWidth="1280.0" BorderPane.alignment="CENTER" onMouseEntered="#initialize">
+      <GridPane onMouseEntered="#initialize" prefHeight="588.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="542.0" minWidth="10.0" prefWidth="242.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="940.0" minWidth="10.0" prefWidth="939.0" />
@@ -16,7 +16,6 @@
           <RowConstraints maxHeight="594.0" minHeight="10.0" prefHeight="545.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextArea fx:id="exerciseTxt" wrapText="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aufgabe:">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -28,7 +27,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0">
                            <children>
-                              <TextArea fx:id="testCode" wrapText="true" prefHeight="540.0" prefWidth="941.0"/>
+                              <TextArea fx:id="testCode" prefHeight="540.0" prefWidth="941.0" wrapText="true" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -37,30 +36,64 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextArea fx:id="sourceCode" wrapText="true" prefHeight="540.0" prefWidth="939.0" />
+                              <TextArea fx:id="sourceCode" prefHeight="540.0" prefWidth="939.0" wrapText="true" />
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
               </tabs>
             </TabPane>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <GridPane GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="356.0" minHeight="10.0" prefHeight="356.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="356.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="266.0" minHeight="10.0" prefHeight="241.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <Text fx:id="textRemainingTime" strokeType="OUTSIDE" strokeWidth="0.0" text="Verbleibende Zeit:">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </Text>
-                  <Label fx:id="labelTime" text="Zeit">
+                  <TextArea fx:id="exerciseTxt" prefHeight="333.0" prefWidth="340.0" wrapText="true" />
+                  <TextArea fx:id="compilationError" prefHeight="333.0" prefWidth="340.0" wrapText="true" GridPane.rowIndex="2" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kompilierungsfehler:" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                     <children>
+                        <Text fx:id="textRemainingTime" strokeType="OUTSIDE" strokeWidth="0.0" text="Verbleibende Zeit:">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Label fx:id="labelTime" text="Zeit">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+                  <Label fx:id="statusCycle" alignment="CENTER" text="">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
                   </Label>
                </children>
-            </HBox>
+            </GridPane>
          </children>
       </GridPane>
    </center>
