@@ -26,6 +26,7 @@ public class LayoutTDDTController {
    boolean isMaximized = false;
    int numberTests = 0;
    int timer = 0;
+   int time = 0;
    Phases phases = new Phases("red");
    boolean initialized = false;
    String oldSourceCode;
@@ -58,6 +59,7 @@ public class LayoutTDDTController {
          initialized = true;
          if(LayoutMenuController.getBabysteps()) {
             timer = LayoutMenuController.getTimer();
+            time = timer;
             labelTime.setText(Integer.toString(timer));
          } else {
             labelTime.setVisible(false);
@@ -78,7 +80,6 @@ public class LayoutTDDTController {
 
       // Phase rot
       if (phases.getPhase().equals("red")) {
-         // writing tests
          // sollte nicht kompilieren oder ein test soll fehl schlagen
 
          // überprüfen, dass genau ein Test mehr vorhanden ist als vorher
@@ -89,12 +90,12 @@ public class LayoutTDDTController {
             if (parts[i].contains("@Test")) newNumberTests++;
          }
          // System.out.println("number Tests = " + numberTests + "\nNumber New Tests = " + newNumberTests);
-         if (newNumberTests - numberTests != 1) System.out.println("Es muss genau ein neuer Test geschrieben werden");   // in label schreiben
+         if (newNumberTests - numberTests != 1) System.out.println("Es muss genau ein neuer Test geschrieben werden");   // TODO in label schreiben (unter Aufgabentext?)
          else {
             // testen, ob kompiliert / Tests durchlaufen
             if (!TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) || TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
-               // prüfen, dass nur ein Test fehl schlägt
-               // prüfen, weshalb es nicht kompiliert
+               // TODO prüfen, dass nur ein Test fehl schlägt
+               // TODO prüfen, weshalb es nicht kompiliert
                numberTests++;
                phases.setPhase("green");
                labelTestCode.setStyle("");
@@ -106,9 +107,9 @@ public class LayoutTDDTController {
 
       // Phase grün
       } else if (phases.getPhase().equals("green")) {
-         // writing code
          // muss kompilieren und die tests müssen durchlaufen
          if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
+            // timeline(); TODO muss neu starten
             phases.setPhase("refactor");
             labelSourceCode.setStyle("");
             labelRefactor.setStyle("-fx-font-weight: bold;");
@@ -117,6 +118,7 @@ public class LayoutTDDTController {
 
       // Phase refactor
       } else if (phases.getPhase().equals("refactor")) {
+         // muss kompilieren und die tests müssen durchlaufen
          if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
             phases.setPhase("red");
             labelRefactor.setStyle("");
@@ -136,7 +138,6 @@ public class LayoutTDDTController {
       labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
       testCode.setEditable(true);
       sourceCode.setEditable(false);
-
    }
 
    public void handleBackButton() throws IOException
