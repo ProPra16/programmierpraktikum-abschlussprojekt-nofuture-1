@@ -53,8 +53,8 @@
                 <RowConstraints maxHeight="266.0" minHeight="10.0" prefHeight="241.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextArea fx:id="exerciseTxt" prefHeight="333.0" prefWidth="340.0" wrapText="true" />
-                  <TextArea fx:id="compilationError" prefHeight="333.0" prefWidth="340.0" wrapText="true" GridPane.rowIndex="2" />
+                  <TextArea fx:id="exerciseTxt" prefHeight="333.0" prefWidth="340.0" wrapText="true" editable="false"/>
+                  <TextArea fx:id="compilationError" prefHeight="333.0" prefWidth="340.0" wrapText="true" GridPane.rowIndex="2" editable="false"/>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kompilierungsfehler:" GridPane.rowIndex="1" />
                </children>
             </GridPane>
