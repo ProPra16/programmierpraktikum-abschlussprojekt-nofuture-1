@@ -41,12 +41,14 @@ public class LayoutTDDTController {
    Label labelRefactor;
 
    Timeline timeline = new Timeline();
-   int timer = 120;
+   int timer = 0;
    Babysteps babysteps;
 
    Phases phases = new Phases("red");
 
    public void initialize() {
+      timer = LayoutMenuController.getTimer();
+      boolean hasBabysteps = LayoutMenuController.getBabysteps();
       labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
       exerciseTxt.setText(LayoutMenuController.getExerciseText());
       testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
@@ -60,9 +62,13 @@ public class LayoutTDDTController {
       if(phases.getPhase().equals("red")) {
          // writing tests
          // sollte nicht kompilieren oder ein test soll fehl schlagen
+         // überprüfen, dass genau ein Test mehr vorhanden ist als vorher
 
 
       } else if(phases.getPhase().equals("green")) {
+         // writing code
+         // muss kompilieren und die tests müssen durchlaufen
+
 
       } else if(phases.getPhase().equals("refactor")) {
 
