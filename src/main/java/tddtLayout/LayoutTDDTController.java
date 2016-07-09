@@ -28,6 +28,7 @@ public class LayoutTDDTController {
    int timer = 0;
    Phases phases = new Phases("red");
    boolean initialized = false;
+   String oldSourceCode;
 
    @FXML
    TextArea exerciseTxt;
@@ -68,6 +69,7 @@ public class LayoutTDDTController {
          testCode.setEditable(true);
          sourceCode.setText("public class Class {\n  // TODO\n}");
          sourceCode.setEditable(false);
+         oldSourceCode = "public class Class {\n  // TODO\n}";
       }
    }
 
@@ -110,6 +112,7 @@ public class LayoutTDDTController {
             phases.setPhase("refactor");
             labelSourceCode.setStyle("");
             labelRefactor.setStyle("-fx-font-weight: bold;");
+            oldSourceCode = sourceCode.getText();
          }
 
       // Phase refactor
@@ -127,7 +130,13 @@ public class LayoutTDDTController {
 
    public void handleBackToTestsButton()
    {
-//      TODO noch ergänzen
+      sourceCode.setText(oldSourceCode);
+      phases.setPhase("red");
+      labelSourceCode.setStyle("");
+      labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
+      testCode.setEditable(true);
+      sourceCode.setEditable(false);
+
    }
 
    public void handleBackButton() throws IOException
