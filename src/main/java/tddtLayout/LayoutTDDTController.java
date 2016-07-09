@@ -30,6 +30,9 @@ public class LayoutTDDTController {
    Text status;
    @FXML
    Label labelTime;
+   @FXML
+   Text textRemainingTime;
+   @FXML
    public TextArea sourceCode;
    @FXML
    public TextArea testCode;
@@ -47,8 +50,13 @@ public class LayoutTDDTController {
    Phases phases = new Phases("red");
 
    public void initialize() {
-      timer = LayoutMenuController.getTimer();
-      boolean hasBabysteps = LayoutMenuController.getBabysteps();
+      if(LayoutMenuController.getBabysteps()) {
+         timer = LayoutMenuController.getTimer();
+         labelTime.setText(Integer.toString(timer));
+      } else {
+         labelTime.setVisible(false);
+         textRemainingTime.setVisible(false);
+      }
       labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
       exerciseTxt.setText(LayoutMenuController.getExerciseText());
       testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
@@ -58,7 +66,7 @@ public class LayoutTDDTController {
    }
 
    public void handleRunButton() {
-      timeline();
+      if(LayoutMenuController.getBabysteps()) timeline();
       if(phases.getPhase().equals("red")) {
          // writing tests
          // sollte nicht kompilieren oder ein test soll fehl schlagen

@@ -21,6 +21,7 @@ public class LayoutMenuController {
     // Variablen
     static boolean hasAddt = false;
     static boolean hasBabysteps = false;
+    static int timer = 0;
     boolean isMaximized = true;
 
     // FXML
@@ -69,25 +70,13 @@ public class LayoutMenuController {
 
     // Checkboxen Handles
 
-    static int timer = 0;
 
-    public void setTimerToTwo () {
-        timer = 120;
-    }
+    public void setTimerToTwo () { timer = 120; }
+    public void setTimerToThree () { timer = 180; }
+    public void setTimerToFour () { timer = 240; }
+    public void setTimerToFive () { timer = 300; }
 
-    public void setTimerToThree () {
-        timer = 180;
-    }
-
-    public void setTimerToFour () {
-        timer = 240;
-    }
-
-    public void setTimerToFive () {
-        timer = 300;
-    }
-
-    public static int getTimer() {return timer;}
+    public static int getTimer() { return timer; }
 
     public void handleBabystep() {
         if (!hasBabysteps) {
@@ -98,7 +87,7 @@ public class LayoutMenuController {
         }
     }
 
-    public static boolean getBabysteps() {return hasBabysteps;}
+    public static boolean getBabysteps() { return hasBabysteps; }
 
     public void handleATDD() {
         if (!hasAddt) {
