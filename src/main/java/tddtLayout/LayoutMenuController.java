@@ -4,13 +4,10 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.ToggleGroup;
-import javafx.stage.Stage;
+import javafx.scene.layout.BorderPane;
 import tddtMain.TDDTMain;
 
 import java.io.FileNotFoundException;
@@ -23,7 +20,6 @@ public class LayoutMenuController {
     static boolean hasAddt = false;
     static boolean hasBabysteps = false;
     static int timer = 0;
-    boolean isMaximized = false;
 
     // FXML
     @FXML
@@ -122,52 +118,14 @@ public class LayoutMenuController {
 */
             if (!hasAddt) {
                 exerciseText = exercise.getText();
-
-                // Muss in dieser Methode passieren, da FXMLLoader nicht in einer anderen
-                // static Methode aufgerufen werden kann
-                Parent areaLoad = FXMLLoader.load(getClass().getResource("/layoutTDDT.fxml"));
-                Scene testArea = new Scene(areaLoad);
-
-                // statt die selbe stage zu nutzen:
-                //Stage menuStage = new Stage();
-
-                Stage menuStage = TDDTMain.getStage();
-                menuStage.setScene(testArea);
-                menuStage.setMaximized(isMaximized);
-
-                //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
-                //testArea.getStylesheets().add(stylesheet);
-
-
-                // geben Fehlermeldung
-                // exerciseTxt.setText(exerciseText);
-                // LayoutTDDTController.initialize();
-
-                menuStage.show();
+                FXMLLoader loader = new FXMLLoader();
+                TDDTMain.rootPane.setCenter((BorderPane)loader.load(getClass().getResource("/layoutTDDT.fxml")));
             }
 
             else {
-                String exerciseText = exercise.getText();
-
-                Parent areaLoad = FXMLLoader.load(getClass().getResource("/layoutATDD.fxml"));
-                Scene testArea = new Scene(areaLoad);
-
-                // statt die selbe stage zu nutzen:
-                // Stage menuStage = new Stage();
-
-                Stage menuStage = TDDTMain.getStage();
-                menuStage.setScene(testArea);
-                menuStage.setMaximized(isMaximized);
-
-                //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
-                //testArea.getStylesheets().add(stylesheet);
-
-
-                // geben Fehlermeldung
-                // exerciseTxt.setText(exerciseText);
-                // LayoutTDDTController.initialize();
-
-                menuStage.show();
+               exerciseText = exercise.getText();
+               FXMLLoader loader = new FXMLLoader();
+               TDDTMain.rootPane.setCenter((BorderPane)loader.load(getClass().getResource("/layoutATDD.fxml")));
             }
 
         }

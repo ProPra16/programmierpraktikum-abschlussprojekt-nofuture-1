@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tddtMain.TDDTMain;
@@ -15,7 +16,6 @@ import java.io.IOException;
 public class LayoutATDDController {
 
     // Variablen
-    boolean isMaximized = false;
 
     // FXML
    @FXML
@@ -60,19 +60,8 @@ public class LayoutATDDController {
 
    public void handleBackButton() throws IOException
    {
-      Parent areaLoad = FXMLLoader.load(getClass().getResource("/layoutMenu.fxml"));
-      Scene testArea = new Scene(areaLoad);
-
-      // statt die selbe stage zu nutzen:
-      // Stage menuStage = new Stage();
-
-      Stage menuStage = TDDTMain.getStage();
-      menuStage.setScene(testArea);
-      menuStage.setMaximized(isMaximized);
-
-      //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
-      //testArea.getStylesheets().add(stylesheet);
-      menuStage.show();
+      FXMLLoader loader = new FXMLLoader();
+      TDDTMain.rootPane.setCenter((BorderPane)loader.load(getClass().getResource("/layoutATDD.fxml")));
    }
 
    public void handleRefactor() {
