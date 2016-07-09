@@ -132,12 +132,15 @@ public class LayoutTDDTController {
 
    public void handleBackToTestsButton()
    {
-      sourceCode.setText(oldSourceCode);
-      phases.setPhase("red");
-      labelSourceCode.setStyle("");
-      labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
-      testCode.setEditable(true);
-      sourceCode.setEditable(false);
+      if(phases.getPhase().equals("green")) {
+         numberTests--;
+         sourceCode.setText(oldSourceCode);
+         phases.setPhase("red");
+         labelSourceCode.setStyle("");
+         labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
+         testCode.setEditable(true);
+         sourceCode.setEditable(false);
+      }
    }
 
    public void handleBackButton() throws IOException
