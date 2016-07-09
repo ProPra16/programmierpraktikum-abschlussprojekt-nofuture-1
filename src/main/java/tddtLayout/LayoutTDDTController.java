@@ -36,8 +36,6 @@ public class LayoutTDDTController {
    @FXML
    TextArea exerciseTxt;
    @FXML
-   Text status;
-   @FXML
    Label labelTime;
    @FXML
    Text textRemainingTime;
