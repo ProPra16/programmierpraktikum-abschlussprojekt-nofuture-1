@@ -12,7 +12,7 @@ public class TDDCycle extends Phases{
         super(phase);
     }
 
-    private TestResult compile(String code, String test){
+    private static TestResult compile(String code, String test){
         CompilationUnit codeUnit = new CompilationUnit("Class", code, false);
         CompilationUnit testUnit = new CompilationUnit("TestClass", test, true);
         JavaStringCompiler compiler = CompilerFactory.getCompiler(codeUnit, testUnit);
@@ -26,12 +26,12 @@ public class TDDCycle extends Phases{
         return compiler.getTestResult();
     }
 
-    public boolean isCompiling(String code, String test){
+    public static boolean isCompiling(String code, String test){
         TestResult t = compile(code, test);
         return t != null;
     }
 
-    public boolean isTestfailing(String code, String test){
+    public static boolean isTestfailing(String code, String test){
         TestResult t = compile(code, test);
         return t != null && t.getNumberOfFailedTests() > 0;
     }
