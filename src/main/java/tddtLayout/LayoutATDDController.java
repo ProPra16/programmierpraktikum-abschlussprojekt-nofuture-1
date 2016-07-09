@@ -74,4 +74,8 @@ public class LayoutATDDController {
       //testArea.getStylesheets().add(stylesheet);
       menuStage.show();
    }
+
+   public void handleRefactor() {
+      //TODO
+   }
 }

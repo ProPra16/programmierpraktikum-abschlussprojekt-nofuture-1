@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
@@ -53,7 +54,6 @@ public class LayoutTDDTController {
    TextArea compilationError;
    @FXML
    Label statusCycle;
-
 
    public void initialize() {
       if(!initialized) {
@@ -187,6 +187,8 @@ public class LayoutTDDTController {
 
    }
 
-
+   public void handleRefactor() {
+      //TODO
+   }
 
 }
