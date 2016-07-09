@@ -140,7 +140,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <Label fx:id="exercise">
+            <Label fx:id="exercise" wrapText="true">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>

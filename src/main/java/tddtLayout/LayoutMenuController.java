@@ -22,7 +22,7 @@ public class LayoutMenuController {
     static boolean hasAddt = false;
     static boolean hasBabysteps = false;
     static int timer = 0;
-    boolean isMaximized = true;
+    boolean isMaximized = false;
 
     // FXML
     @FXML
@@ -124,7 +124,6 @@ public class LayoutMenuController {
 
                 // Muss in dieser Methode passieren, da FXMLLoader nicht in einer anderen
                 // static Methode aufgerufen werden kann
-                // layoutTDDT2.fxml ist die schönste variante
                 Parent areaLoad = FXMLLoader.load(getClass().getResource("/layoutTDDT.fxml"));
                 Scene testArea = new Scene(areaLoad);
 

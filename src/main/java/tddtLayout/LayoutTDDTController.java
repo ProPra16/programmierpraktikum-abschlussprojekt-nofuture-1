@@ -22,7 +22,7 @@ import java.io.IOException;
 public class LayoutTDDTController {
 
    // Variablen
-   boolean isMaximized = true;
+   boolean isMaximized = false;
 
    @FXML
    TextArea exerciseTxt;
