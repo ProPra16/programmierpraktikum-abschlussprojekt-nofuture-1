@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import tddtMain.TDDTMain;
 
 import java.io.FileNotFoundException;
@@ -30,6 +32,10 @@ public class LayoutMenuController {
     Label errorExercise;
     @FXML
     Label exercise;
+    @FXML
+    HBox timerBox;
+    @FXML
+    Label dauerText;
 
     // TXT Einlesen
     private String readTxt(String file) {
@@ -69,9 +75,13 @@ public class LayoutMenuController {
     public void handleBabystep() {
         if (!hasBabysteps) {
             setHasBabysteps(true);
+            timerBox.setVisible(true);
+            dauerText.setVisible(true);
         }
         else {
             setHasBabysteps(false);
+            timerBox.setVisible(false);
+            dauerText.setVisible(false);
         }
     }
     public void handleATDD() {
