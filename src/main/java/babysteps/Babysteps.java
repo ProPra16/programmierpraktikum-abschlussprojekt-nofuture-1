@@ -15,8 +15,7 @@ public class Babysteps {
 
     public void babysteps(){
 
-        System.out.println("timer"+timer);
-        System.out.println(code + " "+ testCode+" "+phase);
+
         if (timer==0) {
             switch (phase) {
 

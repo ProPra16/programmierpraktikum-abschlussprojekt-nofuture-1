@@ -27,9 +27,7 @@ public class LayoutTDDTController {
    String oldSourceCode;
    Timeline timeline = new Timeline();
    Babysteps babysteps;
-   String phase= "green";
-   String code = "123";
-   String testCode2 = "456";
+
 
    @FXML
    TextArea exerciseTxt;
@@ -60,7 +58,6 @@ public class LayoutTDDTController {
             time = timer;
             labelTime.setText(Integer.toString(timer));
             timeline();
-            if (timer==0) timeline.stop();
          } else {
             labelTime.setVisible(false);
             textRemainingTime.setVisible(false);
@@ -163,13 +160,16 @@ public class LayoutTDDTController {
               new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
                  labelTime.setText(String.valueOf(timer));
                  timer--;
-                 babysteps = new Babysteps(phase,code,testCode2, timer);
-                 code= babysteps.getCode();
-                 testCode2=babysteps.getTestCode();
-                 phase=babysteps.getPhase();
+                 babysteps = new Babysteps(phases.getPhase(),sourceCode.getText(),testCode.getText(), timer);
+
                     if (timer==0){
                        timeline.stop();
-                       System.out.println("code"+ code+"testcode"+testCode2+"phase"+phase);
+                       sourceCode.setText(babysteps.getCode());
+                       testCode.setText(babysteps.getTestCode());
+                       phases.setPhase(babysteps.getPhase());
+                       System.out.println("code: \n"+ sourceCode.getText()+"testcode:\n "+testCode.getText()+"phase:\n "+phases.getPhase());
+                       testCode.setEditable(false);
+                       sourceCode.setEditable(false);
                     }
               }));
       timeline.play();

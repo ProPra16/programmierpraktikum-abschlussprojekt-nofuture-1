@@ -66,7 +66,7 @@ public class LayoutMenuController {
     public void showSortieren() { exercise.setText(readTxt("./Aufgaben/Sortieren.txt")); }
 
     // Checkboxen Handles
-    public void setTimerToTwo () { timer = 120; }
+    public void setTimerToTwo () { timer = 12; }
     public void setTimerToThree () { timer = 180; }
     public void setTimerToFour () { timer = 240; }
     public void setTimerToFive () { timer = 300; }
