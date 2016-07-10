@@ -183,6 +183,8 @@ public class LayoutTDDTController {
       timeline.play();  */
 
       //TODO
+      testCode.setEditable(true);
+      sourceCode.setEditable(true);
    }
 
 }

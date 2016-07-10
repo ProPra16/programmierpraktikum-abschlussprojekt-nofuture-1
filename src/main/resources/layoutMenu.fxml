@@ -19,7 +19,7 @@
           <RowConstraints maxHeight="224.0" minHeight="10.0" prefHeight="132.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <CheckBox mnemonicParsing="false" text="ATTD"
+            <CheckBox mnemonicParsing="false" text="ATDD"
                       GridPane.columnIndex="1" GridPane.rowIndex="1"
                       onAction="#handleATDD">
                <GridPane.margin>
@@ -56,7 +56,7 @@
                 <RowConstraints maxHeight="423.0" minHeight="10.0" prefHeight="238.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="dauerText" text="Bitte Dauer wählen" visible="false">
+                  <Label fx:id="dauerText" text="Bitte Dauer in Minuten wählen" visible="false">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
