@@ -27,6 +27,7 @@ public class LayoutTDDTController {
    String oldSourceCode;
    Timeline timeline = new Timeline();
    Babysteps babysteps;
+   int buttonClicked=0;
 
 
    @FXML
@@ -69,6 +70,7 @@ public class LayoutTDDTController {
          sourceCode.setText("public class Class {\n  // TODO\n}");
          sourceCode.setEditable(false);
          oldSourceCode = "public class Class {\n  // TODO\n}";
+         compilationError.setText("Schreibe den Testcode.");
       }
    }
 
@@ -88,7 +90,7 @@ public class LayoutTDDTController {
             if (parts[i].contains("@Test")) newNumberTests++;
          }
          // System.out.println("number Tests = " + numberTests + "\nNumber New Tests = " + newNumberTests);
-         if (newNumberTests - numberTests != 1) System.out.println("Es muss genau ein neuer Test geschrieben werden");   // TODO in label schreiben (unter Aufgabentext?)
+         if (newNumberTests - numberTests != 1) compilationError.setText("Es muss genau ein neuer Test geschrieben werden");   // TODO in label schreiben (unter Aufgabentext?)
          else {
             // testen, ob kompiliert / Tests durchlaufen
             if (!TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) || TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
@@ -103,6 +105,7 @@ public class LayoutTDDTController {
                testCode.setEditable(false);
                labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
                sourceCode.setEditable(true);
+               compilationError.setText("Schreibe nun den passenden Code zum Test.");
             }
          }
 
@@ -112,16 +115,13 @@ public class LayoutTDDTController {
 
          // muss kompilieren und die tests müssen durchlaufen
          if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
-            // timeline(); TODO muss neu starten
-            timeline.stop();
-            phases.setPhase("refactor");
-            labelSourceCode.setStyle("");
-            labelRefactor.setStyle("-fx-font-weight: bold;");
-            oldSourceCode = sourceCode.getText();
+           compilationError.setText("Test bestanden. Click den Button 'Refactor'.");
+          buttonClicked=0;
+
          }
 
       // Phase refactor
-      } else if (phases.getPhase().equals("refactor")) {
+      } /*else if (phases.getPhase().equals("refactor")) {
          // muss kompilieren und die tests müssen durchlaufen
          if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
             phases.setPhase("red");
@@ -131,7 +131,7 @@ public class LayoutTDDTController {
             sourceCode.setEditable(false);
          }
 
-      }
+      }*/
    }
 
    public void handleBackToTestsButton() {
@@ -144,6 +144,7 @@ public class LayoutTDDTController {
          labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
          testCode.setEditable(true);
          sourceCode.setEditable(false);
+         compilationError.setText(" ");
       }
    }
 
@@ -164,12 +165,21 @@ public class LayoutTDDTController {
 
                     if (timer==0){
                        timeline.stop();
-                       sourceCode.setText(babysteps.getCode());
-                       testCode.setText(babysteps.getTestCode());
-                       phases.setPhase(babysteps.getPhase());
+                       if(phases.getPhase().equals("red")) {
+                          sourceCode.setText(babysteps.getCode());
+                          compilationError.setText("SourceCode zurückgesetzt.");
+                          phases.setPhase(babysteps.getPhase());
+
+                       }
+                       if (phases.getPhase().equals("green")) {
+                          testCode.setText(babysteps.getTestCode());
+                          compilationError.setText("TestCode zurückgesetzt.");
+                          phases.setPhase(babysteps.getPhase());
+
+                       }
+
                        System.out.println("code: \n"+ sourceCode.getText()+"testcode:\n "+testCode.getText()+"phase:\n "+phases.getPhase());
-                       testCode.setEditable(false);
-                       sourceCode.setEditable(false);
+
                     }
               }));
       timeline.play();
@@ -178,10 +188,31 @@ public class LayoutTDDTController {
    }
 
    public void handleRefactor() {
-      /* wenn das zweite mal gedrückt wurde
-      timer = time;
-      timeline.play();  */
+      if(buttonClicked==0) {
+         buttonClicked++;
+         timeline.stop();
+         phases.setPhase("refactor");
+         labelSourceCode.setStyle("");
+         labelRefactor.setStyle("-fx-font-weight: bold;");
+         oldSourceCode = sourceCode.getText();
+         testCode.setEditable(true);
+         sourceCode.setEditable(true);
+         compilationError.setText("Du kannst deinen Code verbessern und wenn du fertig bist nochmal auf den Button 'Refactor' clicken.");
 
+      }
+      else{
+
+         if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
+            phases.setPhase("red");
+            labelRefactor.setStyle("");
+            labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
+            testCode.setEditable(true);
+            sourceCode.setEditable(false);
+            timer = time;
+            timeline.play();
+            compilationError.setText("Schreibe einen neuen Test. ");
+         }
+      }
       //TODO
    }
 
