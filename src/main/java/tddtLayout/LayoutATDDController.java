@@ -11,8 +11,6 @@ public class LayoutATDDController extends LayoutTDDTController{
 
     // FXML
    @FXML
-   Text status;   //Wofür ist der Text???
-   @FXML
    public TextArea acceptanceTestCode;
    @FXML
    Label labelAzeptanzTest;
