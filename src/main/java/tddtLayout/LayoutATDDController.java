@@ -9,7 +9,7 @@ import tddtMain.TDDTMain;
 
 import java.io.IOException;
 
-public class LayoutATDDController {
+public class LayoutATDDController extends LayoutTDDTController{
 
     // Variablen
 
@@ -44,25 +44,25 @@ public class LayoutATDDController {
       sourceCode.setEditable(false);
    }
 
-   public void handleRunButton()
-   {
-//      TODO noch ergänzen
-   }
+//   public void handleRunButton()
+//   {
+////      TODO noch ergänzen
+//   }
 
-   public void handleBackToTestsButton()
-   {
-//      TODO noch ergänzen
-   }
+//   public void handleBackToTestsButton()
+//   {
+////      TODO noch ergänzen
+//   }
 
-   public void handleBackButton() throws IOException
-   {
-      LayoutMenuController.setHasAddt(false);
-      LayoutMenuController.setHasBabysteps(false);
-      FXMLLoader loader = new FXMLLoader();
-      TDDTMain.rootPane.setCenter(loader.load(getClass().getResource("/layoutMenu.fxml")));
-   }
-
-   public void handleRefactor() {
-      //TODO
-   }
+//   public void handleBackButton() throws IOException
+//   {
+//      LayoutMenuController.setHasAddt(false);
+//      LayoutMenuController.setHasBabysteps(false);
+//      FXMLLoader loader = new FXMLLoader();
+//      TDDTMain.rootPane.setCenter(loader.load(getClass().getResource("/layoutMenu.fxml")));
+//   }
+//
+//   public void handleRefactor() {
+//      //TODO
+//   }
 }
