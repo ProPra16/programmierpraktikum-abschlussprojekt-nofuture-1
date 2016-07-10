@@ -25,6 +25,7 @@ public class LayoutATDDController extends LayoutTDDTController{
       labelAzeptanzTest.setStyle("-fx-text-fill: HOTPINK; -fx-font-weight: bold;");  //setze Akzeptanztest rot und fett
       labelTestCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
       phases.setPhase("akzeptanz");
+      compilationError.setText("Schreibe einen Akzeptanztest.");
    }
 
    @Override
@@ -39,6 +40,7 @@ public class LayoutATDDController extends LayoutTDDTController{
          phases.setPhase("red");
          labelAzeptanzTest.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
          labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
+         compilationError.setText("Schreibe den Testcode.");
       }
       else if (phases.getPhase().equals("red")) {
 
