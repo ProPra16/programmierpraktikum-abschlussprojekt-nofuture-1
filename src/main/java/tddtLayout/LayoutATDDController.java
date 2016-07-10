@@ -18,27 +18,31 @@ public class LayoutATDDController extends LayoutTDDTController{
    @FXML
    Label labelAzeptanzTest;
 
+   @FXML
    @Override
    public void initialize() {
       super.initialize();  //ruft originale Methode auf
       acceptanceTestCode.setEditable(true);
       testCode.setEditable(false);
-      labelAzeptanzTest.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");  //setze Akzeptanztest rot und fett
+      labelAzeptanzTest.setStyle("-fx-text-fill: HOTPINK; -fx-font-weight: bold;");  //setze Akzeptanztest rot und fett
       labelTestCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
       phases.setPhase("akzeptanz");
    }
 
    @Override
    public void handleRunButton() {
+
+      if (timer==0) timeline.stop();
+      // Phase rot
       if(phases.getPhase().equals("akzeptanz"))
       {
          acceptanceTestCode.setEditable(false);
          testCode.setEditable(true);
+         phases.setPhase("red");
+         labelAzeptanzTest.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
+         labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
       }
-
-      if (timer==0) timeline.stop();
-      // Phase rot
-      if (phases.getPhase().equals("red")) {
+      else if (phases.getPhase().equals("red")) {
 
          // sollte nicht kompilieren oder ein test soll fehl schlagen
 
