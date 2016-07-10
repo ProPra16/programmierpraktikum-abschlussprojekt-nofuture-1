@@ -60,8 +60,10 @@ public class LayoutATDDController {
 
    public void handleBackButton() throws IOException
    {
+      LayoutMenuController.setHasAddt(false);
+      LayoutMenuController.setHasBabysteps(false);
       FXMLLoader loader = new FXMLLoader();
-      TDDTMain.rootPane.setCenter((BorderPane)loader.load(getClass().getResource("/layoutATDD.fxml")));
+      TDDTMain.rootPane.setCenter(loader.load(getClass().getResource("/layoutMenu.fxml")));
    }
 
    public void handleRefactor() {

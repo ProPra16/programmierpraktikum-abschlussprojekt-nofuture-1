@@ -17,8 +17,8 @@ import java.io.IOException;
 public class LayoutMenuController {
 
     // Variablen
-    static boolean hasAddt = false;
-    static boolean hasBabysteps = false;
+    private static boolean hasAddt = false;
+    private static boolean hasBabysteps = false;
     static int timer = 0;
 
     // FXML
@@ -73,25 +73,21 @@ public class LayoutMenuController {
     public void setTimerToFour () { timer = 240; }
     public void setTimerToFive () { timer = 300; }
 
-    public static int getTimer() { return timer; }
-
     public void handleBabystep() {
         if (!hasBabysteps) {
-            hasBabysteps = true;
+            setHasBabysteps(true);
         }
         else {
-            hasBabysteps = false;
+            setHasBabysteps(false);
         }
     }
 
-    public static boolean getBabysteps() { return hasBabysteps; }
-
     public void handleATDD() {
         if (!hasAddt) {
-            hasAddt = true;
+            setHasAddt(true);
         }
         else {
-            hasAddt = false;
+            setHasAddt(false);
         }
     }
 
@@ -110,22 +106,16 @@ public class LayoutMenuController {
 
         }
         else {
-/*            if(babysteps == true) {
-                // überprüfen, ob überhaupt ein RadioButton ausgewählt wurde
-                RadioButton selectedButton = (RadioButton) babystepTimeGroup.getSelectedToggle();
-                babystepTime = Integer.parseInt(selectedButton.getText());
-            }
-*/
             if (!hasAddt) {
                 exerciseText = exercise.getText();
                 FXMLLoader loader = new FXMLLoader();
-                TDDTMain.rootPane.setCenter((BorderPane)loader.load(getClass().getResource("/layoutTDDT.fxml")));
+                TDDTMain.rootPane.setCenter(loader.load(getClass().getResource("/layoutTDDT.fxml")));
             }
 
             else {
                exerciseText = exercise.getText();
                FXMLLoader loader = new FXMLLoader();
-               TDDTMain.rootPane.setCenter((BorderPane)loader.load(getClass().getResource("/layoutATDD.fxml")));
+               TDDTMain.rootPane.setCenter(loader.load(getClass().getResource("/layoutATDD.fxml")));
             }
 
         }
@@ -142,6 +132,13 @@ public class LayoutMenuController {
     }
 
     // getter-setter Bereich
+    public static int getTimer() { return timer; }
+    public static boolean getBabysteps() { return hasBabysteps; }
 
-
+    public static void setHasAddt (boolean b) {
+       hasAddt = b;
+    }
+    public static void setHasBabysteps (boolean b) {
+       hasBabysteps = b;
+    }
 }

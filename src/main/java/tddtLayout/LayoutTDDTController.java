@@ -149,9 +149,10 @@ public class LayoutTDDTController {
 
    public void handleBackButton() throws IOException
    {
+      LayoutMenuController.setHasAddt(false);
+      LayoutMenuController.setHasBabysteps(false);
       FXMLLoader loader = new FXMLLoader();
-      TDDTMain.rootPane.setCenter((BorderPane)loader.load(getClass().getResource("/layoutMenu.fxml")));
-
+      TDDTMain.rootPane.setCenter(loader.load(getClass().getResource("/layoutMenu.fxml")));
    }
 
    public void timeline() {
