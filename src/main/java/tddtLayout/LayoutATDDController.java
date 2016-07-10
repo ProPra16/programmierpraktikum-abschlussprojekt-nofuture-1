@@ -25,26 +25,4 @@ public class LayoutATDDController extends LayoutTDDTController{
       labelAzeptanzTest.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");  //setze Akzeptanztest rot und fett
       labelTestCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
    }
-
-//   public void handleRunButton()
-//   {
-////      TODO noch ergänzen
-//   }
-
-//   public void handleBackToTestsButton()
-//   {
-////      TODO noch ergänzen
-//   }
-
-//   public void handleBackButton() throws IOException
-//   {
-//      LayoutMenuController.setHasAddt(false);
-//      LayoutMenuController.setHasBabysteps(false);
-//      FXMLLoader loader = new FXMLLoader();
-//      TDDTMain.rootPane.setCenter(loader.load(getClass().getResource("/layoutMenu.fxml")));
-//   }
-//
-//   public void handleRefactor() {
-//      //TODO
-//   }
 }
