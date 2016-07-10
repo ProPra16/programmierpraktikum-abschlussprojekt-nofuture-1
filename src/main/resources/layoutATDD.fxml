@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tddtLayout.LayoutTDDTController">   <!--LayoutATDDController-->
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tddtLayout.LayoutATDDController">   <!--LayoutATDDController-->
    <center>
       <GridPane onMouseEntered="#initialize" prefHeight="588.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -23,7 +23,7 @@
             </Text>
             <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <tabs>
-                <Tab fx:id="acceptanceTest" text="Acceptance Test">
+                <Tab fx:id="acceptanceTestTab" text="Acceptance Test">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0">
                            <children>
