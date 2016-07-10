@@ -20,23 +20,23 @@ public class Babysteps {
         if (timer==0) {
             switch (phase) {
 
-                case "RED":
-                    setPhase("REFACTOR");
+                case "red":
+                    setPhase("refactor");
 
-                    setCode(" ");
-                    setTestCode(" ");
+                    setCode("public class Class {\n  // TODO\n}");
+                    setTestCode("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
 
 
                     //Code löschen
                     //GOTO Phase REFACTOR
 
                     break;
-                case "GREEN":
+                case "green":
 
-                    setPhase("RED");
+                    setPhase("red");
 
-                    setCode(" ");
-                    setTestCode(" ");
+                    setCode("public class Class {\n  // TODO\n}");
+                    setTestCode("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
 
                     //Code löschen
                     //GOTO RED
@@ -46,7 +46,7 @@ public class Babysteps {
 
                 default: break;
             }
-            System.out.println("phase "+phase);
+
         }
     }
     public void setPhase(String s){

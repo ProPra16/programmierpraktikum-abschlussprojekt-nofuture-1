@@ -27,7 +27,7 @@ public class LayoutTDDTController {
    String oldSourceCode;
    Timeline timeline = new Timeline();
    Babysteps babysteps;
-   String phase= "GREEN";
+   String phase= "green";
    String code = "123";
    String testCode2 = "456";
 
@@ -80,6 +80,7 @@ public class LayoutTDDTController {
       if (timer==0) timeline.stop();
       // Phase rot
       if (phases.getPhase().equals("red")) {
+
          // sollte nicht kompilieren oder ein test soll fehl schlagen
 
          // überprüfen, dass genau ein Test mehr vorhanden ist als vorher
@@ -96,6 +97,9 @@ public class LayoutTDDTController {
             if (!TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) || TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
                // TODO prüfen, dass nur ein Test fehl schlägt
                // TODO prüfen, weshalb es nicht kompiliert
+               timeline.stop();
+               timer= time;
+               timeline.play();
                numberTests++;
                phases.setPhase("green");
                labelTestCode.setStyle("");
@@ -107,9 +111,12 @@ public class LayoutTDDTController {
 
       // Phase grün
       } else if (phases.getPhase().equals("green")) {
+
+
          // muss kompilieren und die tests müssen durchlaufen
          if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
             // timeline(); TODO muss neu starten
+            timeline.stop();
             phases.setPhase("refactor");
             labelSourceCode.setStyle("");
             labelRefactor.setStyle("-fx-font-weight: bold;");
@@ -132,6 +139,7 @@ public class LayoutTDDTController {
 
    public void handleBackToTestsButton() {
       if(phases.getPhase().equals("green")) {
+         timeline.play();
          numberTests--;
          sourceCode.setText(oldSourceCode);
          phases.setPhase("red");
@@ -170,7 +178,10 @@ public class LayoutTDDTController {
    }
 
    public void handleRefactor() {
-      //timeline.stop();
+      /* wenn das zweite mal gedrückt wurde
+      timer = time;
+      timeline.play();  */
+
       //TODO
    }
 
