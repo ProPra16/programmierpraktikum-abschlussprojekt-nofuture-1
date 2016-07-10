@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.BorderPane;
 import tddtMain.TDDTMain;
 
 import java.io.FileNotFoundException;
@@ -20,6 +19,7 @@ public class LayoutMenuController {
     private static boolean hasAddt = false;
     private static boolean hasBabysteps = false;
     static int timer = 0;
+    static String exerciseText;
 
     // FXML
     @FXML
@@ -53,26 +53,19 @@ public class LayoutMenuController {
 
     // Aufgaben in Label anzeigen
     public void showAnagram() { exercise.setText(readTxt("./Aufgaben/Anagramm.txt")); }
-
     public void showArray() { exercise.setText(readTxt("./Aufgaben/Array.txt")); }
-
     public void showFuhrpark() { exercise.setText(readTxt("./Aufgaben/Fuhrpark.txt")); }
-
     public void showNullzeile() { exercise.setText(readTxt("./Aufgaben/Nullzeile.txt")); }
-
     public void showPixel() { exercise.setText(readTxt("./Aufgaben/Pixel.txt")); }
-
     public void showSortieren() { exercise.setText(readTxt("./Aufgaben/Sortieren.txt")); }
 
-
     // Checkboxen Handles
-
-
     public void setTimerToTwo () { timer = 120; }
     public void setTimerToThree () { timer = 180; }
     public void setTimerToFour () { timer = 240; }
     public void setTimerToFive () { timer = 300; }
 
+   // Buttonhandles
     public void handleBabystep() {
         if (!hasBabysteps) {
             setHasBabysteps(true);
@@ -81,7 +74,6 @@ public class LayoutMenuController {
             setHasBabysteps(false);
         }
     }
-
     public void handleATDD() {
         if (!hasAddt) {
             setHasAddt(true);
@@ -90,16 +82,9 @@ public class LayoutMenuController {
             setHasAddt(false);
         }
     }
-
-
-    // Buttonhandles
-
     public void handleExitButton() {
         Platform.exit();
     }
-
-    static String exerciseText;
-
     public void handleStartMenuButton() throws IOException {
         if ("".equals(exercise.getText())) {
             errorExercise.setText("You need to choose an exercise");
@@ -120,21 +105,16 @@ public class LayoutMenuController {
 
         }
     }
-
     public void handleBackToTestsButton(ActionEvent actionEvent) throws IOException {
-
-    }
-
-
-    public static String getExerciseText() {
-        return exerciseText;
 
     }
 
     // getter-setter Bereich
     public static int getTimer() { return timer; }
     public static boolean getBabysteps() { return hasBabysteps; }
-
+    public static String getExerciseText() {
+        return exerciseText;
+    }
     public static void setHasAddt (boolean b) {
        hasAddt = b;
     }
