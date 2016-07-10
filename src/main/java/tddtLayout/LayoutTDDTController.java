@@ -62,6 +62,8 @@ public class LayoutTDDTController {
             timer = LayoutMenuController.getTimer();
             time = timer;
             labelTime.setText(Integer.toString(timer));
+            timeline();
+            if (timer==0) timeline.stop();
          } else {
             labelTime.setVisible(false);
             textRemainingTime.setVisible(false);
@@ -77,8 +79,8 @@ public class LayoutTDDTController {
    }
 
    public void handleRunButton() {
-      if (LayoutMenuController.getBabysteps()) timeline();
 
+      if (timer==0) timeline.stop();
       // Phase rot
       if (phases.getPhase().equals("red")) {
          // sollte nicht kompilieren oder ein test soll fehl schlagen
@@ -188,6 +190,7 @@ public class LayoutTDDTController {
    }
 
    public void handleRefactor() {
+      //timeline.stop();
       //TODO
    }
 
