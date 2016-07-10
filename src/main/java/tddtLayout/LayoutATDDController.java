@@ -2,13 +2,9 @@ package tddtLayout;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import tddtMain.TDDTMain;
 
 import java.io.IOException;
@@ -60,8 +56,10 @@ public class LayoutATDDController {
 
    public void handleBackButton() throws IOException
    {
+      LayoutMenuController.setHasAddt(false);
+      LayoutMenuController.setHasBabysteps(false);
       FXMLLoader loader = new FXMLLoader();
-      TDDTMain.rootPane.setCenter((BorderPane)loader.load(getClass().getResource("/layoutATDD.fxml")));
+      TDDTMain.rootPane.setCenter(loader.load(getClass().getResource("/layoutMenu.fxml")));
    }
 
    public void handleRefactor() {
