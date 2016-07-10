@@ -18,7 +18,7 @@ public class LayoutMenuController {
     // Variablen
     private static boolean hasAddt = false;
     private static boolean hasBabysteps = false;
-    static int timer = 0;
+    static int timer = 180;
     static String exerciseText;
 
     // FXML

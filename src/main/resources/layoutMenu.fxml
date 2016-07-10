@@ -78,7 +78,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                         </RadioButton>
-                        <RadioButton fx:id="three" mnemonicParsing="false" text="3"
+                        <RadioButton fx:id="three" mnemonicParsing="false" text="3" selected="true"
                                      toggleGroup="$babystepTimeGroup"
                                      onAction="#setTimerToThree">>
                            <padding>
