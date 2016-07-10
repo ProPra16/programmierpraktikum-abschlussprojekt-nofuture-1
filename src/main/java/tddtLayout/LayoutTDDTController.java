@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -24,7 +25,6 @@ import java.io.IOException;
 public class LayoutTDDTController {
 
    // Variablen
-   boolean isMaximized = false;
    int numberTests = 0;
    int timer = 0;
    int time = 0;
@@ -33,6 +33,9 @@ public class LayoutTDDTController {
    String oldSourceCode;
    Timeline timeline = new Timeline();
    Babysteps babysteps;
+   String phase= "GREEN";
+   String code = "123";
+   String testCode2 = "456";
 
    @FXML
    TextArea exerciseTxt;
@@ -148,24 +151,11 @@ public class LayoutTDDTController {
 
    public void handleBackButton() throws IOException
    {
-      Parent areaLoad = FXMLLoader.load(getClass().getResource("/layoutMenu.fxml"));
-      Scene testArea = new Scene(areaLoad);
+      FXMLLoader loader = new FXMLLoader();
+      TDDTMain.rootPane.setCenter((BorderPane)loader.load(getClass().getResource("/layoutMenu.fxml")));
 
-      // statt die selbe stage zu nutzen:
-      // Stage menuStage = new Stage();
-
-      Stage menuStage = TDDTMain.getStage();
-      menuStage.setScene(testArea);
-      menuStage.setMaximized(isMaximized);
-
-      //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
-      //testArea.getStylesheets().add(stylesheet);
-      menuStage.show();
    }
 
-   String phase= "GREEN";
-   String code = "123";
-   String testCode2 = "456";
    public void timeline() {
 
 
