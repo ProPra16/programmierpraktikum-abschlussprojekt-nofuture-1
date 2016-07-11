@@ -13,8 +13,13 @@ import javafx.util.Duration;
 import phases.Phases;
 import tddcycle.TDDCycle;
 import tddtMain.TDDTMain;
+import vk.core.api.CompileError;
+import vk.core.api.CompilerResult;
+import vk.core.api.TestResult;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class LayoutTDDTController
 {
@@ -96,18 +101,52 @@ public class LayoutTDDTController
          else {
             // testen, ob kompiliert / Tests durchlaufen
             if (!TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) || TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
-               // TODO prüfen, dass nur ein Test fehl schlägt
-               // TODO prüfen, weshalb es nicht kompiliert
-               timeline.stop();
-               timer = time;
-               timeline.play();
-               numberTests++;
-               phases.setPhase("green");
-               labelTestCode.setStyle("");
-               testCode.setEditable(false);
-               labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
-               sourceCode.setEditable(true);
-               compilationError.setText("Schreibe nun den passenden Code zum Test.");
+
+               // prüfen, weshalb es nicht kompiliert: einziger grund darf sein, dass methode nicht gefunden wurde
+               ArrayList<CompileError> compileErrors = (ArrayList<CompileError>) TDDCycle.getCompileErrors(sourceCode.getText(), testCode.getText());
+               if(compileErrors != null) {
+                  if(compileErrors.size() == 1) {
+                     CompileError compileError = compileErrors.get(0);
+                     if(compileError.getMessage().contains("TestClass.java:6:error:cannot find symbol")) {
+                        timeline.stop();
+                        timer = time;
+                        timeline.play();
+                        numberTests++;
+                        phases.setPhase("green");
+                        labelTestCode.setStyle("");
+                        testCode.setEditable(false);
+                        labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
+                        sourceCode.setEditable(true);
+                        compilationError.setText("Schreibe nun den passenden Code zum Test.");
+                     } else {
+                        compilationError.setText(compileError.getMessage());
+                     }
+
+                  } else { // mehr als ein Kompilierfehler
+                     compilationError.setText("");
+                     for(CompileError compileError : compileErrors) {
+                        compilationError.setText(compilationError.getText() + "\n\n" + compileError.getMessage());
+                     }
+                  }
+
+               } else {    // falls kompiliert: ein test muss fehl schlagen
+                  TestResult testResult = TDDCycle.getTestResult(sourceCode.getText(), testCode.getText());
+                  if(testResult.getNumberOfFailedTests() == 1) {
+                     timeline.stop();
+                     timer = time;
+                     timeline.play();
+                     numberTests++;
+                     phases.setPhase("green");
+                     labelTestCode.setStyle("");
+                     testCode.setEditable(false);
+                     labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
+                     sourceCode.setEditable(true);
+                     compilationError.setText("Schreibe nun den passenden Code zum Test.");
+
+                  } else {
+                     compilationError.setText("Es muss genau ein Test fehl schlagen");   // Fehler der Tests ausgeben
+                  }
+               }
             }
          }
 

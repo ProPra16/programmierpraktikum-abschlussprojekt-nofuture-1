@@ -26,6 +26,33 @@ public class TDDCycle extends Phases{
         return compiler.getTestResult();
     }
 
+    public static TestResult getTestResult(String code, String test) {
+        CompilationUnit codeUnit = new CompilationUnit("Class", code, false);
+        CompilationUnit testUnit = new CompilationUnit("TestClass", test, true);
+        JavaStringCompiler compiler = CompilerFactory.getCompiler(codeUnit, testUnit);
+        compiler.compileAndRunTests();
+        CompilerResult compilerResult = compiler.getCompilerResult();
+        if(compilerResult.hasCompileErrors()) { return null; }
+        return compiler.getTestResult();
+    }
+
+
+    public static Collection<CompileError> getCompileErrors(String code, String test){
+        CompilationUnit codeUnit = new CompilationUnit("Class", code, false);
+        CompilationUnit testUnit = new CompilationUnit("TestClass", test, true);
+        JavaStringCompiler compiler = CompilerFactory.getCompiler(codeUnit, testUnit);
+        compiler.compileAndRunTests();
+        CompilerResult compilerResult = compiler.getCompilerResult();
+        if(compilerResult.hasCompileErrors()) {
+            return compilerResult.getCompilerErrorsForCompilationUnit(testUnit);
+        }
+        return null;
+    }
+
+
+
+
+
     public static boolean isCompiling(String code, String test){
         TestResult t = compile(code, test);
         return t != null;
