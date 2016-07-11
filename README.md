@@ -32,3 +32,10 @@ Branch zu vollziehen.
 * geclontes NoFuture Repository unter Lokal hinzufügen
 * bietet bessere Übersicht über alle Branches und Veränderungen
 
+### Gradle Build
+`gradlew tasks`  zeigt an welche tasks zu Verfügung stehen
+ 
+`gradlew build`  baut das Programm
+
+Goto build/libs/NoFuture-1.0-SNAPSHOT.jar
+`java -jar NoFuture-1.0-SNAPSHOT.jar ` Startet das Programm
