@@ -1,6 +1,10 @@
 package tddtLayout;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -12,7 +16,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List  ;
+import java.util.HashMap;
+import java.util.List;
 
 public class LayoutMenuController {
 
@@ -21,7 +26,8 @@ public class LayoutMenuController {
     private static boolean hasBabysteps = false;
     private static int timer = 180;
     private static String exerciseText;
-
+    private HashMap<StringBuilder, StringBuilder> datenListe = new HashMap<>();
+    private static ObservableList<String> data = FXCollections.observableArrayList();
     // FXML
     @FXML
     MenuBar menuBar;
@@ -32,16 +38,18 @@ public class LayoutMenuController {
     @FXML
     Label errorExercise;
     @FXML
-    Label exercise;
+    TextArea exercise;
     @FXML
     HBox timerBox;
     @FXML
     Label dauerText;
+    @FXML
+    ListView <String> listExercises;
 
     // TXT Einlesen
-    private String readTxt(String file) {
+    private StringBuilder readTxt(String file) {
         errorExercise.setText("");
-        String text = "";
+        StringBuilder text = new StringBuilder("");
         try
         {
             StringBuffer buffer = new StringBuffer();
@@ -49,7 +57,7 @@ public class LayoutMenuController {
             for (int n; (n = in.read()) != -1; buffer.append((char) n));
             in.close();
 
-            text = buffer.toString();
+            text.append(buffer.toString());
         }
         catch(FileNotFoundException e) {
             System.out.println("File not found: "+file);
@@ -59,12 +67,12 @@ public class LayoutMenuController {
     }
 
     // Aufgaben in Label anzeigen
-    public void showAnagram() { exercise.setText(readTxt("./Aufgaben/Anagramm.txt")); }
+    /*public void showAnagram() { exercise.setText(readTxt("./Aufgaben/Anagramm.txt")); }
     public void showArray() { exercise.setText(readTxt("./Aufgaben/Array.txt")); }
     public void showFuhrpark() { exercise.setText(readTxt("./Aufgaben/Fuhrpark.txt")); }
     public void showNullzeile() { exercise.setText(readTxt("./Aufgaben/Nullzeile.txt")); }
     public void showPixel() { exercise.setText(readTxt("./Aufgaben/Pixel.txt")); }
-    public void showSortieren() { exercise.setText(readTxt("./Aufgaben/Sortieren.txt")); }
+    public void showSortieren() { exercise.setText(readTxt("./Aufgaben/Sortieren.txt")); }*/
 
     // Checkboxen Handles
     public void setTimerToTwo () { timer = 120; }
@@ -121,28 +129,41 @@ public class LayoutMenuController {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Textdateien (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
-        // eine datei
-        File file = fileChooser.showOpenDialog(null);
-        if(file != null) {
-           exercise.setText(readTxt(file.getAbsolutePath()));
-        }
 
         // mehrere Dateien
-        /*List<File> list = fileChooser.showOpenMultipleDialog(null);
+        List<File> list = fileChooser.showOpenMultipleDialog(null);
         if (list != null) {
             for (File file : list) {
                 String fileDir = file.getAbsolutePath();
-                exercise.setText(readTxt(fileDir));
-
-                *//*StringBuilder filename = new StringBuilder(file.getName());
-                filename.replace(filename.length()-4,filename.length(),"");
-                if (!exerciseMenu.getItems().equals(filename.toString())) {
-                    MenuItem item = new MenuItem();
-                    item.setText(filename.toString());
-                    exerciseMenu.getItems().add(item);
-                }*//*
+                StringBuilder filename = new StringBuilder(file.getName());
+                filename.replace(filename.length() - 4, filename.length(), "");
+                // Dateiname ohne txt und inhalt in HashMap
+                datenListe.put(filename, readTxt(fileDir));
             }
-        }*/
+        }
+        // Dateiname in ObservableArrayList speichern
+        for (HashMap.Entry<StringBuilder, StringBuilder> m : datenListe.entrySet()) {
+            if (!data.contains(m.getKey().toString())) {
+                data.add(m.getKey().toString());
+            }
+        }
+        // Daten in die ListView laden
+        listExercises.setItems(data);
+
+    }
+    @FXML
+    public void viewExercise() {
+        // http://docs.oracle.com/javafx/2/ui_controls/ListViewSample.java.html
+        listExercises.getSelectionModel().selectedItemProperty().addListener(
+                (ov, old_val, new_val) -> {
+                    for (HashMap.Entry<StringBuilder, StringBuilder> m : datenListe.entrySet()) {
+                        if (data.contains(m.getKey().toString())) {
+                            exercise.setText(m.getValue().toString());
+                            // Aufhören zu suchen wenn ein Eintrag vorhanden ist
+                            break;
+                        }
+                    }
+                });
     }
 
     // getter-setter Bereich
