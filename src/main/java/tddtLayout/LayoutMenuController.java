@@ -3,9 +3,7 @@ package tddtLayout;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import tddtMain.TDDTMain;
@@ -14,18 +12,21 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List  ;
 
 public class LayoutMenuController {
 
     // Variablen
     private static boolean hasAddt = false;
     private static boolean hasBabysteps = false;
-    static int timer = 180;
-    static String exerciseText;
+    private static int timer = 180;
+    private static String exerciseText;
 
     // FXML
     @FXML
     MenuBar menuBar;
+    @FXML
+    Menu exerciseMenu;
     @FXML
     ToggleGroup babystepTimeGroup;
     @FXML
@@ -120,11 +121,28 @@ public class LayoutMenuController {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Textdateien (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
-
+        // eine datei
         File file = fileChooser.showOpenDialog(null);
-        if(file != null){
-            exercise.setText(readTxt(file.getAbsolutePath()));
+        if(file != null) {
+           exercise.setText(readTxt(file.getAbsolutePath()));
         }
+
+        // mehrere Dateien
+        /*List<File> list = fileChooser.showOpenMultipleDialog(null);
+        if (list != null) {
+            for (File file : list) {
+                String fileDir = file.getAbsolutePath();
+                exercise.setText(readTxt(fileDir));
+
+                *//*StringBuilder filename = new StringBuilder(file.getName());
+                filename.replace(filename.length()-4,filename.length(),"");
+                if (!exerciseMenu.getItems().equals(filename.toString())) {
+                    MenuItem item = new MenuItem();
+                    item.setText(filename.toString());
+                    exerciseMenu.getItems().add(item);
+                }*//*
+            }
+        }*/
     }
 
     // getter-setter Bereich

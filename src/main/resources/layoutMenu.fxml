@@ -133,7 +133,7 @@
             </Button>
             <MenuBar fx:id="menuBar">
               <menus>
-                <Menu mnemonicParsing="false" text="Aufgaben">
+                <Menu fx:id="exerciseMenu" mnemonicParsing="false" text="Aufgaben">
                     <items>
                         <MenuItem onAction="#showAnagram" text="Anagramm" />
                         <MenuItem onAction="#showArray" text="Array" />
