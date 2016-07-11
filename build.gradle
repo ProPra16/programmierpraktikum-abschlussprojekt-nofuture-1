@@ -3,6 +3,11 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'tddtMain.TDDTMain'
+    }
+}
 
 repositories {
     mavenCentral()
