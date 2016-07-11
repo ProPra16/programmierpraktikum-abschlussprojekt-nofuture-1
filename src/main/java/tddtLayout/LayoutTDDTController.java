@@ -103,11 +103,11 @@ public class LayoutTDDTController
             if (!TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) || TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
 
                // prüfen, weshalb es nicht kompiliert: einziger grund darf sein, dass methode nicht gefunden wurde
-               ArrayList<CompileError> compileErrors = (ArrayList<CompileError>) TDDCycle.getCompileErrors(sourceCode.getText(), testCode.getText());
+               ArrayList<CompileError> compileErrors = new ArrayList(TDDCycle.getCompileErrors(sourceCode.getText(), testCode.getText()));
                if(compileErrors != null) {
                   if(compileErrors.size() == 1) {
                      CompileError compileError = compileErrors.get(0);
-                     if(compileError.getMessage().contains("TestClass.java:6:error:cannot find symbol")) {
+                     if(compileError.toString().contains("error:cannot find symbol")) {
                         timeline.stop();
                         timer = time;
                         timeline.play();
@@ -117,15 +117,15 @@ public class LayoutTDDTController
                         testCode.setEditable(false);
                         labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
                         sourceCode.setEditable(true);
-                        compilationError.setText("Schreibe nun den passenden Code zum Test.");
+                        compilationError.setText("Schreibe nun den passenden Code zum Test.\n\n" + compileError.toString());
                      } else {
-                        compilationError.setText(compileError.getMessage());
+                        compilationError.setText(compileError.toString());
                      }
 
                   } else { // mehr als ein Kompilierfehler
                      compilationError.setText("");
                      for(CompileError compileError : compileErrors) {
-                        compilationError.setText(compilationError.getText() + "\n\n" + compileError.getMessage());
+                        compilationError.setText(compilationError.getText() + "\n\n" + compileError.toString());
                      }
                   }
 
