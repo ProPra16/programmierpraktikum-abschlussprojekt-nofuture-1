@@ -33,9 +33,10 @@ Branch zu vollziehen.
 * bietet bessere Übersicht über alle Branches und Veränderungen
 
 ### Gradle Build
-`gradlew tasks`  zeigt an welche tasks zu Verfügung stehen
+`gradlew tasks`  zeigt an welche *tasks* zur Verfügung stehen.
  
-`gradlew build`  baut das Programm
+`gradlew build`  baut das Programm.
 
-Goto build/libs/NoFuture-1.0-SNAPSHOT.jar
-`java -jar NoFuture-1.0-SNAPSHOT.jar ` Startet das Programm
+Gehe zu *build/libs/NoFuture-1.0-SNAPSHOT.jar* und
+
+`java -jar NoFuture-1.0-SNAPSHOT.jar `  startet das Programm.
