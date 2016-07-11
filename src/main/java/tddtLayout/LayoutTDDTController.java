@@ -30,6 +30,7 @@ public class LayoutTDDTController
    int time = 0;
    Phases phases = new Phases("red");
    String oldSourceCode;
+   String oldTestCode;
    Timeline timeline = new Timeline();
    Babysteps babysteps;
    int buttonClicked = 0;
@@ -71,10 +72,11 @@ public class LayoutTDDTController
       labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
       exerciseTxt.setText(LayoutMenuController.getExerciseText());
       testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
+      oldTestCode = testCode.getText();
       testCode.setEditable(true);
       sourceCode.setText("public class Class {\n  // TODO\n}");
       sourceCode.setEditable(false);
-      oldSourceCode = "public class Class {\n  // TODO\n}";
+      oldSourceCode = sourceCode.getText();
       compilationError.setText("Schreibe den Testcode.");
    }
 
@@ -118,6 +120,7 @@ public class LayoutTDDTController
                         labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
                         sourceCode.setEditable(true);
                         compilationError.setText("Schreibe nun den passenden Code zum Test.\n\n" + compileError.toString());
+                        oldTestCode = testCode.getText();
                      } else {
                         compilationError.setText(compileError.toString());
                      }
@@ -142,7 +145,7 @@ public class LayoutTDDTController
                      labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
                      sourceCode.setEditable(true);
                      compilationError.setText("Schreibe nun den passenden Code zum Test.");
-
+                     oldTestCode = testCode.getText();
                   } else {
                      compilationError.setText("Es muss genau ein Test fehl schlagen");   // Fehler der Tests ausgeben
                   }
@@ -216,21 +219,23 @@ public class LayoutTDDTController
 
                  if (timer == 0) {
                     timeline.stop();
-                    if (phases.getPhase().equals("red")) {
-                       sourceCode.setText(babysteps.getCode());
-                       compilationError.setText("SourceCode zurückgesetzt.");
-                       phases.setPhase(babysteps.getPhase());
-
-                    }
                     if (phases.getPhase().equals("green")) {
-                       testCode.setText(babysteps.getTestCode());
-                       compilationError.setText("TestCode zurückgesetzt.");
-                       phases.setPhase(babysteps.getPhase());
+                       sourceCode.setText(oldSourceCode);
+                       compilationError.setText("SourceCode zurückgesetzt.");
+                       timer = time;
+                       timeline.play();
+                       //phases.setPhase(babysteps.getPhase());
 
                     }
+                    if (phases.getPhase().equals("red")) {
+                       testCode.setText(oldTestCode);
+                       compilationError.setText("TestCode zurückgesetzt.");
+                       timer = time;
+                       timeline.play();
+                       //phases.setPhase(babysteps.getPhase());
 
-                    System.out.println("code: \n" + sourceCode.getText() + "testcode:\n " + testCode.getText() + "phase:\n " + phases.getPhase());
-
+                    }
+                    //System.out.println("code: \n" + sourceCode.getText() + "testcode:\n " + testCode.getText() + "phase:\n " + phases.getPhase());
                  }
               }));
       timeline.play();
@@ -246,7 +251,7 @@ public class LayoutTDDTController
          labelSourceCode.setStyle("");
          labelRefactor.setStyle("-fx-font-weight: bold;");
          oldSourceCode = sourceCode.getText();
-         testCode.setEditable(true);
+         testCode.setEditable(true);                             // darf nicht nur der Code verbesert werden?
          sourceCode.setEditable(true);
          compilationError.setText("Du kannst deinen Code verbessern und wenn du fertig bist nochmal auf den Button 'Refactor' clicken.");
 
