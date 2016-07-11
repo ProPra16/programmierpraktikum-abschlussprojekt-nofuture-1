@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
+
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tddtLayout.LayoutATDDController">
    <center>
       <GridPane prefHeight="588.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
@@ -13,7 +20,7 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="163.0" minHeight="0.0" prefHeight="43.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="594.0" minHeight="10.0" prefHeight="550.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="594.0" minHeight="10.0" prefHeight="545.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aufgabe:">
@@ -23,7 +30,7 @@
             </Text>
             <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <tabs>
-                <Tab fx:id="acceptanceTestTab" text="Acceptance Test">
+                <Tab fx:id="acceptanceTestTab" text="Akzeptanztest">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0">
                            <children>
@@ -32,7 +39,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="Test Code">
+                <Tab text="Test-Code">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -41,7 +48,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="Source Code">
+                  <Tab text="Source-Code">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -92,11 +99,20 @@
                         <Insets top="10.0" />
                      </padding>
                   </HBox>
-                  <Label fx:id="statusCycle" alignment="CENTER">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Status: ">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Label fx:id="statusCycle" alignment="CENTER">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -182,7 +198,7 @@
          <bottom>
             <GridPane prefHeight="48.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button onAction="#handleRunButton" text="Starten" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button onAction="#handleRunButton" text="Starten" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -190,7 +206,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button onAction="#handleBackToTestsButton" text="Zurück zum Test Code" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button onAction="#handleBackToTestsButton" text="Zum Test-Code" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -206,7 +222,16 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button onAction="#handleRefactor" text="Refactor" GridPane.columnIndex="3" GridPane.halignment="RIGHT">
+                  <Button onAction="#handleRefactor" text="Refactor" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <AmbientLight color="CHARTREUSE" lightOn="true" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#handleBackToAcceptance" text="Zum Akzeptanztest" GridPane.columnIndex="2">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -216,10 +241,9 @@
                   </Button>
                </children>
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="340.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="658.0" minWidth="10.0" prefWidth="658.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="263.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
