@@ -1,3 +1,24 @@
+Protokoll vom 11.7.2016
+
+Verteilen der Aufgaben für die nächsten Tage:
+Anne A: - Benutzerhandbuch schreiben
+        - README schreiben
+        - Rechtschreibfehler in den Aufgaben korrigieren
+        - Namen der zu schreibenden Klassen aus den Aufgaben entfernen
+        - falls genug Zeit: Programm hübsch machen
+
+Tim: - Slider für die Babystep Zeit
+     - Logik in der Klasse TDDCycle mit GUI verbinden
+
+Philipp: - Label statusCycle
+         - Textdatei für Aufgaben von außen laden
+
+Cedric: - Akzeptanztests
+
+Anne B: - Babysteps
+        - alten SourceCode in TextArea schreiben, wenn Zeit abgelaufen ist
+
+
 Protokoll vom 7.7.2016
 
 - Gradle Probleme (compiliert nicht mehr)
