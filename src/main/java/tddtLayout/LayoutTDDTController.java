@@ -143,6 +143,8 @@ public class LayoutTDDTController
    public void handleBackToTestsButton()
    {
       if (phases.getPhase().equals("green")) {
+         timeline.stop();
+         timer = time;
          timeline.play();
          numberTests--;
          sourceCode.setText(oldSourceCode);
