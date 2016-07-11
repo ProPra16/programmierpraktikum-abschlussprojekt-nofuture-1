@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane
-        xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="tddtLayout.LayoutMenuController">
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="tddtLayout.LayoutMenuController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -19,9 +20,7 @@
           <RowConstraints maxHeight="224.0" minHeight="10.0" prefHeight="132.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <CheckBox mnemonicParsing="false" text="ATDD"
-                      GridPane.columnIndex="1" GridPane.rowIndex="1"
-                      onAction="#handleATDD">
+            <CheckBox mnemonicParsing="false" onAction="#handleATDD" text="ATDD" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -37,9 +36,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </Label>
-            <CheckBox mnemonicParsing="false" text="Babysteps"
-                      GridPane.rowIndex="1"
-                      onAction="#handleBabystep">
+            <CheckBox mnemonicParsing="false" onAction="#handleBabystep" text="Babysteps" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -112,8 +109,7 @@
                   </HBox>
                </children>
             </GridPane>
-            <Label fx:id="errorExercise"
-                   GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Label fx:id="errorExercise" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -127,16 +123,24 @@
    <left>
       <VBox fx:id="exerciseBox" prefHeight="505.0" prefWidth="614.0" BorderPane.alignment="CENTER">
          <children>
+            <Button mnemonicParsing="false" onAction="#handleNewExercise" text="Aufgabe hinzufügen">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
             <MenuBar fx:id="menuBar">
               <menus>
                 <Menu mnemonicParsing="false" text="Aufgaben">
                     <items>
-                        <MenuItem text="Anagramm" onAction="#showAnagram"/>
-                        <MenuItem text="Array" onAction="#showArray"/>
-                        <MenuItem text="Fuhrpark" onAction="#showFuhrpark"/>
-                        <MenuItem text="Nullzeile" onAction="#showNullzeile"/>
-                        <MenuItem text="Pixel" onAction="#showPixel"/>
-                        <MenuItem text="Sortieren" onAction="#showSortieren"/>
+                        <MenuItem onAction="#showAnagram" text="Anagramm" />
+                        <MenuItem onAction="#showArray" text="Array" />
+                        <MenuItem onAction="#showFuhrpark" text="Fuhrpark" />
+                        <MenuItem onAction="#showNullzeile" text="Nullzeile" />
+                        <MenuItem onAction="#showPixel" text="Pixel" />
+                        <MenuItem onAction="#showSortieren" text="Sortieren" />
                     </items>
                 </Menu>
               </menus>
@@ -177,12 +181,12 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false"
-                    onAction="#handleExitButton" text="Exit"
-                    GridPane.halignment="RIGHT" GridPane.valignment="CENTER"
-                    GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Button mnemonicParsing="false" onAction="#handleExitButton" text="Exit" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -190,10 +194,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </Button>
-            <Button mnemonicParsing="false"
-                    onAction="#handleStartMenuButton" text="Start"
-                    GridPane.halignment="LEFT" GridPane.valignment="CENTER"
-                    GridPane.columnIndex="0" GridPane.rowIndex="3">
+            <Button mnemonicParsing="false" onAction="#handleStartMenuButton" text="Start" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>

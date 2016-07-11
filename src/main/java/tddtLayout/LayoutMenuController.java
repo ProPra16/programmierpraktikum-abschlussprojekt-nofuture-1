@@ -1,16 +1,16 @@
 package tddtLayout;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import tddtMain.TDDTMain;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -66,7 +66,7 @@ public class LayoutMenuController {
     public void showSortieren() { exercise.setText(readTxt("./Aufgaben/Sortieren.txt")); }
 
     // Checkboxen Handles
-    public void setTimerToTwo () { timer = 12; }
+    public void setTimerToTwo () { timer = 120; }
     public void setTimerToThree () { timer = 180; }
     public void setTimerToFour () { timer = 240; }
     public void setTimerToFive () { timer = 300; }
@@ -115,8 +115,16 @@ public class LayoutMenuController {
 
         }
     }
-    public void handleBackToTestsButton(ActionEvent actionEvent) throws IOException {
+    public void handleNewExercise () {
+        // http://java-buddy.blogspot.de/2012/05/read-text-file-with-javafx-filechooser.html
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Textdateien (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
 
+        File file = fileChooser.showOpenDialog(null);
+        if(file != null){
+            exercise.setText(readTxt(file.getAbsolutePath()));
+        }
     }
 
     // getter-setter Bereich
