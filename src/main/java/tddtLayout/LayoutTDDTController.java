@@ -159,6 +159,7 @@ public class LayoutTDDTController
 
          // muss kompilieren und die tests müssen durchlaufen
          if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
+            timeline.stop();
             compilationError.setText("Test bestanden. Click den Button 'Refactor'.");
             buttonClicked = 0;
 
@@ -246,7 +247,6 @@ public class LayoutTDDTController
    {
       if (buttonClicked == 0) {
          buttonClicked++;
-         timeline.stop();
          phases.setPhase("refactor");
          labelSourceCode.setStyle("");
          labelRefactor.setStyle("-fx-font-weight: bold;");
@@ -254,6 +254,8 @@ public class LayoutTDDTController
          testCode.setEditable(true);                             // darf nicht nur der Code verbesert werden?
          sourceCode.setEditable(true);
          compilationError.setText("Du kannst deinen Code verbessern und wenn du fertig bist nochmal auf den Button 'Refactor' clicken.");
+         labelTime.setVisible(false);
+         textRemainingTime.setVisible(false);
 
       } else {
          if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
@@ -265,11 +267,15 @@ public class LayoutTDDTController
             timer = time;
             timeline.play();
             compilationError.setText("Schreibe einen neuen Test. ");
+            if (LayoutMenuController.getBabysteps()) {
+               labelTime.setVisible(true);
+               textRemainingTime.setVisible(true);
+            }
          }
       }
       //TODO
-      testCode.setEditable(true);
-      sourceCode.setEditable(true);
+     // testCode.setEditable(true);
+     // sourceCode.setEditable(true);
    }
 
 }
