@@ -10,59 +10,43 @@ public class TDDCycle extends Phases{
 
     private TestResult tr;
     private CompilerResult cr;
+    private CompilationUnit codeUnit;
+    private CompilationUnit testUnit;
 
     public TDDCycle(String phase) {
         super(phase);
+        tr = null;
+        cr = null;
     }
 
     public void compile(String code, String test){
-        CompilationUnit codeUnit = new CompilationUnit("Class", code, false);
-        CompilationUnit testUnit = new CompilationUnit("TestClass", test, true);
+        codeUnit = new CompilationUnit("Class", code, false);
+        testUnit = new CompilationUnit("TestClass", test, true);
         JavaStringCompiler compiler = CompilerFactory.getCompiler(codeUnit, testUnit);
         compiler.compileAndRunTests();
         cr = compiler.getCompilerResult();
         tr = compiler.getTestResult();
     }
 
-    public static TestResult getTestResult(String code, String test) {
-        CompilationUnit codeUnit = new CompilationUnit("Class", code, false);
-        CompilationUnit testUnit = new CompilationUnit("TestClass", test, true);
-        JavaStringCompiler compiler = CompilerFactory.getCompiler(codeUnit, testUnit);
-        compiler.compileAndRunTests();
-        CompilerResult compilerResult = compiler.getCompilerResult();
-        if(compilerResult.hasCompileErrors()) { return null; }
-        return compiler.getTestResult();
+    public Collection<CompileError> getCompileErrorsTest(){
+        return  cr.getCompilerErrorsForCompilationUnit(testUnit);
     }
 
-
-    public static Collection<CompileError> getCompileErrors(String code, String test){
-        CompilationUnit codeUnit = new CompilationUnit("Class", code, false);
-        CompilationUnit testUnit = new CompilationUnit("TestClass", test, true);
-        JavaStringCompiler compiler = CompilerFactory.getCompiler(codeUnit, testUnit);
-        compiler.compileAndRunTests();
-        CompilerResult compilerResult = compiler.getCompilerResult();
-        if(compilerResult.hasCompileErrors()) {
-            return compilerResult.getCompilerErrorsForCompilationUnit(testUnit);
-        }
-        return null;
+    public Collection<CompileError> getCompileErrorsCode(){
+        return  cr.getCompilerErrorsForCompilationUnit(codeUnit);
     }
 
-
-
-
-
-    public static boolean isCompiling(String code, String test){
-        TestResult t = compile(code, test);
-        return t != null;
+    public boolean hasCompileErrors(){
+        return cr != null && cr.hasCompileErrors();
     }
 
-    public static boolean isTestfailing(String code, String test){
-        TestResult t = compile(code, test);
-        return t != null && t.getNumberOfFailedTests() > 0;
+    public boolean hasFailingTests(){
+        return tr != null && tr.getNumberOfFailedTests() > 0;
     }
 
     public void next(String code, String test){
-        if(Objects.equals(getPhase(), "red")){
+        //TODO: wieder nutzbar machen
+        /*if(Objects.equals(getPhase(), "red")){
             if(isCompiling(code, test) && isTestfailing(code, test)){
                 setPhase("green");
             }
@@ -74,6 +58,6 @@ public class TDDCycle extends Phases{
             if(!isTestfailing(code, test)){
                 setPhase("red");
             }
-        }
+        }*/
     }
 }
