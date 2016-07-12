@@ -26,12 +26,9 @@ public class LayoutTDDTController
 
    // Variablen
    int numberTests = 0;
-   int timer = 0;
-   int time = 0;
    Phases phases = new Phases("red");
    String oldSourceCode;
    String oldTestCode;
-   Timeline timeline = new Timeline();
    Babysteps babysteps;
    int buttonClicked = 0;
 
@@ -43,9 +40,9 @@ public class LayoutTDDTController
    @FXML
    Text textRemainingTime;
    @FXML
-   public TextArea sourceCode;
+   TextArea sourceCode;
    @FXML
-   public TextArea testCode;
+   TextArea testCode;
    @FXML
    Label labelTestCode;
    @FXML
