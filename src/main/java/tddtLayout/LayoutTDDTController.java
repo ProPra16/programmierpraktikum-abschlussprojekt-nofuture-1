@@ -124,6 +124,7 @@ public class LayoutTDDTController
                  if (cycle.getCompileErrorsTest().size() == 1) {
                      if (cycle.getCompileErrorsTest().toArray()[0].toString().contains("error:cannot find symbol")) {
                          oldTestCode = testCode.getText();
+                         numberTests++;
                          setPhaseGreen();
                      }
                  }
@@ -144,7 +145,9 @@ public class LayoutTDDTController
 
          // muss kompilieren und die tests müssen durchlaufen
          if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
-            babysteps.stop();
+             if (LayoutMenuController.getBabysteps()) {
+                 babysteps.stop();
+             }
             oldSourceCode = sourceCode.getText();
             statusCycle.setText("Test bestanden. Click den Button 'Refactor'.");
             compilationError.setText("");
@@ -169,7 +172,10 @@ public class LayoutTDDTController
 
    public void handleBackToTestsButton(){
       if (cycle.getPhase().equals("green")) {
-          babysteps.reset();
+          if (LayoutMenuController.getBabysteps()) {
+              babysteps.reset();
+          }
+          numberTests--;
           resetCode(null);
       }
    }
@@ -194,8 +200,10 @@ public class LayoutTDDTController
 
          if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
             setPhaseRed();
-            babysteps.reset();
-            babysteps.start();
+             if (LayoutMenuController.getBabysteps()) {
+                 babysteps.reset();
+                 babysteps.start();
+             }
             statusCycle.setText("Schreibe einen neuen Test.");
             if (LayoutMenuController.getBabysteps()) {
                labelTime.setVisible(true);
