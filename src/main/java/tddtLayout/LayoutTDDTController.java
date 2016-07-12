@@ -79,6 +79,8 @@ public class LayoutTDDTController
 
     private void setPhaseRed() {
         cycle.setPhase("red");
+        labelSourceCode.setStyle("");
+        labelRefactor.setStyle("");
         labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
         testCode.setEditable(true);
         sourceCode.setEditable(false);
@@ -88,10 +90,21 @@ public class LayoutTDDTController
     private void setPhaseGreen() {
         cycle.setPhase("green");
         labelTestCode.setStyle("");
+        labelRefactor.setStyle("");
         labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
         testCode.setEditable(false);
         sourceCode.setEditable(true);
         statusCycle.setText("Schreibe nun den passenden Code zum Test.");
+    }
+
+    private void setPhaseRefactor() {
+        cycle.setPhase("refactor");
+        labelTestCode.setStyle("");
+        labelSourceCode.setStyle("");
+        labelRefactor.setStyle("-fx-font-weight: bold;");
+        testCode.setEditable(false);
+        sourceCode.setEditable(true);
+        statusCycle.setText("Verbessere deinen Code oder click auf den Button 'Refactor'.");
     }
 
 
@@ -183,39 +196,31 @@ public class LayoutTDDTController
       TDDTMain.rootPane.setCenter(loader.load(getClass().getResource("/layoutMenu.fxml")));
    }
 
-   public void handleRefactor()
-   {
-      if (buttonClicked == 0) {
+   public void handleRefactor(){
+      if (buttonClicked == 0 && cycle.getPhase().equals("green")) {
          buttonClicked++;
-         phases.setPhase("refactor");
-         labelSourceCode.setStyle("");
-         labelRefactor.setStyle("-fx-font-weight: bold;");
-         oldSourceCode = sourceCode.getText();
-         testCode.setEditable(true);                             // darf nicht nur der Code verbesert werden?
-         sourceCode.setEditable(true);
-         statusCycle.setText("Verbesser deinen Code oder nicht und click auf Button 'Refactor' .");
+         babysteps.stop();
+         setPhaseRefactor();
          labelTime.setVisible(false);
          textRemainingTime.setVisible(false);
 
       } else {
-         if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
-            phases.setPhase("red");
-            labelRefactor.setStyle("");
-            labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
-            testCode.setEditable(true);
-            sourceCode.setEditable(false);
-            timer = time;
-            timeline.play();
-            statusCycle.setText("Schreibe einen neuen Test. ");
+          cycle.compile(sourceCode.getText(), testCode.getText());
+
+         if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
+            setPhaseRed();
+            babysteps.reset();
+            babysteps.start();
+            statusCycle.setText("Schreibe einen neuen Test.");
             if (LayoutMenuController.getBabysteps()) {
                labelTime.setVisible(true);
                textRemainingTime.setVisible(true);
             }
          }
          else {
-            ArrayList<CompileError> compileErrors = new ArrayList(TDDCycle.getCompileErrors(sourceCode.getText(), testCode.getText()));
-            CompileError compileError = compileErrors.get(0);
-            compilationError.setText(compileError.toString());
+             cycle.getCompileErrorsCode().forEach((s) -> {
+                 compilationError.setText(s + "\n");
+             });
 
          }
       }
