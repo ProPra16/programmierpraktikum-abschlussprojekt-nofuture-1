@@ -37,4 +37,4 @@ Branch zu vollziehen.
  
 `gradlew build`  baut das Programm.
 
-`gradle run`  startet das Programm.
+`gradlew run`  startet das Programm.
