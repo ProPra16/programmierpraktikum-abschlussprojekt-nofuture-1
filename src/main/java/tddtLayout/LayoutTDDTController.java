@@ -190,7 +190,9 @@ public class LayoutTDDTController
    public void handleRefactor(){
       if (buttonClicked == 0 && cycle.getPhase().equals("green")) {
          buttonClicked++;
-         babysteps.stop();
+          if (LayoutMenuController.getBabysteps()) {
+              babysteps.stop();
+          }
          setPhaseRefactor();
          labelTime.setVisible(false);
          textRemainingTime.setVisible(false);
