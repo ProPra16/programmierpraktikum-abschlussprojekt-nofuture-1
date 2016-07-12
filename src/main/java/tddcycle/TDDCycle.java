@@ -43,21 +43,4 @@ public class TDDCycle extends Phases{
     public boolean hasFailingTest(){
         return tr != null && tr.getNumberOfFailedTests() == 1;
     }
-
-    public void next(String code, String test){
-        //TODO: wieder nutzbar machen
-        /*if(Objects.equals(getPhase(), "red")){
-            if(isCompiling(code, test) && isTestfailing(code, test)){
-                setPhase("green");
-            }
-        }else if(Objects.equals(getPhase(), "green")){
-            if(!isTestfailing(code, test)){
-                setPhase("refactor");
-            }
-        }else if(Objects.equals(getPhase(), "refactor")){
-            if(!isTestfailing(code, test)){
-                setPhase("red");
-            }
-        }*/
-    }
 }
