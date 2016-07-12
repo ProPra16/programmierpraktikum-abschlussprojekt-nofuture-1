@@ -164,7 +164,7 @@ public class LayoutTDDTController
         for (int i = 0; i < parts.length; i++) {
             if (parts[i].contains("@Test")) newNumberTests++;
         }
-        return newNumberTests - numberTests != 1;
+        return newNumberTests - numberTests == 1;
     }
 
    public void handleBackToTestsButton(){
