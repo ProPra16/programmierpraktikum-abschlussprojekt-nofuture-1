@@ -22,6 +22,7 @@ public class Babysteps extends SimpleStringProperty{
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), (ActionEvent e) -> {
                 time++;
+                setValue(time + "sec");
                 if(time >= max_time) {
                     callback.apply(null);
                     reset();
@@ -31,6 +32,7 @@ public class Babysteps extends SimpleStringProperty{
 
     public void reset(){
         this.time = 0;
+        setValue(time + "sec");
     }
 
     public void start(){
