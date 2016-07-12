@@ -188,6 +188,16 @@ public class LayoutTDDTController
       }*/
    }
 
+    public boolean hasNewTest(){
+        int newNumberTests = 0;
+        String testCodeText = testCode.getText();
+        String[] parts = testCodeText.split(" ");
+        for (int i = 0; i < parts.length; i++) {
+            if (parts[i].contains("@Test")) newNumberTests++;
+        }
+        return newNumberTests - numberTests != 1;
+    }
+
    public void handleBackToTestsButton()
    {
       if (phases.getPhase().equals("green")) {
