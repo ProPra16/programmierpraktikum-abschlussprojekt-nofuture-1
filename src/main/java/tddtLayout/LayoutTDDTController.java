@@ -155,21 +155,6 @@ public class LayoutTDDTController
              });
          }
       }
-        // Phase refactor
-      /*else if (phases.getPhase().equals("refactor")) {
-
-         // Phase refactor
-      } else if (phases.getPhase().equals("refactor")) {
-         // muss kompilieren und die tests müssen durchlaufen
-         if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
-            phases.setPhase("red");
-            labelRefactor.setStyle("");
-            labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
-            testCode.setEditable(true);
-            sourceCode.setEditable(false);
-         }
-
-      }*/
    }
 
     public boolean hasNewTest(){
