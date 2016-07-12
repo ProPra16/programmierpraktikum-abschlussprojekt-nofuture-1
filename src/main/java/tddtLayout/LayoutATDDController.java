@@ -11,7 +11,7 @@ public class LayoutATDDController extends LayoutTDDTController{
     // Variablen
 
     // FXML
-   @FXML
+  /* @FXML
    public TextArea acceptanceTestCode;
    @FXML
    Label labelAzeptanzTest;
@@ -104,5 +104,5 @@ public class LayoutATDDController extends LayoutTDDTController{
    public void handleBackToAcceptance () {
       // TODO
    }
-
+*/
 }
