@@ -37,6 +37,4 @@ Branch zu vollziehen.
  
 `gradlew build`  baut das Programm.
 
-Gehe zu *build/libs/NoFuture-1.0-SNAPSHOT.jar* und
-
-`java -jar NoFuture-1.0-SNAPSHOT.jar `  startet das Programm.
+`gradle run`  startet das Programm.
