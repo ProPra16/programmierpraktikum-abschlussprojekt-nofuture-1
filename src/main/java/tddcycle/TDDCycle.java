@@ -8,22 +8,20 @@ import java.util.Objects;
 
 public class TDDCycle extends Phases{
 
+    private TestResult tr;
+    private CompilerResult cr;
+
     public TDDCycle(String phase) {
         super(phase);
     }
 
-    private static TestResult compile(String code, String test){
+    public void compile(String code, String test){
         CompilationUnit codeUnit = new CompilationUnit("Class", code, false);
         CompilationUnit testUnit = new CompilationUnit("TestClass", test, true);
         JavaStringCompiler compiler = CompilerFactory.getCompiler(codeUnit, testUnit);
         compiler.compileAndRunTests();
-        CompilerResult compilerResult = compiler.getCompilerResult();
-        if(compilerResult.hasCompileErrors()) {
-            Collection<CompileError> compileErrors = compilerResult.getCompilerErrorsForCompilationUnit(testUnit);
-            compileErrors.forEach(System.out::println);
-            return null;
-        }
-        return compiler.getTestResult();
+        cr = compiler.getCompilerResult();
+        tr = compiler.getTestResult();
     }
 
     public static TestResult getTestResult(String code, String test) {
