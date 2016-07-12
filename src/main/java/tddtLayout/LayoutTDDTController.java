@@ -26,12 +26,12 @@ public class LayoutTDDTController
 
    // Variablen
    int numberTests = 0;
-   Phases phases = new Phases("red");
-   String oldSourceCode;
-   String oldTestCode;
+   TDDCycle cycle = new TDDCycle("red");
    Babysteps babysteps;
    int buttonClicked = 0;
 
+   String oldSourceCode = "public class Class {\n  // TODO\n}";
+   String oldTestCode = "import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}";
 
    @FXML
    TextArea exerciseTxt;
@@ -55,31 +55,38 @@ public class LayoutTDDTController
    Label statusCycle;
 
    @FXML
-   public void initialize()
-   {
-      if (LayoutMenuController.getBabysteps()) {
-         timer = LayoutMenuController.getTimer();
-         time = timer;
-         labelTime.setText(Integer.toString(timer));
-         timeline();
-      } else {
+   public void initialize(){
+        if (LayoutMenuController.getBabysteps()) {
+         babysteps = new Babysteps(LayoutMenuController.getTimer(), this::resetCode);
+         labelTime.textProperty().bind(babysteps);
+        } else {
          labelTime.setVisible(false);
          textRemainingTime.setVisible(false);
-      }
-      labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
-      exerciseTxt.setText(LayoutMenuController.getExerciseText());
-      testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
-      oldTestCode = testCode.getText();
-      testCode.setEditable(true);
-      sourceCode.setText("public class Class {\n  // TODO\n}");
-      sourceCode.setEditable(false);
-      oldSourceCode = sourceCode.getText();
-      statusCycle.setText("Schreibe den Testcode.");
+        }
+        exerciseTxt.setText(LayoutMenuController.getExerciseText());
+        resetCode(null);
+        setPhaseRed();
    }
 
+   private Object resetCode(Object o) {
+       testCode.setText(oldTestCode);
+       sourceCode.setText(oldSourceCode);
+       if(cycle.getPhase().equals("green")){
+            setPhaseRed();
+       }
+       return null;
+   }
 
-   public void handleRunButton()
-   {
+    private void setPhaseRed() {
+        cycle.setPhase("red");
+        labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
+        testCode.setEditable(true);
+        sourceCode.setEditable(false);
+        statusCycle.setText("Schreibe den Testcode.");
+    }
+
+
+    public void handleRunButton(){
 
       if (timer == 0) timeline.stop();
       // Phase rot
