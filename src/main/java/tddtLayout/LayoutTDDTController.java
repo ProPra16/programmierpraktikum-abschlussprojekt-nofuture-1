@@ -85,77 +85,42 @@ public class LayoutTDDTController
         statusCycle.setText("Schreibe den Testcode.");
     }
 
+    private void setPhaseGreen() {
+        cycle.setPhase("green");
+        labelTestCode.setStyle("");
+        labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
+        testCode.setEditable(false);
+        sourceCode.setEditable(true);
+        statusCycle.setText("Schreibe nun den passenden Code zum Test.");
+    }
+
 
     public void handleRunButton(){
-
-      if (timer == 0) timeline.stop();
       // Phase rot
-      if (phases.getPhase().equals("red")) {
+      if (cycle.getPhase().equals("red")) {
 
          // sollte nicht kompilieren oder ein test soll fehl schlagen
 
-         // überprüfen, dass genau ein Test mehr vorhanden ist als vorher
-         int newNumberTests = 0;
-         String testCodeText = testCode.getText();
-         String[] parts = testCodeText.split(" ");
-         for (int i = 0; i < parts.length; i++) {
-            if (parts[i].contains("@Test")) newNumberTests++;
-         }
-         // System.out.println("number Tests = " + numberTests + "\nNumber New Tests = " + newNumberTests);
-         if (newNumberTests - numberTests != 1)
-            statusCycle.setText("Es muss genau ein neuer Test geschrieben werden");   // TODO in label schreiben (unter Aufgabentext?)
-         else {
-            // testen, ob kompiliert / Tests durchlaufen
-            if (!TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) || TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
+         if (!hasNewTest()) {
+             statusCycle.setText("Es muss genau ein neuer Test geschrieben werden");   // TODO in label schreiben (unter Aufgabentext?)
+         } else {
 
-               // prüfen, weshalb es nicht kompiliert: einziger grund darf sein, dass methode nicht gefunden wurde
-               ArrayList<CompileError> compileErrors = new ArrayList(TDDCycle.getCompileErrors(sourceCode.getText(), testCode.getText()));
-               if(compileErrors != null) {
-                  if(compileErrors.size() == 1) {
-                     CompileError compileError = compileErrors.get(0);
-                     if(compileError.toString().contains("error:cannot find symbol")) {
-                        timeline.stop();
-                        timer = time;
-                        timeline.play();
-                        numberTests++;
-                        phases.setPhase("green");
-                        labelTestCode.setStyle("");
-                        testCode.setEditable(false);
-                        labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
-                        sourceCode.setEditable(true);
-                        compilationError.setText( compileError.toString());
-                        oldTestCode = testCode.getText();
-                     } else {
-                        compilationError.setText(compileError.toString());
+             cycle.compile(sourceCode.getText(), testCode.getText());
+
+             if(cycle.hasCompileErrors()){
+                 if(cycle.getCompileErrorsTest().size() == 1) {
+                     if(cycle.getCompileErrorsTest().toArray()[0].toString().contains("error:cannot find symbol")) {
+                         setPhaseGreen();
                      }
-
-                  } else { // mehr als ein Kompilierfehler
-                     statusCycle.setText("");
-                     for(CompileError compileError : compileErrors) {
-                        compilationError.setText(statusCycle.getText() + "\n\n" + compileError.toString());
-                     }
-                  }
-
-               } else {    // falls kompiliert: ein test muss fehl schlagen
-                  TestResult testResult = TDDCycle.getTestResult(sourceCode.getText(), testCode.getText());
-                  if(testResult.getNumberOfFailedTests() == 1) {
-                     timeline.stop();
-                     timer = time;
-                     timeline.play();
-                     numberTests++;
-                     phases.setPhase("green");
-                     labelTestCode.setStyle("");
-                     testCode.setEditable(false);
-                     labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
-                     sourceCode.setEditable(true);
-                     statusCycle.setText("Schreibe nun den passenden Code zum Test.");
-                     oldTestCode = testCode.getText();
-                  } else {
-                     statusCycle.setText("Es muss genau ein Test fehl schlagen");   // Fehler der Tests ausgeben
-                  }
-               }
-            }
-         }
+                 }
+                 cycle.getCompileErrorsTest().forEach((s) -> {
+                     compilationError.setText(s + "\n");
+                 });
+             }else if(cycle.hasFailingTest()){
+                 setPhaseGreen();
+             }else{
+                 statusCycle.setText("Es muss genau ein Test fehl schlagen");
+             }
 
          // Phase grün
       } else if (phases.getPhase().equals("green")) {

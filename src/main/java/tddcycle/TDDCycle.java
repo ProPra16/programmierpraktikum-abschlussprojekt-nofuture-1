@@ -40,8 +40,8 @@ public class TDDCycle extends Phases{
         return cr != null && cr.hasCompileErrors();
     }
 
-    public boolean hasFailingTests(){
-        return tr != null && tr.getNumberOfFailedTests() > 0;
+    public boolean hasFailingTest(){
+        return tr != null && tr.getNumberOfFailedTests() == 1;
     }
 
     public void next(String code, String test){
