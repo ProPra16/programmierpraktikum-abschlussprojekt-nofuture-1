@@ -73,7 +73,7 @@ public class LayoutMenuController {
     }
     public void handleStartMenuButton() throws IOException {
         if ("".equals(exercise.getText())) {
-            errorExercise.setText("You need to choose an exercise");
+            errorExercise.setText("Wähle eine Aufgabe aus!");
 
         }
         else {

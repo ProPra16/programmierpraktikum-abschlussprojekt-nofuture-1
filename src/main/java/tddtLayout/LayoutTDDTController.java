@@ -119,16 +119,16 @@ public class LayoutTDDTController
                         testCode.setEditable(false);
                         labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
                         sourceCode.setEditable(true);
-                        statusCycle.setText("Schreibe nun den passenden Code zum Test.\n\n" + compileError.toString());
+                        compilationError.setText( compileError.toString());
                         oldTestCode = testCode.getText();
                      } else {
-                        statusCycle.setText(compileError.toString());
+                        compilationError.setText(compileError.toString());
                      }
 
                   } else { // mehr als ein Kompilierfehler
                      statusCycle.setText("");
                      for(CompileError compileError : compileErrors) {
-                        statusCycle.setText(statusCycle.getText() + "\n\n" + compileError.toString());
+                        compilationError.setText(statusCycle.getText() + "\n\n" + compileError.toString());
                      }
                   }
 
@@ -156,11 +156,12 @@ public class LayoutTDDTController
          // Phase grün
       } else if (phases.getPhase().equals("green")) {
 
-
+            statusCycle.setText("");
          // muss kompilieren und die tests müssen durchlaufen
          if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
             timeline.stop();
             statusCycle.setText("Test bestanden. Click den Button 'Refactor'.");
+            compilationError.setText("");
             buttonClicked = 0;
 
          }
@@ -225,15 +226,24 @@ public class LayoutTDDTController
                        statusCycle.setText("SourceCode zurückgesetzt.");
                        timer = time;
                        timeline.play();
-                       //phases.setPhase(babysteps.getPhase());
+                       phases.setPhase("red");
+                       labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
+                       testCode.setEditable(true);
+                       labelSourceCode.setStyle("");
+                       sourceCode.setEditable(false);
 
                     }
-                    if (phases.getPhase().equals("red")) {
+                    else if (phases.getPhase().equals("red")) {
                        testCode.setText(oldTestCode);
                        statusCycle.setText("TestCode zurückgesetzt.");
                        timer = time;
-                       timeline.play();
-                       //phases.setPhase(babysteps.getPhase());
+                       timeline.stop();
+                       phases.setPhase("refactor");
+                       buttonClicked++;
+                       labelRefactor.setStyle("-fx-text-fill: BLACK; -fx-font-weight: bold;");
+                       testCode.setEditable(true);
+                       labelTestCode.setStyle("");
+                       sourceCode.setEditable(true);
 
                     }
                     //System.out.println("code: \n" + sourceCode.getText() + "testcode:\n " + testCode.getText() + "phase:\n " + phases.getPhase());
@@ -253,7 +263,7 @@ public class LayoutTDDTController
          oldSourceCode = sourceCode.getText();
          testCode.setEditable(true);                             // darf nicht nur der Code verbesert werden?
          sourceCode.setEditable(true);
-         statusCycle.setText("Du kannst deinen Code verbessern und wenn du fertig bist nochmal auf den Button 'Refactor' clicken.");
+         statusCycle.setText("Verbesser deinen Code oder nicht und click auf Button 'Refactor' .");
          labelTime.setVisible(false);
          textRemainingTime.setVisible(false);
 
@@ -272,10 +282,14 @@ public class LayoutTDDTController
                textRemainingTime.setVisible(true);
             }
          }
+         else {
+            ArrayList<CompileError> compileErrors = new ArrayList(TDDCycle.getCompileErrors(sourceCode.getText(), testCode.getText()));
+            CompileError compileError = compileErrors.get(0);
+            compilationError.setText(compileError.toString());
+
+         }
       }
-      //TODO
-     // testCode.setEditable(true);
-     // sourceCode.setEditable(true);
+
    }
 
 }
