@@ -12,6 +12,7 @@ Tim: - Slider für die Babystep Zeit
 
 Philipp: - Label statusCycle
          - Textdatei für Aufgaben von außen laden
+	 - Bericht schreiben
 
 Cedric: - Akzeptanztests
 
