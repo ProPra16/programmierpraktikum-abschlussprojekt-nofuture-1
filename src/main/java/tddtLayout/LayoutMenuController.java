@@ -131,6 +131,9 @@ public class LayoutMenuController {
         viewExercise();
 
     }
+    public void rainbow() {
+        TDDTMain.rootPane.setStyle(" -fx-background-image: url('rainbow-1513855_1920.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
+    }
 
     // TXT Einlesen und eventListener
     private StringBuilder readTxt(String file) {
@@ -197,19 +200,15 @@ public class LayoutMenuController {
     }
 
     // getter-setter Bereich
-    public static int getTimer() { return timer; }
-    public static boolean getBabysteps() { return hasBabysteps; }
-    public static String getExerciseText() {
+    static int getTimer() { return timer; }
+    static boolean getBabysteps() { return hasBabysteps; }
+    static String getExerciseText() {
         return exerciseText;
     }
-    public static void setHasAddt (boolean b) {
+    static void setHasAddt(boolean b) {
        hasAddt = b;
     }
-    public static void setHasBabysteps (boolean b) {
+    static void setHasBabysteps(boolean b) {
        hasBabysteps = b;
-    }
-
-    public void rainbow(ActionEvent actionEvent) {
-        TDDTMain.rootPane.setStyle(" -fx-background-image: url('rainbow-1513855_1920.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
     }
 }
