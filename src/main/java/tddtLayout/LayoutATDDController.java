@@ -18,6 +18,7 @@ public class LayoutATDDController extends LayoutTDDTController{
            "import org.junit.Test;\n\n" +
            "public class AkzeptanztestClass {\n" +
            "\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
+   private String lastPhase = "";
 
    @FXML
    @Override
@@ -45,7 +46,7 @@ public class LayoutATDDController extends LayoutTDDTController{
          if (cycle.hasCompileErrors())
          {
             acceptanceCode = acceptanceTestCode.getText();
-            setPhaseRed();
+            chooseLastPhase();
             if (LayoutMenuController.getBabysteps())
             {
                babysteps.start();
@@ -64,7 +65,6 @@ public class LayoutATDDController extends LayoutTDDTController{
       {
          case "red":
             labelTestCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
-            System.out.println("Hallo");
             break;
          case "green":
             labelSourceCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
@@ -73,13 +73,32 @@ public class LayoutATDDController extends LayoutTDDTController{
             labelRefactor.setStyle("-fx-font-weight: normal;");
             break;
       }
-
+      lastPhase = cycle.getPhase();
       cycle.setPhase("akzeptanz");
       statusCycle.setText("Korrigiere deinen Akzeptanztest");
       acceptanceTestCode.setText(acceptanceCode);
       if (LayoutMenuController.getBabysteps())
       {
          babysteps.stop();
+      }
+   }
+
+   private void chooseLastPhase()
+   {
+      switch (lastPhase)
+      {
+         case "red":
+            setPhaseRed();
+            break;
+         case "green":
+            setPhaseGreen();
+            break;
+         case "refactor":
+            setPhaseRefactor();
+            break;
+         default:
+            setPhaseRed();
+            break;
       }
    }
 }

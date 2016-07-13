@@ -78,7 +78,7 @@ public class LayoutTDDTController
         statusCycle.setText("Schreibe den Testcode.");
     }
 
-    private void setPhaseGreen() {
+    protected void setPhaseGreen() {
         cycle.setPhase("green");
         labelTestCode.setStyle("");
         labelRefactor.setStyle("");
@@ -88,7 +88,7 @@ public class LayoutTDDTController
         statusCycle.setText("Schreibe nun den passenden Code zum Test.");
     }
 
-    private void setPhaseRefactor() {
+    protected void setPhaseRefactor() {
         cycle.setPhase("refactor");
         labelTestCode.setStyle("");
         labelSourceCode.setStyle("");
