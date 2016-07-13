@@ -1,25 +1,15 @@
 package tddtLayout;
 
 import babysteps.Babysteps;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
-import phases.Phases;
 import tddcycle.TDDCycle;
 import tddtMain.TDDTMain;
-import vk.core.api.CompileError;
-import vk.core.api.CompilerResult;
-import vk.core.api.TestResult;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 
 public class LayoutTDDTController
 {
@@ -31,7 +21,7 @@ public class LayoutTDDTController
    int buttonClicked = 0;
 
    String oldSourceCode = "public class Class {\n  // TODO\n}";
-   String oldTestCode = "import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}";
+   String oldTestCode = "import static org.junit.Assert.*;\nimport org.junit.Test;\n\npublic class TestClass {\n\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
 
    @FXML
    TextArea exerciseTxt;

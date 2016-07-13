@@ -14,14 +14,15 @@ public class LayoutATDDController extends LayoutTDDTController{
    @FXML
    Label labelAzeptanzTest;
 
-   private String acceptanceCode = "public class Akzeptanztest " +
-           "{\n\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
+   private String acceptanceCode = "import static org.junit.Assert.*;\n" +
+           "import org.junit.Test;\n\n" +
+           "public class AkzeptanztestClass {\n" +
+           "\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
 
    @FXML
    @Override
    public void initialize() {
-      super.initialize();  //ruft originale Methode auf
-      acceptanceTestCode.setEditable(true);
+      super.initialize();
       testCode.setEditable(false);
       labelAzeptanzTest.setStyle("-fx-text-fill: TOMATO; -fx-font-weight: bold;");  //bei bestanden auf MediumSeaGreen
       labelTestCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
@@ -39,18 +40,28 @@ public class LayoutATDDController extends LayoutTDDTController{
       // Phase rot
       if(cycle.getPhase().equals("akzeptanz"))
       {
-         acceptanceTestCode.setEditable(false);
-         acceptanceTestCode.setStyle("");
-         setPhaseRed();
-         if (LayoutMenuController.getBabysteps())
+
+         cycle.compile(acceptanceTestCode.getText(), sourceCode.getText(), testCode.getText());
+         if (cycle.hasCompileErrors())
          {
-            babysteps.start();
+            acceptanceTestCode.setEditable(false);
+            setPhaseRed();
+            if (LayoutMenuController.getBabysteps())
+            {
+               babysteps.start();
+            }
+            cycle.getCompileErrorsAkzeptanz().forEach((s) ->
+               compilationError.setText(s + "\n")
+            );
          }
       }
       super.handleRunButton();
    }
 
-   public void handleBackToAcceptance () {
+   public void handleAcceptance () {
       // TODO
+      acceptanceTestCode.setEditable(true);
+      testCode.setEditable(false);
+      sourceCode.setEditable(false);
    }
 }
