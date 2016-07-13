@@ -20,7 +20,7 @@ import java.util.List;
 public class LayoutMenuController {
 
     // Variablen
-    private static boolean hasAddt = false;
+    private static boolean hasAtdd = false;
     private static boolean hasBabysteps = false;
     private static int timer = 180;
     private static String exerciseText;
@@ -72,11 +72,11 @@ public class LayoutMenuController {
         }
     }
     public void handleATDD() {
-        if (!hasAddt) {
-            setHasAddt(true);
+        if (!hasAtdd) {
+            setHasAtdd(true);
         }
         else {
-            setHasAddt(false);
+            setHasAtdd(false);
         }
     }
     public void handleExitButton() {
@@ -88,7 +88,7 @@ public class LayoutMenuController {
 
         }
         else {
-            if (!hasAddt) {
+            if (!hasAtdd) {
                 exerciseText = exercise.getText();
                 FXMLLoader loader = new FXMLLoader();
                 TDDTMain.rootPane.setCenter(loader.load(getClass().getResource("/layoutTDDT.fxml")));
@@ -213,8 +213,8 @@ public class LayoutMenuController {
     static String getExerciseText() {
         return exerciseText;
     }
-    static void setHasAddt(boolean b) {
-       hasAddt = b;
+    static void setHasAtdd(boolean b) {
+       hasAtdd = b;
     }
     static void setHasBabysteps(boolean b) {
        hasBabysteps = b;
