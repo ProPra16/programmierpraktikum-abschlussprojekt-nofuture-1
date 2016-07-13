@@ -26,15 +26,12 @@ public class LayoutTDDTController
 
    // Variablen
    int numberTests = 0;
-   int timer = 0;
-   int time = 0;
-   Phases phases = new Phases("red");
-   String oldSourceCode;
-   String oldTestCode;
-   Timeline timeline = new Timeline();
+   TDDCycle cycle = new TDDCycle("red");
    Babysteps babysteps;
    int buttonClicked = 0;
 
+   String oldSourceCode = "public class Class {\n  // TODO\n}";
+   String oldTestCode = "import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}";
 
    @FXML
    TextArea exerciseTxt;
@@ -43,9 +40,9 @@ public class LayoutTDDTController
    @FXML
    Text textRemainingTime;
    @FXML
-   public TextArea sourceCode;
+   TextArea sourceCode;
    @FXML
-   public TextArea testCode;
+   TextArea testCode;
    @FXML
    Label labelTestCode;
    @FXML
@@ -58,234 +55,179 @@ public class LayoutTDDTController
    Label statusCycle;
 
    @FXML
-   public void initialize()
-   {
-      if (LayoutMenuController.getBabysteps()) {
-         timer = LayoutMenuController.getTimer();
-         time = timer;
-         labelTime.setText(Integer.toString(timer));
-         timeline();
-      } else {
+   public void initialize(){
+        if (LayoutMenuController.getBabysteps()) {
+         babysteps = new Babysteps(LayoutMenuController.getTimer(), this::resetCode);
+         labelTime.textProperty().bind(babysteps);
+           babysteps.start();
+        } else {
          labelTime.setVisible(false);
          textRemainingTime.setVisible(false);
-      }
-      labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
-      exerciseTxt.setText(LayoutMenuController.getExerciseText());
-      testCode.setText("import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}");
-      oldTestCode = testCode.getText();
-      testCode.setEditable(true);
-      sourceCode.setText("public class Class {\n  // TODO\n}");
-      sourceCode.setEditable(false);
-      oldSourceCode = sourceCode.getText();
-      statusCycle.setText("Schreibe den Testcode.");
+        }
+        exerciseTxt.setText(LayoutMenuController.getExerciseText());
+        resetCode(null);
+        setPhaseRed();
+      System.out.println("hallo");
    }
 
+   private Object resetCode(Object o) {
+       testCode.setText(oldTestCode);
+       sourceCode.setText(oldSourceCode);
+       if(cycle.getPhase().equals("green")){
+            setPhaseRed();
+       }
+       return null;
+   }
 
-   public void handleRunButton()
-   {
+    private void setPhaseRed() {
+        cycle.setPhase("red");
+        labelSourceCode.setStyle("");
+        labelRefactor.setStyle("");
+        labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
+        testCode.setEditable(true);
+        sourceCode.setEditable(false);
+        statusCycle.setText("Schreibe den Testcode.");
+    }
 
-      if (timer == 0) timeline.stop();
+    private void setPhaseGreen() {
+        cycle.setPhase("green");
+        labelTestCode.setStyle("");
+        labelRefactor.setStyle("");
+        labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
+        testCode.setEditable(false);
+        sourceCode.setEditable(true);
+        statusCycle.setText("Schreibe nun den passenden Code zum Test.");
+    }
+
+    private void setPhaseRefactor() {
+        cycle.setPhase("refactor");
+        labelTestCode.setStyle("");
+        labelSourceCode.setStyle("");
+        labelRefactor.setStyle("-fx-font-weight: bold;");
+        testCode.setEditable(false);
+        sourceCode.setEditable(true);
+        statusCycle.setText("Verbessere deinen Code oder click auf den Button 'Refactor'.");
+    }
+
+
+    public void handleRunButton(){
       // Phase rot
-      if (phases.getPhase().equals("red")) {
+      if (cycle.getPhase().equals("red")) {
 
          // sollte nicht kompilieren oder ein test soll fehl schlagen
 
-         // überprüfen, dass genau ein Test mehr vorhanden ist als vorher
-         int newNumberTests = 0;
-         String testCodeText = testCode.getText();
-         String[] parts = testCodeText.split(" ");
-         for (int i = 0; i < parts.length; i++) {
-            if (parts[i].contains("@Test")) newNumberTests++;
-         }
-         // System.out.println("number Tests = " + numberTests + "\nNumber New Tests = " + newNumberTests);
-         if (newNumberTests - numberTests != 1)
-            statusCycle.setText("Es muss genau ein neuer Test geschrieben werden");   // TODO in label schreiben (unter Aufgabentext?)
-         else {
-            // testen, ob kompiliert / Tests durchlaufen
-            if (!TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) || TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
+         if (!hasNewTest()) {
+             statusCycle.setText("Es muss genau ein neuer Test geschrieben werden");   // TODO in label schreiben (unter Aufgabentext?)
+         } else {
 
-               // prüfen, weshalb es nicht kompiliert: einziger grund darf sein, dass methode nicht gefunden wurde
-               ArrayList<CompileError> compileErrors = new ArrayList(TDDCycle.getCompileErrors(sourceCode.getText(), testCode.getText()));
-               if(compileErrors != null) {
-                  if(compileErrors.size() == 1) {
-                     CompileError compileError = compileErrors.get(0);
-                     if(compileError.toString().contains("error:cannot find symbol")) {
-                        timeline.stop();
-                        timer = time;
-                        timeline.play();
-                        numberTests++;
-                        phases.setPhase("green");
-                        labelTestCode.setStyle("");
-                        testCode.setEditable(false);
-                        labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
-                        sourceCode.setEditable(true);
-                        compilationError.setText( compileError.toString());
-                        oldTestCode = testCode.getText();
-                     } else {
-                        compilationError.setText(compileError.toString());
+             cycle.compile(sourceCode.getText(), testCode.getText());
+
+             if (cycle.hasCompileErrors()) {
+                 if (cycle.getCompileErrorsTest().size() == 1) {
+                     if (cycle.getCompileErrorsTest().toArray()[0].toString().contains("error:cannot find symbol")) {
+                         oldTestCode = testCode.getText();
+                         numberTests++;
+
+                        if (LayoutMenuController.getBabysteps()) {
+                           babysteps.reset();
+                        }
+                         setPhaseGreen();
                      }
+                 }
+                 cycle.getCompileErrorsTest().forEach((s) -> {
+                     compilationError.setText(s + "\n");
+                 });
+             } else if (cycle.hasFailingTest()) {
+                oldTestCode = testCode.getText();
+                numberTests++;
 
-                  } else { // mehr als ein Kompilierfehler
-                     statusCycle.setText("");
-                     for(CompileError compileError : compileErrors) {
-                        compilationError.setText(statusCycle.getText() + "\n\n" + compileError.toString());
-                     }
-                  }
-
-               } else {    // falls kompiliert: ein test muss fehl schlagen
-                  TestResult testResult = TDDCycle.getTestResult(sourceCode.getText(), testCode.getText());
-                  if(testResult.getNumberOfFailedTests() == 1) {
-                     timeline.stop();
-                     timer = time;
-                     timeline.play();
-                     numberTests++;
-                     phases.setPhase("green");
-                     labelTestCode.setStyle("");
-                     testCode.setEditable(false);
-                     labelSourceCode.setStyle("-fx-text-fill: GREEN; -fx-font-weight: bold;");
-                     sourceCode.setEditable(true);
-                     statusCycle.setText("Schreibe nun den passenden Code zum Test.");
-                     oldTestCode = testCode.getText();
-                  } else {
-                     statusCycle.setText("Es muss genau ein Test fehl schlagen");   // Fehler der Tests ausgeben
-                  }
-               }
-            }
+                if (LayoutMenuController.getBabysteps()) {
+                   babysteps.reset();
+                }
+                 setPhaseGreen();
+             } else {
+                 statusCycle.setText("Es muss genau ein Test fehlschlagen");
+             }
          }
 
          // Phase grün
-      } else if (phases.getPhase().equals("green")) {
+      } else if (cycle.getPhase().equals("green")) {
 
-            statusCycle.setText("");
+          cycle.compile(sourceCode.getText(), testCode.getText());
+
          // muss kompilieren und die tests müssen durchlaufen
-         if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
-            timeline.stop();
+         if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
+             if (LayoutMenuController.getBabysteps()) {
+                 babysteps.stop();
+             }
+            oldSourceCode = sourceCode.getText();
             statusCycle.setText("Test bestanden. Click den Button 'Refactor'.");
             compilationError.setText("");
             buttonClicked = 0;
-
+         }else{
+             cycle.getCompileErrorsCode().forEach((s) -> {
+                 compilationError.setText(s + "\n");
+             });
          }
-
-
-         // Phase refactor
-      } /*else if (phases.getPhase().equals("refactor")) {
-
-         // Phase refactor
-      } else if (phases.getPhase().equals("refactor")) {
-         // muss kompilieren und die tests müssen durchlaufen
-         if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
-            phases.setPhase("red");
-            labelRefactor.setStyle("");
-            labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
-            testCode.setEditable(true);
-            sourceCode.setEditable(false);
-         }
-
-      }*/
-   }
-
-   public void handleBackToTestsButton()
-   {
-      if (phases.getPhase().equals("green")) {
-         timeline.stop();
-         timer = time;
-         timeline.play();
-         numberTests--;
-         sourceCode.setText(oldSourceCode);
-         phases.setPhase("red");
-         labelSourceCode.setStyle("");
-         labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
-         testCode.setEditable(true);
-         sourceCode.setEditable(false);
-         statusCycle.setText(" ");
       }
    }
 
-   public void handleBackButton() throws IOException
-   {
+    public boolean hasNewTest(){
+        int newNumberTests = 0;
+        String testCodeText = testCode.getText();
+        String[] parts = testCodeText.split(" ");
+        for (int i = 0; i < parts.length; i++) {
+            if (parts[i].contains("@Test")) newNumberTests++;
+        }
+        return newNumberTests - numberTests == 1;
+    }
+
+   public void handleBackToTestsButton(){
+      if (cycle.getPhase().equals("green")) {
+          if (LayoutMenuController.getBabysteps()) {
+              babysteps.reset();
+          }
+          numberTests--;
+          resetCode(null);
+      }
+   }
+
+   public void handleBackButton() throws IOException{
       LayoutMenuController.setHasAddt(false);
       LayoutMenuController.setHasBabysteps(false);
       FXMLLoader loader = new FXMLLoader();
       TDDTMain.rootPane.setCenter(loader.load(getClass().getResource("/layoutMenu.fxml")));
    }
 
-   public void timeline()
-   {
-      timeline.setCycleCount(Timeline.INDEFINITE);
-      timeline.getKeyFrames().addAll(
-              new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
-                 labelTime.setText(String.valueOf(timer));
-                 timer--;
-
-                 babysteps = new Babysteps(phases.getPhase(), sourceCode.getText(), testCode.getText(), timer);
-
-                 if (timer == 0) {
-                    timeline.stop();
-                    if (phases.getPhase().equals("green")) {
-                       sourceCode.setText(oldSourceCode);
-                       statusCycle.setText("SourceCode zurückgesetzt.");
-                       timer = time;
-                       timeline.play();
-                       phases.setPhase("red");
-                       labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
-                       testCode.setEditable(true);
-                       labelSourceCode.setStyle("");
-                       sourceCode.setEditable(false);
-
-                    }
-                    else if (phases.getPhase().equals("red")) {
-                       testCode.setText(oldTestCode);
-                       statusCycle.setText("TestCode zurückgesetzt.");
-                       timer = time;
-                       timeline.stop();
-                       phases.setPhase("refactor");
-                       buttonClicked++;
-                       labelRefactor.setStyle("-fx-text-fill: BLACK; -fx-font-weight: bold;");
-                       testCode.setEditable(true);
-                       labelTestCode.setStyle("");
-                       sourceCode.setEditable(true);
-
-                    }
-                    //System.out.println("code: \n" + sourceCode.getText() + "testcode:\n " + testCode.getText() + "phase:\n " + phases.getPhase());
-                 }
-              }));
-      timeline.play();
-   }
-
-
-   public void handleRefactor()
-   {
-      if (buttonClicked == 0) {
+   public void handleRefactor(){
+      if (buttonClicked == 0 && cycle.getPhase().equals("green")) {
          buttonClicked++;
-         phases.setPhase("refactor");
-         labelSourceCode.setStyle("");
-         labelRefactor.setStyle("-fx-font-weight: bold;");
-         oldSourceCode = sourceCode.getText();
-         testCode.setEditable(true);                             // darf nicht nur der Code verbesert werden?
-         sourceCode.setEditable(true);
-         statusCycle.setText("Verbesser deinen Code oder nicht und click auf Button 'Refactor' .");
+          if (LayoutMenuController.getBabysteps()) {
+              babysteps.stop();
+          }
+         setPhaseRefactor();
          labelTime.setVisible(false);
          textRemainingTime.setVisible(false);
 
       } else {
-         if (TDDCycle.isCompiling(sourceCode.getText(), testCode.getText()) && !TDDCycle.isTestfailing(sourceCode.getText(), testCode.getText())) {
-            phases.setPhase("red");
-            labelRefactor.setStyle("");
-            labelTestCode.setStyle("-fx-text-fill: RED; -fx-font-weight: bold;");
-            testCode.setEditable(true);
-            sourceCode.setEditable(false);
-            timer = time;
-            timeline.play();
-            statusCycle.setText("Schreibe einen neuen Test. ");
+          cycle.compile(sourceCode.getText(), testCode.getText());
+
+         if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
+            setPhaseRed();
+             if (LayoutMenuController.getBabysteps()) {
+                 babysteps.reset();
+                 babysteps.start();
+             }
+            statusCycle.setText("Schreibe einen neuen Test.");
             if (LayoutMenuController.getBabysteps()) {
                labelTime.setVisible(true);
                textRemainingTime.setVisible(true);
             }
          }
          else {
-            ArrayList<CompileError> compileErrors = new ArrayList(TDDCycle.getCompileErrors(sourceCode.getText(), testCode.getText()));
-            CompileError compileError = compileErrors.get(0);
-            compilationError.setText(compileError.toString());
+             cycle.getCompileErrorsCode().forEach((s) -> {
+                 compilationError.setText(s + "\n");
+             });
 
          }
       }
