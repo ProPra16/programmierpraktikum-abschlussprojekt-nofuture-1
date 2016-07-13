@@ -76,6 +76,7 @@ public class LayoutATDDController extends LayoutTDDTController{
       lastPhase = cycle.getPhase();
       cycle.setPhase("akzeptanz");
       statusCycle.setText("Korrigiere deinen Akzeptanztest");
+      acceptanceTestCode.setEditable(true);
       acceptanceTestCode.setText(acceptanceCode);
       if (LayoutMenuController.getBabysteps())
       {
@@ -100,5 +101,6 @@ public class LayoutATDDController extends LayoutTDDTController{
             setPhaseRed();
             break;
       }
+      acceptanceTestCode.setEditable(false);
    }
 }
