@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-
-
-
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tddtLayout.LayoutMenuController">
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.RadioButton?>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tddtLayout.LayoutMenuController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -61,51 +70,51 @@
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding></Label>
-                  <HBox fx:id="timerBox" visible="false" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                     <children>
-                         <fx:define>
-                             <ToggleGroup fx:id="babystepTimeGroup"/>
-                         </fx:define>
+                        <HBox fx:id="timerBox" visible="false" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                       <children>
+                           <fx:define>
+                               <ToggleGroup fx:id="babystepTimeGroup"/>
+                           </fx:define>
                         <RadioButton fx:id="two" mnemonicParsing="false" text="2"
                                      toggleGroup="$babystepTimeGroup"
                                      onAction="#setTimerToTwo">
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </RadioButton>
-                        <RadioButton fx:id="three" mnemonicParsing="false" text="3" selected="true"
-                                     toggleGroup="$babystepTimeGroup"
-                                     onAction="#setTimerToThree">>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </RadioButton>
-                        <RadioButton fx:id="four" mnemonicParsing="false" text="4"
-                                     toggleGroup="$babystepTimeGroup"
-                                     onAction="#setTimerToFour">>
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </RadioButton>
-                        <RadioButton fx:id="five" mnemonicParsing="false" text="5"
-                                     toggleGroup="$babystepTimeGroup"
-                                     onAction="#setTimerToFive">>
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </RadioButton>
+                             <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                             </HBox.margin>
+                             <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                             </padding>
+                          </RadioButton>
+                          <RadioButton fx:id="three" mnemonicParsing="false" text="3" selected="true"
+                                       toggleGroup="$babystepTimeGroup"
+                                       onAction="#setTimerToThree">>
+                             <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                             </padding>
+                             <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                             </HBox.margin>
+                          </RadioButton>
+                          <RadioButton fx:id="four" mnemonicParsing="false" text="4"
+                                       toggleGroup="$babystepTimeGroup"
+                                       onAction="#setTimerToFour">>
+                             <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                             </HBox.margin>
+                             <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                             </padding>
+                          </RadioButton>
+                          <RadioButton fx:id="five" mnemonicParsing="false" text="5"
+                                       toggleGroup="$babystepTimeGroup"
+                                       onAction="#setTimerToFive">>
+                             <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                             </HBox.margin>
+                             <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                             </padding>
+                          </RadioButton>
                      </children>
                   </HBox>
                </children>
@@ -133,7 +142,7 @@
                </VBox.margin>
             </Button>
             <ListView fx:id="listExercises" prefHeight="197.0" />
-            <TextArea fx:id="exercise" wrapText="true" prefHeight="279.0" prefWidth="594.0" />
+            <TextArea fx:id="exercise" prefHeight="279.0" prefWidth="594.0" wrapText="true" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -171,6 +180,7 @@
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
+
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -182,6 +192,11 @@
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
+            </Button>
+            <Button onAction="#rainbow" mnemonicParsing="false" text="Hübsch" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <opaqueInsets>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </opaqueInsets>
             </Button>
          </children>
       </GridPane>

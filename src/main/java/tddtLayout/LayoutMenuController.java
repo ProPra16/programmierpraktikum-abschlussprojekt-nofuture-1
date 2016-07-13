@@ -3,6 +3,7 @@ package tddtLayout;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -206,5 +207,9 @@ public class LayoutMenuController {
     }
     public static void setHasBabysteps (boolean b) {
        hasBabysteps = b;
+    }
+
+    public void rainbow(ActionEvent actionEvent) {
+        TDDTMain.rootPane.setStyle(" -fx-background-image: url('rainbow-1513855_1920.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
     }
 }
