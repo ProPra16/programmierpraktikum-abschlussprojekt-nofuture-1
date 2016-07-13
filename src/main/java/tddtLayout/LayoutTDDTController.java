@@ -78,7 +78,7 @@ public class LayoutTDDTController
        return null;
    }
 
-    private void setPhaseRed() {
+    protected void setPhaseRed() {
         cycle.setPhase("red");
         labelSourceCode.setStyle("");
         labelRefactor.setStyle("");
