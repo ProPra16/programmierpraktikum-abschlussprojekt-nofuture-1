@@ -177,7 +177,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button onAction="#handleRunButton" text="Kompilieren" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                  <Button fx:id="Starten" onAction="#handleRunButton" text="       Kompilieren" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -185,7 +185,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button onAction="#handleBackToTestsButton" text="Zum Test Code" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button fx:id="zumTestCode" onAction="#handleBackToTestsButton" text="      Zum Test Code" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -193,7 +193,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button onAction="#handleBackButton" text="Zurück zum Aufgabenkatalog">
+                  <Button fx:id="zurueck" onAction="#handleBackButton" text="       Zurück zum Aufgabenkatalog">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -201,7 +201,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button onAction="#handleRefactor" text="Refactor" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                  <Button fx:id="Refactor" onAction="#handleRefactor" text="      Refactor" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>

@@ -1,44 +1,122 @@
 .button {
-	-fx-font-size: 24px;
-	-fx-font-family: "Arial";
-	-fx-background-color:  #008CBA;
-    -fx-webkit-transition-duration: 0.4s;
-    -fx-transition-duration: 0.4s;
-}
+	-fx-background-color:transparent;
+     -fx-font-size: 20pt;
+	-fx-font-family: "Georgia";
+     -fx-border-color: #a8cca0;
+     -fx-border-radius: 5;
+     -fx-border-width: 3px;
+    -fx-text-fill: #000000;
 
-
+     }
 .button:hover {
-    -fx-background-color: #4CAF50;
-    -fx-color: white;
+         -fx-background-color: #d3d3d3;
+         -fx-color: white;
+
+     }
+
+.label{
+-fx-font-size: 16;
+
+}
+.text{
+-fx-font-size: 16;
+
+
 }
 
-#status {
-    -fx-fill: RED;
-    -fx-font-size:30px;
-    -fx-font-family: "Arial";
-    -fx-font-weight: bold;
-}
-
-#errorTestClassName {
-    -fx-font-weight: bold;
-    -fx-fill: RED;
-}
-
-#errorTestCode {
-    -fx-font-weight: bold;
-    -fx-fill: RED;
-}
-
-#errorExercise {
-    -fx-font-weight: bold;
-    -fx-fill: RED;
+.text-area {
+    -fx-font-family: Consolas;
+    -fx-font-size: 16;
 }
 
 
-#exerciseBox {
-    -fx-border-color: #979fa7;
-    -fx-border-width: 2px;
-    -fx-font-size: 16px;
+.list-cell:filled:selected {
+    -fx-text-fill: #ffffff;
+    -fx-background-color:  #a8cca0;
+    -fx-border-color: #a8cca0;
+
+}
+
+.list-view {
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+}
+
+#labeltddt{
+-fx-font: 30px Georgia;
+    -fx-text-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, #a8cca0 0%, black 50%);
+    -fx-stroke: white;
+    -fx-stroke-width: 1;
+    }
+
+#zurueck{
+-fx-background-image: url('folder-icon.png');
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 24px 24px;
+  -fx-background-position: 5% 50% ;
+
+
+}
+
+#zumTestCode {
+-fx-background-image: url('rewind-icon.png');
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 24px 24px;
+  -fx-background-position: 5% 50% ;
+
+}
+
+#hinzufuegen {
+-fx-background-image: url('addition-icon.jpg');
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 24px 24px;
+  -fx-background-position: 5% 50% ;
+
+}
+
+#exitMenu {
+-fx-background-image: url('close-2-icon.png');
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 24px 24px;
+  -fx-background-position: 10% 50% ;
+
+}
+
+
+#startMenu {
+-fx-background-image: url('fastforward-icon.png');
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 24px 24px;
+  -fx-background-position: 10% 50% ;
+
+}
+#Refactor {
+-fx-background-image: url('reload-icon.png');
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 24px 24px;
+  -fx-background-position: 10% 50% ;
+
+
+}
+
+#Starten{
+-fx-background-image: url('play-icon.png');
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 24px 24px;
+  -fx-background-position: 5% 50% ;
+
+
+
+}
+
+#rootPane {
+    -fx-background-color:	white;
 
 }
 
