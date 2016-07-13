@@ -43,6 +43,7 @@ public class LayoutMenuController {
     ListView <String> listExercises;
     @FXML
     Button rainbow;
+
     @FXML
     public void initialize() {
         data = FXCollections.observableArrayList();
