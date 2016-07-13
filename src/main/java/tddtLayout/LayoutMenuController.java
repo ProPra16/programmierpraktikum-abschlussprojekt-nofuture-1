@@ -16,6 +16,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class LayoutMenuController {
 
@@ -40,6 +41,14 @@ public class LayoutMenuController {
     Label dauerText;
     @FXML
     ListView <String> listExercises;
+
+    @FXML
+    public void initialize() {
+        data = FXCollections.observableArrayList();
+        aufgabenErstellen();
+        listExercises.setItems(data.sorted());
+        viewExercise();
+    }
 
     // Checkboxen Handles
     public void setTimerToTwo () { timer = 120; }
@@ -153,7 +162,36 @@ public class LayoutMenuController {
                     }
                 });
     }
+    private void aufgabenErstellen() {
 
+        try {
+            File f = new File("./Aufgaben");
+            File[] fileArray = f.listFiles();
+
+            for (int i = 0; i < fileArray.length; i++ ) {
+                String fileAndFolder = fileArray[i].toString();
+                String absolutePathFile = fileArray[i].getCanonicalPath();
+                StringBuilder file = new StringBuilder();
+                file.append(fileAndFolder);
+                // Nur Dateinamen
+                file.replace(0,11,"");
+                int j = file.length();
+                file.replace(j-4,j,"");
+                datenListe.put(file, readTxt(absolutePathFile));
+
+            }
+            // Dateiname in ObservableArrayList speichern
+            for (HashMap.Entry<StringBuilder, StringBuilder> m : datenListe.entrySet()) {
+                if (!data.contains(m.getKey().toString())) {
+                    data.add(m.getKey().toString());
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Ordner Aufgaben nicht vorhanden?");
+        }
+    }
 
     // getter-setter Bereich
     public static int getTimer() { return timer; }
