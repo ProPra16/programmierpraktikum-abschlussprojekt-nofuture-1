@@ -22,7 +22,7 @@ public class Babysteps extends SimpleStringProperty{
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), (ActionEvent e) -> {
                 time--;
-                setValue(time + "sec");
+                setValue(time + " sec");
                 if(time <= 0) {
                     callback.apply(null);
                     reset();
