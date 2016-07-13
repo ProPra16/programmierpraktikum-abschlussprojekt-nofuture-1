@@ -18,6 +18,7 @@ public class LayoutATDDController extends LayoutTDDTController{
            "import org.junit.Test;\n\n" +
            "public class AkzeptanztestClass {\n" +
            "\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
+   private String lastPhase = "";
 
    @FXML
    @Override
@@ -44,8 +45,8 @@ public class LayoutATDDController extends LayoutTDDTController{
          cycle.compile(acceptanceTestCode.getText(), sourceCode.getText(), testCode.getText());
          if (cycle.hasCompileErrors())
          {
-            acceptanceTestCode.setEditable(false);
-            setPhaseRed();
+            acceptanceCode = acceptanceTestCode.getText();
+            chooseLastPhase();
             if (LayoutMenuController.getBabysteps())
             {
                babysteps.start();
@@ -59,9 +60,47 @@ public class LayoutATDDController extends LayoutTDDTController{
    }
 
    public void handleAcceptance () {
-      // TODO
+
+      switch (cycle.getPhase())
+      {
+         case "red":
+            labelTestCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
+            break;
+         case "green":
+            labelSourceCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
+            break;
+         case "refactor":
+            labelRefactor.setStyle("-fx-font-weight: normal;");
+            break;
+      }
+      lastPhase = cycle.getPhase();
+      cycle.setPhase("akzeptanz");
+      statusCycle.setText("Korrigiere deinen Akzeptanztest");
       acceptanceTestCode.setEditable(true);
-      testCode.setEditable(false);
-      sourceCode.setEditable(false);
+      acceptanceTestCode.setText(acceptanceCode);
+      if (LayoutMenuController.getBabysteps())
+      {
+         babysteps.stop();
+      }
+   }
+
+   private void chooseLastPhase()
+   {
+      switch (lastPhase)
+      {
+         case "red":
+            setPhaseRed();
+            break;
+         case "green":
+            setPhaseGreen();
+            break;
+         case "refactor":
+            setPhaseRefactor();
+            break;
+         default:
+            setPhaseRed();
+            break;
+      }
+      acceptanceTestCode.setEditable(false);
    }
 }
