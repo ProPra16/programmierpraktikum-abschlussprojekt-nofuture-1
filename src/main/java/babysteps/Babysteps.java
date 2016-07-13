@@ -15,15 +15,15 @@ public class Babysteps extends SimpleStringProperty{
     private Timeline timeline;
 
     public Babysteps(int max_time, Function callback) {
-        reset();
         this.max_time = max_time;
+        reset();
         this.callback = callback;
         timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), (ActionEvent e) -> {
-                time++;
+                time--;
                 setValue(time + "sec");
-                if(time >= max_time) {
+                if(time <= 0) {
                     callback.apply(null);
                     reset();
                 }
@@ -31,7 +31,7 @@ public class Babysteps extends SimpleStringProperty{
     }
 
     public void reset(){
-        this.time = 0;
+        this.time = max_time;
         setValue(time + "sec");
     }
 

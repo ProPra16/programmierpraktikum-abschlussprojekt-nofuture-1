@@ -59,6 +59,7 @@ public class LayoutTDDTController
         if (LayoutMenuController.getBabysteps()) {
          babysteps = new Babysteps(LayoutMenuController.getTimer(), this::resetCode);
          labelTime.textProperty().bind(babysteps);
+           babysteps.start();
         } else {
          labelTime.setVisible(false);
          textRemainingTime.setVisible(false);
@@ -66,6 +67,7 @@ public class LayoutTDDTController
         exerciseTxt.setText(LayoutMenuController.getExerciseText());
         resetCode(null);
         setPhaseRed();
+      System.out.println("hallo");
    }
 
    private Object resetCode(Object o) {
@@ -125,6 +127,7 @@ public class LayoutTDDTController
                      if (cycle.getCompileErrorsTest().toArray()[0].toString().contains("error:cannot find symbol")) {
                          oldTestCode = testCode.getText();
                          numberTests++;
+                        babysteps.reset();
                          setPhaseGreen();
                      }
                  }
@@ -132,6 +135,9 @@ public class LayoutTDDTController
                      compilationError.setText(s + "\n");
                  });
              } else if (cycle.hasFailingTest()) {
+                oldTestCode = testCode.getText();
+                numberTests++;
+                babysteps.reset();
                  setPhaseGreen();
              } else {
                  statusCycle.setText("Es muss genau ein Test fehlschlagen");
