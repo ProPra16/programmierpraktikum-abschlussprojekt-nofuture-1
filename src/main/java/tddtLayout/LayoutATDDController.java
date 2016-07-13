@@ -44,7 +44,7 @@ public class LayoutATDDController extends LayoutTDDTController{
          cycle.compile(acceptanceTestCode.getText(), sourceCode.getText(), testCode.getText());
          if (cycle.hasCompileErrors())
          {
-            acceptanceTestCode.setEditable(false);
+            acceptanceCode = acceptanceTestCode.getText();
             setPhaseRed();
             if (LayoutMenuController.getBabysteps())
             {
@@ -59,9 +59,27 @@ public class LayoutATDDController extends LayoutTDDTController{
    }
 
    public void handleAcceptance () {
-      // TODO
-      acceptanceTestCode.setEditable(true);
-      testCode.setEditable(false);
-      sourceCode.setEditable(false);
+
+      switch (cycle.getPhase())
+      {
+         case "red":
+            labelTestCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
+            System.out.println("Hallo");
+            break;
+         case "green":
+            labelSourceCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
+            break;
+         case "refactor":
+            labelRefactor.setStyle("-fx-font-weight: normal;");
+            break;
+      }
+
+      cycle.setPhase("akzeptanz");
+      statusCycle.setText("Korrigiere deinen Akzeptanztest");
+      acceptanceTestCode.setText(acceptanceCode);
+      if (LayoutMenuController.getBabysteps())
+      {
+         babysteps.stop();
+      }
    }
 }
