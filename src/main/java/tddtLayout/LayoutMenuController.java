@@ -3,7 +3,6 @@ package tddtLayout;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -27,6 +26,7 @@ public class LayoutMenuController {
     private static String exerciseText;
     private HashMap<StringBuilder, StringBuilder> datenListe = new HashMap<>();
     private ObservableList<String> data = FXCollections.observableArrayList();
+    private int rain=0;
 
     // FXML
     @FXML
@@ -41,7 +41,8 @@ public class LayoutMenuController {
     Label dauerText;
     @FXML
     ListView <String> listExercises;
-
+    @FXML
+    Button rainbow;
     @FXML
     public void initialize() {
         data = FXCollections.observableArrayList();
@@ -128,6 +129,18 @@ public class LayoutMenuController {
         viewExercise();
 
     }
+    public void rainbow() {
+        if(rain==0) {
+            TDDTMain.rootPane.setStyle(" -fx-background-image: url('./Bilder/rainbow.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
+            rainbow.setText("Hässlich");
+            rain++;
+        }
+        else if(rain==1){
+            TDDTMain.rootPane.setStyle("-fx-background-color: white;");
+            rainbow.setText("Hübsch");
+            rain--;
+        }
+    }
 
     // TXT Einlesen und eventListener
     private StringBuilder readTxt(String file) {
@@ -205,24 +218,4 @@ public class LayoutMenuController {
     static void setHasBabysteps(boolean b) {
        hasBabysteps = b;
     }
-
-
-    int rain=0;
-    @FXML
-    Button rainbow;
-    public void rainbow(ActionEvent actionEvent) {
-        if(rain==0) {
-            TDDTMain.rootPane.setStyle(" -fx-background-image: url('./Bilder/rainbow.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
-            rainbow.setText("Hässlich");
-            rain++;
-        }
-       else if(rain==1){
-            TDDTMain.rootPane.setStyle("-fx-background-color: white;");
-            rainbow.setText("Hübsch");
-            rain--;
-        }
-    }
-
-
-
 }
