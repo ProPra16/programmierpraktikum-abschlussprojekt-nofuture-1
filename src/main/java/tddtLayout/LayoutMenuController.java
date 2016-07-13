@@ -128,9 +128,6 @@ public class LayoutMenuController {
         viewExercise();
 
     }
-    public void rainbow() {
-        TDDTMain.rootPane.setStyle(" -fx-background-image: url('./Bilder/rainbow.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
-    }
 
     // TXT Einlesen und eventListener
     private StringBuilder readTxt(String file) {
@@ -215,7 +212,7 @@ public class LayoutMenuController {
     Button rainbow;
     public void rainbow(ActionEvent actionEvent) {
         if(rain==0) {
-            TDDTMain.rootPane.setStyle(" -fx-background-image: url('rainbow-1513855_1920.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
+            TDDTMain.rootPane.setStyle(" -fx-background-image: url('./Bilder/rainbow.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
             rainbow.setText("Hässlich");
             rain++;
         }
@@ -225,5 +222,7 @@ public class LayoutMenuController {
             rain--;
         }
     }
+
+
 
 }
