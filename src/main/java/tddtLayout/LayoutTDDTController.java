@@ -67,7 +67,6 @@ public class LayoutTDDTController
         exerciseTxt.setText(LayoutMenuController.getExerciseText());
         resetCode(null);
         setPhaseRed();
-      System.out.println("hallo");
    }
 
    private Object resetCode(Object o) {
