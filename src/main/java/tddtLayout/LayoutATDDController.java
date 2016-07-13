@@ -14,7 +14,9 @@ public class LayoutATDDController extends LayoutTDDTController{
    @FXML
    Label labelAzeptanzTest;
 
-   private String acceptanceCode = "public class Akzeptanztest {\n" +
+   private String acceptanceCode = "import static org.junit.Assert.*;\n" +
+           "import org.junit.Test;\n\n" +
+           "public class AkzeptanztestClass {\n" +
            "\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
 
    @FXML

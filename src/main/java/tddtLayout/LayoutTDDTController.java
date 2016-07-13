@@ -21,7 +21,7 @@ public class LayoutTDDTController
    int buttonClicked = 0;
 
    String oldSourceCode = "public class Class {\n  // TODO\n}";
-   String oldTestCode = "import static org.junit.Assert.*;\nimport org.junit.Test;\npublic class TestClass {\n  @Test\n  public void test() {\n    // TODO\n  }\n}";
+   String oldTestCode = "import static org.junit.Assert.*;\nimport org.junit.Test;\n\npublic class TestClass {\n\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
 
    @FXML
    TextArea exerciseTxt;
