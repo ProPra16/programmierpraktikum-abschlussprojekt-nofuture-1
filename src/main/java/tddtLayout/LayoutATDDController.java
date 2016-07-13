@@ -51,9 +51,9 @@ public class LayoutATDDController extends LayoutTDDTController{
             {
                babysteps.start();
             }
-            cycle.getCompileErrorsAkzeptanz().forEach((s) -> {
-               compilationError.setText(s + "\n");
-            });
+            cycle.getCompileErrorsAkzeptanz().forEach((s) ->
+               compilationError.setText(s + "\n")
+            );
          }
       }
       super.handleRunButton();
