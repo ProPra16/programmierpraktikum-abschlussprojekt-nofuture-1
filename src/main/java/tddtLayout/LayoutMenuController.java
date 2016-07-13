@@ -3,7 +3,6 @@ package tddtLayout;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -219,9 +218,4 @@ public class LayoutMenuController {
     static void setHasBabysteps(boolean b) {
        hasBabysteps = b;
     }
-
-
-
-
-
 }
