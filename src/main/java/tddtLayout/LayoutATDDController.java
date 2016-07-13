@@ -15,7 +15,7 @@ public class LayoutATDDController extends LayoutTDDTController
 
    // FXML
    @FXML
-   public TextArea acceptanceTestCode;
+   TextArea acceptanceTestCode;
    @FXML
    Label labelAzeptanzTest;
 

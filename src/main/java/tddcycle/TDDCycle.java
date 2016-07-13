@@ -30,7 +30,7 @@ public class TDDCycle extends Phases{
 
     public void compile(String akzeptanz, String code, String test){
 
-        akzeptanzUnit = new CompilationUnit("Akzeptanztest", akzeptanz, true);
+        akzeptanzUnit = new CompilationUnit("AkzeptanztestClass", akzeptanz, true);
         codeUnit = new CompilationUnit("Class", code, false);
         testUnit = new CompilationUnit("TestClass", test, true);
         JavaStringCompiler compiler = CompilerFactory.getCompiler(akzeptanzUnit, codeUnit, testUnit);
