@@ -43,6 +43,10 @@ public class TDDCycle extends Phases{
         return  cr.getCompilerErrorsForCompilationUnit(testUnit);
     }
 
+    public Collection<CompileError> getCompileErrorsAkzeptanz(){
+        return  cr.getCompilerErrorsForCompilationUnit(akzeptanzUnit);
+    }
+
     public Collection<CompileError> getCompileErrorsCode(){
         return  cr.getCompilerErrorsForCompilationUnit(codeUnit);
     }
