@@ -1,25 +1,15 @@
 package tddtLayout;
 
 import babysteps.Babysteps;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
-import phases.Phases;
 import tddcycle.TDDCycle;
 import tddtMain.TDDTMain;
-import vk.core.api.CompileError;
-import vk.core.api.CompilerResult;
-import vk.core.api.TestResult;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 
 public class LayoutTDDTController
 {
