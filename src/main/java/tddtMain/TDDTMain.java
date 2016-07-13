@@ -20,13 +20,14 @@ public class TDDTMain extends Application
    {
       rootPane = FXMLLoader.load(getClass().getResource("/layoutMain.fxml"));
       Scene scene = new Scene(rootPane);
+      rootPane.setId("rootPane");
 
       FXMLLoader loader = new FXMLLoader();
       rootPane.setCenter(loader.load(getClass().getResource("/layoutMenu.fxml")));
 
       primaryStage.setMaximized(true);
-      //String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
-      //scene.getStylesheets().add(stylesheet);
+      String stylesheet = getClass().getResource("/tddt.css").toExternalForm();
+      scene.getStylesheets().add(stylesheet);
       primaryStage.setScene(scene);
       primaryStage.setTitle("Test Driven Development Trainer");
       primaryStage.show();

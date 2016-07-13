@@ -20,6 +20,9 @@
         </rowConstraints>
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aufgabe:">
+                <font>
+                    <Font size="14.0" />
+                </font>
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -59,6 +62,9 @@
                   <TextArea fx:id="exerciseTxt" editable="false" prefHeight="333.0" prefWidth="340.0" wrapText="true" />
                   <TextArea fx:id="compilationError" editable="false" prefHeight="333.0" prefWidth="340.0" wrapText="true" GridPane.rowIndex="2" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kompilierungsfehler:" GridPane.rowIndex="1">
+                      <font>
+                          <Font size="14.0" />
+                      </font>
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin></Text>
@@ -76,11 +82,17 @@
                   <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <children>
                         <Text fx:id="textRemainingTime" strokeType="OUTSIDE" strokeWidth="0.0" text="Verbleibende Zeit:">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </Text>
                         <Label fx:id="labelTime" text="Zeit">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
@@ -96,6 +108,9 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Status: ">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
@@ -118,6 +133,7 @@
             <HBox alignment="CENTER" prefHeight="56.0" prefWidth="1260.0" BorderPane.alignment="CENTER">
                <children>
                   <Label fx:id="labelTestCode" text="Test Code">
+
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -134,6 +150,7 @@
                      </HBox.margin>
                   </Label>
                   <Label fx:id="labelSourceCode" text="Source Code">
+
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -142,6 +159,7 @@
                      </HBox.margin>
                   </Label>
                   <Label text="--&gt;">
+
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -150,6 +168,7 @@
                      </HBox.margin>
                   </Label>
                   <Label fx:id="labelRefactor" text="Refactor">
+
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -177,7 +196,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button onAction="#handleRunButton" text="Starten" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                  <Button fx:id="Starten" onAction="#handleRunButton" text="    Starten" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -185,7 +204,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button onAction="#handleBackToTestsButton" text="Zum Test Code" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Button fx:id="zumTestCode" onAction="#handleBackToTestsButton" text="     Zum Test Code" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -193,7 +212,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button onAction="#handleBackButton" text="Zurück zum Aufgabenkatalog">
+                  <Button fx:id="zurueck" onAction="#handleBackButton" text="     Zurück zum Aufgabenkatalog">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -201,7 +220,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button onAction="#handleRefactor" text="Refactor" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                  <Button fx:id="Refactor" onAction="#handleRefactor" text="     Refactor" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>

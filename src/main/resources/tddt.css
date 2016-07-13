@@ -1,44 +1,115 @@
-.button {
-	-fx-font-size: 24px;
-	-fx-font-family: "Arial";
-	-fx-background-color:  #008CBA;
-    -fx-webkit-transition-duration: 0.4s;
-    -fx-transition-duration: 0.4s;
+ .button {
+	-fx-background-color:transparent;
+	-fx-font-size: 14;
+	-fx-font-family: "Helvetica";
+     -fx-border-color: #a8cca0;
+     -fx-border-radius: 5;
+     -fx-border-width: 3px;
+    -fx-text-fill: #000000;
+
+     }
+.label{
+-fx-font-size: 14;
+}
+.text{
+-fx-font-size: 14;
 }
 
-
+.text-area {
+    -fx-font-family: Consolas;
+    -fx-font-size: 14;
+}
 .button:hover {
-    -fx-background-color: #4CAF50;
+    -fx-background-color: #d3d3d3;
     -fx-color: white;
+
 }
 
-#status {
-    -fx-fill: RED;
-    -fx-font-size:30px;
-    -fx-font-family: "Arial";
-    -fx-font-weight: bold;
+.list-cell:filled:selected {
+    -fx-text-fill: #ffffff;
+    -fx-background-color:  #a8cca0;
+    -fx-border-color: #a8cca0;
+
 }
 
-#errorTestClassName {
-    -fx-font-weight: bold;
-    -fx-fill: RED;
+.list-view {
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+}
+#tabeltddt{
+-fx-font: 30px Tahoma;
+    -fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, green 0%, black 50%);
+    -fx-stroke: white;
+    -fx-stroke-width: 1;
+    }
+#zurueck{
+-fx-background-image: url('http://icons.iconarchive.com/icons/graphicloads/100-flat/24/folder-icon.png');
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 20px 20px;
+  -fx-background-position: 5% 50% ;
+
+
 }
 
-#errorTestCode {
-    -fx-font-weight: bold;
-    -fx-fill: RED;
+#zumTestCode {
+-fx-background-image: url('http://icons.iconarchive.com/icons/graphicloads/100-flat/24/rewind-icon.png');
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 20px 20px;
+  -fx-background-position: 5% 50% ;
+
 }
 
-#errorExercise {
-    -fx-font-weight: bold;
-    -fx-fill: RED;
+#hinzufuegen {
+-fx-background-image: url('http://icons.iconarchive.com/icons/graphicloads/100-flat/24/addition-icon.png');
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 20px 20px;
+  -fx-background-position: 5% 50% ;
+
+}
+
+#exitMenu {
+-fx-background-image: url('http://icons.iconarchive.com/icons/graphicloads/100-flat/24/close-icon.png');
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 20px 20px;
+  -fx-background-position: 10% 50% ;
+
 }
 
 
-#exerciseBox {
-    -fx-border-color: #979fa7;
-    -fx-border-width: 2px;
-    -fx-font-size: 16px;
+#startMenu {
+-fx-background-image: url('http://icons.iconarchive.com/icons/graphicloads/100-flat/24/fastforward-icon.png');
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 20px 20px;
+  -fx-background-position: 10% 50% ;
+
+}
+#Refactor {
+-fx-background-image: url('http://icons.iconarchive.com/icons/graphicloads/100-flat/24/reload-icon.png');
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 20px 20px;
+  -fx-background-position: 5% 50% ;
+
+
+}
+
+#Starten{
+-fx-background-image: url('http://icons.iconarchive.com/icons/graphicloads/100-flat/24/play-icon.png');
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 20px 20px;
+  -fx-background-position: 5% 50% ;
+
+
+
+}
+
+#rootPane {
+    -fx-background-color:	white;
 
 }
 
