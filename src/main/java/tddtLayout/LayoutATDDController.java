@@ -59,7 +59,7 @@ public class LayoutATDDController extends LayoutTDDTController{
       super.handleRunButton();
    }
 
-   public void handleBackToAcceptance () {
+   public void handleAcceptance () {
       // TODO
    }
 }
