@@ -132,7 +132,7 @@ public class LayoutMenuController {
 
     }
     public void rainbow() {
-        TDDTMain.rootPane.setStyle(" -fx-background-image: url('rainbow-1513855_1920.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
+        TDDTMain.rootPane.setStyle(" -fx-background-image: url('./Bilder/rainbow.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
     }
 
     // TXT Einlesen und eventListener

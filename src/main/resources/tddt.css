@@ -52,7 +52,7 @@
     }
 
 #zurueck{
--fx-background-image: url('folder-icon.png');
+-fx-background-image: url('./Bilder/folder-icon.png');
 
   -fx-background-repeat: no-repeat;
   -fx-background-size: 24px 24px;
@@ -62,7 +62,7 @@
 }
 
 #zumTestCode {
--fx-background-image: url('rewind-icon.png');
+-fx-background-image: url('./Bilder/rewind-icon.png');
 
   -fx-background-repeat: no-repeat;
   -fx-background-size: 24px 24px;
@@ -71,7 +71,7 @@
 }
 
 #hinzufuegen {
--fx-background-image: url('addition-icon.jpg');
+-fx-background-image: url('./Bilder/addition-icon.jpg');
 
   -fx-background-repeat: no-repeat;
   -fx-background-size: 24px 24px;
@@ -80,7 +80,7 @@
 }
 
 #exitMenu {
--fx-background-image: url('close-2-icon.png');
+-fx-background-image: url('./Bilder/close-2-icon.png');
 
   -fx-background-repeat: no-repeat;
   -fx-background-size: 24px 24px;
@@ -90,7 +90,7 @@
 
 
 #startMenu {
--fx-background-image: url('fastforward-icon.png');
+-fx-background-image: url('./Bilder/fastforward-icon.png');
 
   -fx-background-repeat: no-repeat;
   -fx-background-size: 24px 24px;
@@ -98,7 +98,7 @@
 
 }
 #Refactor {
--fx-background-image: url('reload-icon.png');
+-fx-background-image: url('./Bilder/reload-icon.png');
 
   -fx-background-repeat: no-repeat;
   -fx-background-size: 24px 24px;
@@ -108,7 +108,7 @@
 }
 
 #Starten{
--fx-background-image: url('play-icon.png');
+-fx-background-image: url('./Bilder/play-icon.png');
   -fx-background-repeat: no-repeat;
   -fx-background-size: 24px 24px;
   -fx-background-position: 5% 50% ;
