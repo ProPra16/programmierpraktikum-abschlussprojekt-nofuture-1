@@ -15,13 +15,13 @@ public class LayoutTDDTController
 {
 
    // Variablen
-   int numberTests = 0;
+   private int numberTests = 0;
    TDDCycle cycle = new TDDCycle("red");
    Babysteps babysteps;
-   int buttonClicked = 0;
+   private int buttonClicked = 0;
 
-   String oldSourceCode = "public class Class {\n  // TODO\n}";
-   String oldTestCode = "import static org.junit.Assert.*;\nimport org.junit.Test;\n\npublic class TestClass {\n\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
+   private String oldSourceCode = "public class Class {\n  // TODO\n}";
+   private String oldTestCode = "import static org.junit.Assert.*;\nimport org.junit.Test;\n\npublic class TestClass {\n\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
 
    @FXML
    TextArea exerciseTxt;
@@ -68,7 +68,7 @@ public class LayoutTDDTController
        return null;
    }
 
-    protected void setPhaseRed() {
+    void setPhaseRed() {
         cycle.setPhase("red");
         labelSourceCode.setStyle("");
         labelRefactor.setStyle("");
@@ -78,7 +78,7 @@ public class LayoutTDDTController
         statusCycle.setText("Schreibe den Testcode.");
     }
 
-    protected void setPhaseGreen() {
+    void setPhaseGreen() {
         cycle.setPhase("green");
         labelTestCode.setStyle("");
         labelRefactor.setStyle("");
@@ -88,7 +88,7 @@ public class LayoutTDDTController
         statusCycle.setText("Schreibe nun den passenden Code zum Test.");
     }
 
-    protected void setPhaseRefactor() {
+    void setPhaseRefactor() {
         cycle.setPhase("refactor");
         labelTestCode.setStyle("");
         labelSourceCode.setStyle("");
@@ -97,7 +97,6 @@ public class LayoutTDDTController
         sourceCode.setEditable(true);
         statusCycle.setText("Verbessere deinen Code oder click auf den Button 'Refactor'.");
     }
-
 
     public void handleRunButton(){
       // Phase rot
@@ -161,7 +160,7 @@ public class LayoutTDDTController
       }
    }
 
-    public boolean hasNewTest(){
+   private boolean hasNewTest(){
         int newNumberTests = 0;
         String testCodeText = testCode.getText();
         String[] parts = testCodeText.split(" ");
