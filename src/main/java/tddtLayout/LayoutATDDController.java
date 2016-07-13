@@ -6,8 +6,12 @@ import javafx.scene.control.TextArea;
 
 public class LayoutATDDController extends LayoutTDDTController
 {
-
    // Variablen
+   private String acceptanceCode = "import static org.junit.Assert.*;\n" +
+           "import org.junit.Test;\n\n" +
+           "public class AkzeptanztestClass {\n" +
+           "\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
+   private String lastPhase = "";
 
    // FXML
    @FXML
@@ -15,23 +19,14 @@ public class LayoutATDDController extends LayoutTDDTController
    @FXML
    Label labelAzeptanzTest;
 
-   private String acceptanceCode = "import static org.junit.Assert.*;\n" +
-           "import org.junit.Test;\n\n" +
-           "public class AkzeptanztestClass {\n" +
-           "\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
-   private String lastPhase = "";
-
    @FXML
    @Override
    public void initialize()
    {
       super.initialize();
       testCode.setEditable(false);
-      labelAzeptanzTest.setStyle("-fx-text-fill: TOMATO; -fx-font-weight: bold;");  //bei bestanden auf MediumSeaGreen
       labelTestCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
-      cycle.setPhase("akzeptanz");
-      statusCycle.setText("Schreibe einen Akzeptanztest");
-      acceptanceTestCode.setText(acceptanceCode);
+      setPhaseAcceptance();
       if (LayoutMenuController.getBabysteps()) {
          babysteps.stop();
       }
@@ -58,7 +53,6 @@ public class LayoutATDDController extends LayoutTDDTController
    public void handleAcceptance()
    {
       setToNormal();
-      lastPhase = cycle.getPhase();
       cycle.setPhase("akzeptanz");
       statusCycle.setText("Korrigiere deinen Akzeptanztest");
       acceptanceTestCode.setEditable(true);
@@ -66,6 +60,14 @@ public class LayoutATDDController extends LayoutTDDTController
       if (LayoutMenuController.getBabysteps()) {
          babysteps.stop();
       }
+   }
+
+   private void setPhaseAcceptance()
+   {
+      labelAzeptanzTest.setStyle("-fx-text-fill: TOMATO; -fx-font-weight: bold;");  //bei bestanden auf MediumSeaGreen
+      cycle.setPhase("akzeptanz");
+      statusCycle.setText("Schreibe einen Akzeptanztest");
+      acceptanceTestCode.setText(acceptanceCode);
    }
 
    private void chooseLastPhase()
@@ -100,5 +102,6 @@ public class LayoutATDDController extends LayoutTDDTController
             labelRefactor.setStyle("-fx-font-weight: normal;");
             break;
       }
+      lastPhase = cycle.getPhase();
    }
 }
