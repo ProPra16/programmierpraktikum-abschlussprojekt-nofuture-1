@@ -4,11 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
-public class LayoutATDDController extends LayoutTDDTController{
+public class LayoutATDDController extends LayoutTDDTController
+{
 
-    // Variablen
+   // Variablen
 
-    // FXML
+   // FXML
    @FXML
    public TextArea acceptanceTestCode;
    @FXML
@@ -22,7 +23,8 @@ public class LayoutATDDController extends LayoutTDDTController{
 
    @FXML
    @Override
-   public void initialize() {
+   public void initialize()
+   {
       super.initialize();
       testCode.setEditable(false);
       labelAzeptanzTest.setStyle("-fx-text-fill: TOMATO; -fx-font-weight: bold;");  //bei bestanden auf MediumSeaGreen
@@ -30,64 +32,45 @@ public class LayoutATDDController extends LayoutTDDTController{
       cycle.setPhase("akzeptanz");
       statusCycle.setText("Schreibe einen Akzeptanztest");
       acceptanceTestCode.setText(acceptanceCode);
-      if (LayoutMenuController.getBabysteps())
-      {
+      if (LayoutMenuController.getBabysteps()) {
          babysteps.stop();
       }
    }
 
    @Override
-   public void handleRunButton() {
-      // Phase rot
-      if(cycle.getPhase().equals("akzeptanz"))
-      {
-
+   public void handleRunButton()
+   {
+      if (cycle.getPhase().equals("akzeptanz")) {
          cycle.compile(acceptanceTestCode.getText(), sourceCode.getText(), testCode.getText());
-         if (cycle.hasCompileErrors())
-         {
+         if (cycle.hasCompileErrors()) {
             acceptanceCode = acceptanceTestCode.getText();
             chooseLastPhase();
-            if (LayoutMenuController.getBabysteps())
-            {
+            if (LayoutMenuController.getBabysteps()) {
                babysteps.start();
             }
-            cycle.getCompileErrorsAkzeptanz().forEach((s) ->
-               compilationError.setText(s + "\n")
+            cycle.getCompileErrorsAkzeptanz().forEach((s) -> compilationError.setText(s + "\n")
             );
          }
       }
       super.handleRunButton();
    }
 
-   public void handleAcceptance () {
-
-      switch (cycle.getPhase())
-      {
-         case "red":
-            labelTestCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
-            break;
-         case "green":
-            labelSourceCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
-            break;
-         case "refactor":
-            labelRefactor.setStyle("-fx-font-weight: normal;");
-            break;
-      }
+   public void handleAcceptance()
+   {
+      setToNormal();
       lastPhase = cycle.getPhase();
       cycle.setPhase("akzeptanz");
       statusCycle.setText("Korrigiere deinen Akzeptanztest");
       acceptanceTestCode.setEditable(true);
       acceptanceTestCode.setText(acceptanceCode);
-      if (LayoutMenuController.getBabysteps())
-      {
+      if (LayoutMenuController.getBabysteps()) {
          babysteps.stop();
       }
    }
 
    private void chooseLastPhase()
    {
-      switch (lastPhase)
-      {
+      switch (lastPhase) {
          case "red":
             setPhaseRed();
             break;
@@ -102,5 +85,20 @@ public class LayoutATDDController extends LayoutTDDTController{
             break;
       }
       acceptanceTestCode.setEditable(false);
+   }
+
+   private void setToNormal()
+   {
+      switch (cycle.getPhase()) {
+         case "red":
+            labelTestCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
+            break;
+         case "green":
+            labelSourceCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
+            break;
+         case "refactor":
+            labelRefactor.setStyle("-fx-font-weight: normal;");
+            break;
+      }
    }
 }
