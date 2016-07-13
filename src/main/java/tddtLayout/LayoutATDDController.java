@@ -23,7 +23,6 @@ public class LayoutATDDController extends LayoutTDDTController{
    @Override
    public void initialize() {
       super.initialize();
-      acceptanceTestCode.setEditable(true);
       testCode.setEditable(false);
       labelAzeptanzTest.setStyle("-fx-text-fill: TOMATO; -fx-font-weight: bold;");  //bei bestanden auf MediumSeaGreen
       labelTestCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
@@ -45,7 +44,7 @@ public class LayoutATDDController extends LayoutTDDTController{
          cycle.compile(acceptanceTestCode.getText(), sourceCode.getText(), testCode.getText());
          if (cycle.hasCompileErrors())
          {
-//            acceptanceTestCode.setEditable(false);
+            acceptanceTestCode.setEditable(false);
             setPhaseRed();
             if (LayoutMenuController.getBabysteps())
             {
@@ -61,5 +60,8 @@ public class LayoutATDDController extends LayoutTDDTController{
 
    public void handleAcceptance () {
       // TODO
+      acceptanceTestCode.setEditable(true);
+      testCode.setEditable(false);
+      sourceCode.setEditable(false);
    }
 }
