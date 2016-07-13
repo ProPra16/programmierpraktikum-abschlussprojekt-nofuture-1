@@ -18,7 +18,7 @@ public class LayoutATDDController extends LayoutTDDTController
    @FXML
    TextArea acceptanceTestCode;
    @FXML
-   Label labelAzeptanzTest;
+   Label labelAkzeptanzTest;
 
    @FXML
    @Override
@@ -65,7 +65,7 @@ public class LayoutATDDController extends LayoutTDDTController
 
    private void setPhaseAcceptance()
    {
-      labelAzeptanzTest.setStyle("-fx-text-fill: TOMATO; -fx-font-weight: bold;");
+      labelAkzeptanzTest.setStyle("-fx-text-fill: TOMATO; -fx-font-weight: bold;");
       cycle.setPhase("akzeptanz");
       if (countAcceptanceTest > 0) {
          statusCycle.setText("Schreibe weiteren Akzeptanztest");
@@ -78,7 +78,7 @@ public class LayoutATDDController extends LayoutTDDTController
 
    private void accomplishAcceptanceTest()
    {
-      labelAzeptanzTest.setStyle("-fx-text-fill: MEDIUMSEAGREEN; -fx-font-weight: bold;");
+      labelAkzeptanzTest.setStyle("-fx-text-fill: MEDIUMSEAGREEN; -fx-font-weight: bold;");
       setPhaseRefactor();
       acceptanceTestCode.setEditable(true);
       statusCycle.setText("Dein Akzeptanztest wird erfüllt! Verbessere deinen Code mit Refactor");
