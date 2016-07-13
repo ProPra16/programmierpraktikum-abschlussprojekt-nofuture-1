@@ -60,6 +60,13 @@
 
 
 }
+#accept{
+-fx-background-image: url('./Bilder/rewind-icon.png');
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: 24px 24px;
+  -fx-background-position: 5% 50% ;
+}
 
 #zumTestCode {
 -fx-background-image: url('./Bilder/rewind-icon.png');
