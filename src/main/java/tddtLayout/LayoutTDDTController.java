@@ -127,7 +127,10 @@ public class LayoutTDDTController
                      if (cycle.getCompileErrorsTest().toArray()[0].toString().contains("error:cannot find symbol")) {
                          oldTestCode = testCode.getText();
                          numberTests++;
-                        babysteps.reset();
+
+                        if (LayoutMenuController.getBabysteps()) {
+                           babysteps.reset();
+                        }
                          setPhaseGreen();
                      }
                  }
@@ -137,7 +140,10 @@ public class LayoutTDDTController
              } else if (cycle.hasFailingTest()) {
                 oldTestCode = testCode.getText();
                 numberTests++;
-                babysteps.reset();
+
+                if (LayoutMenuController.getBabysteps()) {
+                   babysteps.reset();
+                }
                  setPhaseGreen();
              } else {
                  statusCycle.setText("Es muss genau ein Test fehlschlagen");
