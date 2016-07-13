@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import tddtMain.TDDTMain;
@@ -209,7 +206,19 @@ public class LayoutMenuController {
        hasBabysteps = b;
     }
 
+    int rain=0;
+    @FXML
+    Button rainbow;
     public void rainbow(ActionEvent actionEvent) {
-        TDDTMain.rootPane.setStyle(" -fx-background-image: url('rainbow-1513855_1920.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
+        if(rain==0) {
+            TDDTMain.rootPane.setStyle(" -fx-background-image: url('rainbow-1513855_1920.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
+            rainbow.setText("Hässlich");
+            rain++;
+        }
+       else if(rain==1){
+            TDDTMain.rootPane.setStyle("-fx-background-color: white;");
+            rainbow.setText("Hübsch");
+            rain--;
+        }
     }
 }
