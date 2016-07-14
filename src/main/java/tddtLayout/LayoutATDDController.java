@@ -13,6 +13,7 @@ public class LayoutATDDController extends LayoutTDDTController
            "\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
    private String lastPhase = "";
    private int countAcceptanceTest = 0;
+   private boolean accepted;
 
    // FXML
    @FXML
@@ -24,6 +25,7 @@ public class LayoutATDDController extends LayoutTDDTController
    @Override
    public void initialize()
    {
+      isAtdd = true;
       super.initialize();
       testCode.setEditable(false);
       labelTestCode.setStyle("");
@@ -38,6 +40,7 @@ public class LayoutATDDController extends LayoutTDDTController
    {
       if (cycle.getPhase().equals("akzeptanz")) {
          cycle.compile(acceptanceTestCode.getText(), sourceCode.getText(), testCode.getText());
+         chooseLastPhase();
          if (cycle.hasCompileErrors()) {
             acceptanceCode = acceptanceTestCode.getText();
             chooseLastPhase();
@@ -49,46 +52,6 @@ public class LayoutATDDController extends LayoutTDDTController
          }
       }
       super.handleRunButton();
-   }
-
-   public void handleRefactor(){
-      if (buttonClicked == 0 && cycle.getPhase().equals("green")) {
-         buttonClicked++;
-         if (LayoutMenuController.getBabysteps()) {
-            babysteps.stop();
-         }
-         setPhaseRefactor();
-         labelTime.setVisible(false);
-         textRemainingTime.setVisible(false);
-
-      } else {
-         cycle.compile(sourceCode.getText(), testCode.getText());
-
-         if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
-            setPhaseRed();
-            if (LayoutMenuController.getBabysteps()) {
-               babysteps.reset();
-               babysteps.start();
-            }
-            statusCycle.setText("Schreibe einen neuen Test.");
-            if (LayoutMenuController.getBabysteps()) {
-               labelTime.setVisible(true);
-               textRemainingTime.setVisible(true);
-            }
-            if (cycle.getPhase() == "refactor")
-            {
-               if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
-                  setPhaseRefactor();
-                  accomplishAcceptanceTest();
-               }
-            }
-         }
-         else {
-            cycle.getCompileErrorsCode().forEach((s) -> {
-               compilationError.setText(s + "\n");
-            });
-         }
-      }
    }
 
    public void handleAcceptance()
@@ -103,8 +66,65 @@ public class LayoutATDDController extends LayoutTDDTController
       }
    }
 
+   @Override
+   public void handleRefactor(){
+      atddRefactoring();
+   }
+
+   private void atddRefactoring() {
+      cycle.compile(acceptanceTestCode.getText(), sourceCode.getText(), testCode.getText());
+      if (!cycle.hasCompileErrors() && !cycle.hasFailingTest())
+      {
+         if (buttonClicked == 0 && cycle.getPhase().equals("green")) {
+            buttonClicked++;
+            if (LayoutMenuController.getBabysteps()) {
+               babysteps.stop();
+            }
+            accomplishAcceptanceTest();
+            labelTime.setVisible(false);
+            textRemainingTime.setVisible(false);
+
+         } else {
+            cycle.compile(acceptanceTestCode.getText(), sourceCode.getText(), testCode.getText());
+
+            if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
+               isNewAcceptancePhase();
+            }
+            else {
+               cycle.getCompileErrorsCode().forEach((s) -> {
+                  compilationError.setText(s + "\n");
+               });
+
+            }
+         }
+      }
+      else {
+         tddRefactoring();
+      }
+   }
+
+   private void isNewAcceptancePhase() {
+      if (accepted)
+      {
+         setPhaseAcceptance();
+      }
+      else {
+         setPhaseRed();
+         if (LayoutMenuController.getBabysteps()) {
+            babysteps.reset();
+            babysteps.start();
+         }
+         statusCycle.setText("Schreibe einen neuen Test.");
+         if (LayoutMenuController.getBabysteps()) {
+            labelTime.setVisible(true);
+            textRemainingTime.setVisible(true);
+         }
+      }
+   }
+
    private void setPhaseAcceptance()
    {
+      accepted = false;
       labelAkzeptanzTest.setStyle("-fx-text-fill: TOMATO; -fx-font-weight: bold;");
       cycle.setPhase("akzeptanz");
       if (countAcceptanceTest > 0) {
@@ -118,11 +138,14 @@ public class LayoutATDDController extends LayoutTDDTController
 
    private void accomplishAcceptanceTest()
    {
-      labelAkzeptanzTest.setStyle("-fx-text-fill: MEDIUMSEAGREEN; -fx-font-weight: bold;");
       setPhaseRefactor();
-      acceptanceTestCode.setEditable(true);
-      statusCycle.setText("Dein Akzeptanztest wird erfüllt! Verbessere deinen Code mit Refactor");
-//      acceptanceTestCode.setText(acceptanceCode);
+      if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
+         accepted = true;
+         labelAkzeptanzTest.setStyle("-fx-text-fill: MEDIUMSEAGREEN; -fx-font-weight: bold;");
+         acceptanceTestCode.setEditable(true);
+         statusCycle.setText("Dein Akzeptanztest wird erfüllt! Verbessere deinen Code mit Refactor");
+         acceptanceTestCode.setText(acceptanceCode);
+      }
    }
 
    private void chooseLastPhase()
