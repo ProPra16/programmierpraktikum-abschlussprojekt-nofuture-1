@@ -24,6 +24,7 @@ public class LayoutATDDController extends LayoutTDDTController
    @Override
    public void initialize()
    {
+      isAtdd = true;
       super.initialize();
       testCode.setEditable(false);
       labelTestCode.setStyle("");
@@ -38,6 +39,7 @@ public class LayoutATDDController extends LayoutTDDTController
    {
       if (cycle.getPhase().equals("akzeptanz")) {
          cycle.compile(acceptanceTestCode.getText(), sourceCode.getText(), testCode.getText());
+         chooseLastPhase();
          if (cycle.hasCompileErrors()) {
             acceptanceCode = acceptanceTestCode.getText();
             chooseLastPhase();
@@ -48,7 +50,6 @@ public class LayoutATDDController extends LayoutTDDTController
             );
          }
       }
-      chooseLastPhase();
       super.handleRunButton();
    }
 
@@ -76,13 +77,13 @@ public class LayoutATDDController extends LayoutTDDTController
                labelTime.setVisible(true);
                textRemainingTime.setVisible(true);
             }
-            if (cycle.getPhase() == "refactor")
-            {
+            cycle.compile(acceptanceTestCode.getText());
+
                if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
                   setPhaseRefactor();
                   accomplishAcceptanceTest();
                }
-            }
+
          }
          else {
             cycle.getCompileErrorsCode().forEach((s) -> {

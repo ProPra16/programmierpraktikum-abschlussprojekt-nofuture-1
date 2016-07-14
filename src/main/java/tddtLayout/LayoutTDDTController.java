@@ -19,6 +19,7 @@ public class LayoutTDDTController
    TDDCycle cycle = new TDDCycle("red");
    Babysteps babysteps;
    public int buttonClicked = 0;
+   public static boolean isAtdd = false;
 
    private String oldSourceCode = "public class Class {\n  // TODO\n}";
    private String oldTestCode = "import static org.junit.Assert.*;\nimport org.junit.Test;\n\npublic class TestClass {\n\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
@@ -181,6 +182,7 @@ public class LayoutTDDTController
    }
 
    public void handleBackButton() throws IOException{
+      isAtdd = false;
        LayoutMenuController.setHasRainbow(true);
       LayoutMenuController.setHasAtdd(false);
       LayoutMenuController.setHasBabysteps(false);
@@ -189,38 +191,53 @@ public class LayoutTDDTController
    }
 
    public void handleRefactor(){
-      if (buttonClicked == 0 && cycle.getPhase().equals("green")) {
-         buttonClicked++;
-          if (LayoutMenuController.getBabysteps()) {
-              babysteps.stop();
-          }
-         setPhaseRefactor();
-         labelTime.setVisible(false);
-         textRemainingTime.setVisible(false);
-
-      } else {
-          cycle.compile(sourceCode.getText(), testCode.getText());
-
-         if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
-            setPhaseRed();
-             if (LayoutMenuController.getBabysteps()) {
-                 babysteps.reset();
-                 babysteps.start();
-             }
-            statusCycle.setText("Schreibe einen neuen Test.");
-            if (LayoutMenuController.getBabysteps()) {
-               labelTime.setVisible(true);
-               textRemainingTime.setVisible(true);
-            }
-         }
-         else {
-             cycle.getCompileErrorsCode().forEach((s) -> {
-                 compilationError.setText(s + "\n");
-             });
-
-         }
+      if (isAtdd) {
+         atddRefactoring();
       }
+      else {
+         tddRefactoring();
+      }
+   }
+
+   private void atddRefactoring() {
 
    }
 
+   private void tddRefactoring() {
+      cycle.compile(sourceCode.getText(), testCode.getText());
+      if (!cycle.hasCompileErrors() && !cycle.hasFailingTest())
+      {
+         if (buttonClicked == 0 && cycle.getPhase().equals("green")) {
+            buttonClicked++;
+            if (LayoutMenuController.getBabysteps()) {
+               babysteps.stop();
+            }
+            setPhaseRefactor();
+            labelTime.setVisible(false);
+            textRemainingTime.setVisible(false);
+
+         } else {
+            cycle.compile(sourceCode.getText(), testCode.getText());
+
+            if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
+               setPhaseRed();
+               if (LayoutMenuController.getBabysteps()) {
+                  babysteps.reset();
+                  babysteps.start();
+               }
+               statusCycle.setText("Schreibe einen neuen Test.");
+               if (LayoutMenuController.getBabysteps()) {
+                  labelTime.setVisible(true);
+                  textRemainingTime.setVisible(true);
+               }
+            }
+            else {
+               cycle.getCompileErrorsCode().forEach((s) -> {
+                  compilationError.setText(s + "\n");
+               });
+
+            }
+         }
+      }
+   }
 }
