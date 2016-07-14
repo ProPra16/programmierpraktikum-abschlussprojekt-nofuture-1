@@ -48,9 +48,8 @@ public class LayoutATDDController extends LayoutTDDTController
                babysteps.start();
             }
 
-//            TODO das wird nicht ausgegeben, warum???
             compilationError.setText("");
-            cycle.getCompileErrorsTest().forEach((s) -> {
+            cycle.getCompileErrorsAkzeptanz().forEach((s) -> {
                compilationError.appendText(s + "\n");
             });
          }
