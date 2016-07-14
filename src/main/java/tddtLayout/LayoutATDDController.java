@@ -141,7 +141,6 @@ public class LayoutATDDController extends LayoutTDDTController
       setPhaseRefactor();
       if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
          accepted = true;
-         System.out.println("Erreicht??");
          labelAkzeptanzTest.setStyle("-fx-text-fill: MEDIUMSEAGREEN; -fx-font-weight: bold;");
          acceptanceTestCode.setEditable(true);
          statusCycle.setText("Dein Akzeptanztest wird erfüllt! Verbessere deinen Code mit Refactor");
