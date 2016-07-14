@@ -1,27 +1,37 @@
 ## programmierpraktikum-abschlussprojekt-nofuture-1
 
-### Travis Build Status
-[![Build Status](https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-nofuture-1.svg?branch=develop)](https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-nofuture-1)
-
 ### Arbeitsweise:
 ![Meaning of Git](https://imgs.xkcd.com/comics/git.png)
 
-### Branch Politik:
+### Travis Build Status
+[![Build Status](https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-nofuture-1.svg?branch=develop)](https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-nofuture-1)
 
-`master`  merged nur mit develop <br />
-	Auf diesem Branch wird nicht gearbeitet <br />
+### Gradle Build
+`gradlew tasks`  zeigt an welche *tasks* zur Verfügung stehen.
+ 
+`gradlew build`  baut das Programm.
 
-`develop` dient zum mergen der feature Branches <br />
+`gradlew run`  startet das Programm.
 
-`feature/feature_name` sollte passenden Namen haben, doch wenn er 
-lokal bleibt ist die Namensgebung irrelevant
+### LIZENZ
+Copyright 2016
 
-###  Generelle Philosophie
-Zur sauberen Trennung sollten feature Branches nicht gepusht werden,
-sondern nach Fertigstellung mit develop Branch gemerged und danach gelöscht werden.
+Software Developer:
+Anne "HOTPINK" Abraham , Anne "CORNFLOWERBLUE" Brecklinghaus,
+Philipp "BURLYWOOD" Bruehn, Tim "PAPAYAWHIP" Matussek,
+Cedric "LIGHTGOLDENRODYELLOW" Wolffs
 
-Nach Absprache mit der Gruppe erhält einer die Aufgabe den Merge von `develop` zum  `master` 
-Branch zu vollziehen.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 ##### Nützliche Links
 [Frank Westphal über TDD](http://www.frankwestphal.de/TestgetriebeneEntwicklung.html) <br />
@@ -31,10 +41,3 @@ Branch zu vollziehen.
 * Lässt sich mit GitHub verbinden
 * geclontes NoFuture Repository unter Lokal hinzufügen
 * bietet bessere Übersicht über alle Branches und Veränderungen
-
-### Gradle Build
-`gradlew tasks`  zeigt an welche *tasks* zur Verfügung stehen.
- 
-`gradlew build`  baut das Programm.
-
-`gradlew run`  startet das Programm.
