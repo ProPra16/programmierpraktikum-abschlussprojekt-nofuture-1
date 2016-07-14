@@ -22,13 +22,14 @@ public class LayoutMenuController {
     // Variablen
     private static boolean hasAtdd = false;
     private static boolean hasBabysteps = false;
+    private static boolean hasRainbow = false;
     private static int timer = 180;
     private static String exerciseText;
     private HashMap<StringBuilder, StringBuilder> datenListe = new HashMap<>();
     private ObservableList<String> data = FXCollections.observableArrayList();
-    private static int rain=0;
 
-    // FXML
+
+// FXML
     @FXML
     ToggleGroup babystepTimeGroup;
     @FXML
@@ -130,16 +131,16 @@ public class LayoutMenuController {
         viewExercise();
 
     }
-    public void rainbow() {
-        if(rain==0) {
+    public  void rainbow() {
+        if(!hasRainbow) {
             TDDTMain.rootPane.setStyle(" -fx-background-image: url('./Bilder/rainbow.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
             rainbow.setText("Hässlich");
-            rain++;
+            hasRainbow = true;
         }
-        else if(rain==1){
+        else {
             TDDTMain.rootPane.setStyle("-fx-background-color: white;");
             rainbow.setText("Hübsch");
-            rain--;
+            hasRainbow = false;
         }
     }
 
@@ -219,7 +220,8 @@ public class LayoutMenuController {
     static void setHasBabysteps(boolean b) {
        hasBabysteps = b;
     }
-    static void setRain(int r) {
-        rain = r;
+
+    public static void setHasRainbow(boolean Rainbow) {
+        hasRainbow = Rainbow;
     }
 }

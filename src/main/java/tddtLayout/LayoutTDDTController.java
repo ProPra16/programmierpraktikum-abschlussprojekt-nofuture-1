@@ -93,7 +93,7 @@ public class LayoutTDDTController
         labelTestCode.setStyle("");
         labelSourceCode.setStyle("");
         labelRefactor.setStyle("-fx-font-weight: bold;");
-        testCode.setEditable(false);
+        testCode.setEditable(true);
         sourceCode.setEditable(true);
         statusCycle.setText("Verbessere deinen Code oder click auf den Button 'Refactor'.");
     }
@@ -181,7 +181,7 @@ public class LayoutTDDTController
    }
 
    public void handleBackButton() throws IOException{
-       LayoutMenuController.setRain(1);
+       LayoutMenuController.setHasRainbow(true);
       LayoutMenuController.setHasAtdd(false);
       LayoutMenuController.setHasBabysteps(false);
       FXMLLoader loader = new FXMLLoader();

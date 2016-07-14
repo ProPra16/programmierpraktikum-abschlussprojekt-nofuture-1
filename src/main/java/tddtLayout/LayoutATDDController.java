@@ -12,12 +12,13 @@ public class LayoutATDDController extends LayoutTDDTController
            "public class AkzeptanztestClass {\n" +
            "\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
    private String lastPhase = "";
+   private int countAcceptanceTest = 0;
 
    // FXML
    @FXML
    TextArea acceptanceTestCode;
    @FXML
-   Label labelAzeptanzTest;
+   Label labelAkzeptanzTest;
 
    @FXML
    @Override
@@ -25,7 +26,7 @@ public class LayoutATDDController extends LayoutTDDTController
    {
       super.initialize();
       testCode.setEditable(false);
-      labelTestCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
+      labelTestCode.setStyle("");
       setPhaseAcceptance();
       if (LayoutMenuController.getBabysteps()) {
          babysteps.stop();
@@ -64,10 +65,24 @@ public class LayoutATDDController extends LayoutTDDTController
 
    private void setPhaseAcceptance()
    {
-      labelAzeptanzTest.setStyle("-fx-text-fill: TOMATO; -fx-font-weight: bold;");  //bei bestanden auf MediumSeaGreen
+      labelAkzeptanzTest.setStyle("-fx-text-fill: TOMATO; -fx-font-weight: bold;");
       cycle.setPhase("akzeptanz");
-      statusCycle.setText("Schreibe einen Akzeptanztest");
+      if (countAcceptanceTest > 0) {
+         statusCycle.setText("Schreibe weiteren Akzeptanztest");
+      } else {
+         statusCycle.setText("Schreibe einen Akzeptanztest");
+      }
+      countAcceptanceTest++;
       acceptanceTestCode.setText(acceptanceCode);
+   }
+
+   private void accomplishAcceptanceTest()
+   {
+      labelAkzeptanzTest.setStyle("-fx-text-fill: MEDIUMSEAGREEN; -fx-font-weight: bold;");
+      setPhaseRefactor();
+      acceptanceTestCode.setEditable(true);
+      statusCycle.setText("Dein Akzeptanztest wird erfüllt! Verbessere deinen Code mit Refactor");
+//      acceptanceTestCode.setText(acceptanceCode);
    }
 
    private void chooseLastPhase()
@@ -93,13 +108,13 @@ public class LayoutATDDController extends LayoutTDDTController
    {
       switch (cycle.getPhase()) {
          case "red":
-            labelTestCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
+            labelTestCode.setStyle("");
             break;
          case "green":
-            labelSourceCode.setStyle("-fx-text-fill: BLACK; -fx-font-weight: normal;");
+            labelSourceCode.setStyle("");
             break;
          case "refactor":
-            labelRefactor.setStyle("-fx-font-weight: normal;");
+            labelRefactor.setStyle("");
             break;
       }
       lastPhase = cycle.getPhase();
