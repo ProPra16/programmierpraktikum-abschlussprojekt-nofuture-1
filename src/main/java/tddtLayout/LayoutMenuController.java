@@ -1,6 +1,7 @@
 package tddtLayout;
 
 import javafx.application.Platform;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -27,7 +28,7 @@ public class LayoutMenuController {
     private static boolean hasRainbow = false;
     private static String[] LabelRainbowButton = {"Hübsch", "Hässlich"};
     private static int changeLabelRainbow = 0;
-    private static IntegerProperty timer;
+    private static DoubleProperty timer;
     private static String exerciseText;
     private HashMap<StringBuilder, StringBuilder> datenListe = new HashMap<>();
     private ObservableList<String> data = FXCollections.observableArrayList();
@@ -62,9 +63,14 @@ public class LayoutMenuController {
     public void handleBabystep() {
         if (!hasBabysteps) {
             setHasBabysteps(true);
+            timerSlider.setMin(1);
+            timerSlider.setMax(5);
+            timerSlider.setShowTickLabels(true);
+            timerSlider.setMajorTickUnit(1);
+            timerSlider.setValue(2);
             timerSlider.setVisible(true);
             dauerText.setVisible(true);
-            timer.bind(timerSlider.valueProperty());
+            timer = timerSlider.valueProperty();
             timerSlider.valueProperty().addListener(new ChangeListener<Number>() {
                 @Override
                 public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -217,7 +223,7 @@ public class LayoutMenuController {
     }
 
     // getter-setter Bereich
-    static int getTimer() { return timer.getValue(); }
+    static int getTimer() { return timer.intValue() * 60; }
     static boolean getBabysteps() { return hasBabysteps; }
     static String getExerciseText() {
         return exerciseText;
