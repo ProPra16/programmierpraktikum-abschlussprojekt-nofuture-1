@@ -106,7 +106,7 @@ public class LayoutTDDTController
          // sollte nicht kompilieren oder ein test soll fehl schlagen
 
          if (!hasNewTest()) {
-             statusCycle.setText("Es muss genau ein neuer Test geschrieben werden");   // TODO in label schreiben (unter Aufgabentext?)
+             statusCycle.setText("Es muss genau ein neuer Test geschrieben werden");
          } else {
 
              cycle.compile(sourceCode.getText(), testCode.getText());

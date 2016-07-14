@@ -13,6 +13,7 @@ public class LayoutATDDController extends LayoutTDDTController
            "\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
    private String lastPhase = "";
    private int countAcceptanceTest = 0;
+   private boolean accepted;
 
    // FXML
    @FXML
@@ -87,16 +88,7 @@ public class LayoutATDDController extends LayoutTDDTController
             cycle.compile(acceptanceTestCode.getText(), sourceCode.getText(), testCode.getText());
 
             if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
-               setPhaseRed();
-               if (LayoutMenuController.getBabysteps()) {
-                  babysteps.reset();
-                  babysteps.start();
-               }
-               statusCycle.setText("Schreibe einen neuen Test.");
-               if (LayoutMenuController.getBabysteps()) {
-                  labelTime.setVisible(true);
-                  textRemainingTime.setVisible(true);
-               }
+               isNewAcceptancePhase();
             }
             else {
                cycle.getCompileErrorsCode().forEach((s) -> {
@@ -109,11 +101,30 @@ public class LayoutATDDController extends LayoutTDDTController
       else {
          tddRefactoring();
       }
+   }
 
+   private void isNewAcceptancePhase() {
+      if (accepted)
+      {
+         setPhaseAcceptance();
+      }
+      else {
+         setPhaseRed();
+         if (LayoutMenuController.getBabysteps()) {
+            babysteps.reset();
+            babysteps.start();
+         }
+         statusCycle.setText("Schreibe einen neuen Test.");
+         if (LayoutMenuController.getBabysteps()) {
+            labelTime.setVisible(true);
+            textRemainingTime.setVisible(true);
+         }
+      }
    }
 
    private void setPhaseAcceptance()
    {
+      accepted = false;
       labelAkzeptanzTest.setStyle("-fx-text-fill: TOMATO; -fx-font-weight: bold;");
       cycle.setPhase("akzeptanz");
       if (countAcceptanceTest > 0) {
@@ -129,6 +140,8 @@ public class LayoutATDDController extends LayoutTDDTController
    {
       setPhaseRefactor();
       if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
+         accepted = true;
+         System.out.println("Erreicht??");
          labelAkzeptanzTest.setStyle("-fx-text-fill: MEDIUMSEAGREEN; -fx-font-weight: bold;");
          acceptanceTestCode.setEditable(true);
          statusCycle.setText("Dein Akzeptanztest wird erfüllt! Verbessere deinen Code mit Refactor");
