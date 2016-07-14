@@ -1,5 +1,6 @@
 Copyright 2016
-<div color:HOTPINK;">Anne "HOTPINK" Abraham</div>, Anne "CORNFLOWERBLUE" Brecklinghaus,
+<span style="color: hotpink"> Anne "HOTPINK" Abraham </span>
+<div color:HOTPINK;"></div>, Anne "CORNFLOWERBLUE" Brecklinghaus,
 Philipp "BURLYWOOD" Bruehn, Tim "PAPAYAWHIP" Matussek,
 Cedric "LIGHTGOLDENRODYELLOW" Wolffs
 
