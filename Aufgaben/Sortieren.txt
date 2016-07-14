@@ -1,3 +1,3 @@
-Das Programm ArgSort erhält über die Konsole eine beliebige Anzahl an Integer-Werte. Die Werte werden in aufsteigender Reihenfolge sortiert und so auf der Konsole wieder ausgegeben. Der Aufruf und die Ausgabe des Programms kann folgendermassen aussehen: java ArgSort 10 5 3 90 [3, 5, 10, 90]
+Das Programm erhaelt eine beliebige Anzahl an Integer-Werte. Die Werte werden in aufsteigender Reihenfolge sortiert und so auf der Konsole wieder ausgegeben. Das Programm kann folgendermassen aussehen: Eingabe 10 5 3 90 Ausgabe: 3, 5, 10, 90
 Die Zahlen sollen mittels Einfuegen in aufsteigender Reihenfolge sortiert werden. Siehe hierzu auch https://de.wikipedia.org/wiki/Insertionsort
-Bitte ergänzen Sie die Funktionen argSort(), wandeln() und sort() mit den notwendigen Parametern und den fehlenden Anweisungen. Eine Überpruefung der Eingabe ist nicht notwendig. In der main-Methode soll nur die Funktion argSort() aufgerufen werden. 
+Eine Ueberpruefung der Eingabe ist nicht notwendig.
