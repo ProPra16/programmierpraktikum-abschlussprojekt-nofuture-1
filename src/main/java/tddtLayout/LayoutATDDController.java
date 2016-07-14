@@ -108,6 +108,7 @@ public class LayoutATDDController extends LayoutTDDTController
       if (accepted)
       {
          setPhaseAcceptance();
+         lastPhase = "red";
       }
       else {
          setPhaseRed();
