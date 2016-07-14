@@ -26,7 +26,7 @@ public class LayoutMenuController {
     private static String exerciseText;
     private HashMap<StringBuilder, StringBuilder> datenListe = new HashMap<>();
     private ObservableList<String> data = FXCollections.observableArrayList();
-    private int rain=0;
+    private static int rain=0;
 
     // FXML
     @FXML
@@ -218,5 +218,8 @@ public class LayoutMenuController {
     }
     static void setHasBabysteps(boolean b) {
        hasBabysteps = b;
+    }
+    static void setRain(int r) {
+        rain = r;
     }
 }

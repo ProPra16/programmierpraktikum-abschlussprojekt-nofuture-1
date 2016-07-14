@@ -181,6 +181,7 @@ public class LayoutTDDTController
    }
 
    public void handleBackButton() throws IOException{
+       LayoutMenuController.setRain(1);
       LayoutMenuController.setHasAtdd(false);
       LayoutMenuController.setHasBabysteps(false);
       FXMLLoader loader = new FXMLLoader();
