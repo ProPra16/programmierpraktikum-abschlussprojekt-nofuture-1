@@ -23,6 +23,8 @@ public class LayoutMenuController {
     private static boolean hasAtdd = false;
     private static boolean hasBabysteps = false;
     private static boolean hasRainbow = false;
+    private static String[] LabelRainbowButton = {"Hübsch", "Hässlich"};
+    private static int changeLabelRainbow = 0;
     private static int timer = 180;
     private static String exerciseText;
     private HashMap<StringBuilder, StringBuilder> datenListe = new HashMap<>();
@@ -51,6 +53,7 @@ public class LayoutMenuController {
         aufgabenErstellen();
         listExercises.setItems(data.sorted());
         viewExercise();
+        rainbow.setText(LabelRainbowButton[changeLabelRainbow]);
     }
 
     // Checkboxen Handles
@@ -134,12 +137,14 @@ public class LayoutMenuController {
     public  void rainbow() {
         if(!hasRainbow) {
             TDDTMain.rootPane.setStyle(" -fx-background-image: url('./Bilder/rainbow.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
-            rainbow.setText("Hässlich");
+            changeLabelRainbow = 1;
+            rainbow.setText(LabelRainbowButton[changeLabelRainbow]);
             hasRainbow = true;
         }
         else {
             TDDTMain.rootPane.setStyle("-fx-background-color: white;");
-            rainbow.setText("Hübsch");
+            changeLabelRainbow = 0;
+            rainbow.setText(LabelRainbowButton[changeLabelRainbow]);
             hasRainbow = false;
         }
     }
