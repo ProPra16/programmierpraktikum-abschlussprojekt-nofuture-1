@@ -51,6 +51,46 @@ public class LayoutATDDController extends LayoutTDDTController
       super.handleRunButton();
    }
 
+   public void handleRefactor(){
+      if (buttonClicked == 0 && cycle.getPhase().equals("green")) {
+         buttonClicked++;
+         if (LayoutMenuController.getBabysteps()) {
+            babysteps.stop();
+         }
+         setPhaseRefactor();
+         labelTime.setVisible(false);
+         textRemainingTime.setVisible(false);
+
+      } else {
+         cycle.compile(sourceCode.getText(), testCode.getText());
+
+         if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
+            setPhaseRed();
+            if (LayoutMenuController.getBabysteps()) {
+               babysteps.reset();
+               babysteps.start();
+            }
+            statusCycle.setText("Schreibe einen neuen Test.");
+            if (LayoutMenuController.getBabysteps()) {
+               labelTime.setVisible(true);
+               textRemainingTime.setVisible(true);
+            }
+            if (cycle.getPhase() == "refactor")
+            {
+               if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
+                  setPhaseRefactor();
+                  accomplishAcceptanceTest();
+               }
+            }
+         }
+         else {
+            cycle.getCompileErrorsCode().forEach((s) -> {
+               compilationError.setText(s + "\n");
+            });
+         }
+      }
+   }
+
    public void handleAcceptance()
    {
       setToNormal();

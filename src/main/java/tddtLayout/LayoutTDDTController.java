@@ -18,7 +18,7 @@ public class LayoutTDDTController
    private int numberTests = 0;
    TDDCycle cycle = new TDDCycle("red");
    Babysteps babysteps;
-   private int buttonClicked = 0;
+   public int buttonClicked = 0;
 
    private String oldSourceCode = "public class Class {\n  // TODO\n}";
    private String oldTestCode = "import static org.junit.Assert.*;\nimport org.junit.Test;\n\npublic class TestClass {\n\t@Test\n\tpublic void test() {\n\t\t// TODO\n\t}\n}";
@@ -95,7 +95,7 @@ public class LayoutTDDTController
         labelRefactor.setStyle("-fx-font-weight: bold;");
         testCode.setEditable(false);
         sourceCode.setEditable(true);
-        statusCycle.setText("Verbessere deinen Code oder click auf den Button 'Refactor'.");
+        statusCycle.setText("Verbessere deinen Code oder klick direkt auf den Button 'Refactor'");
     }
 
     public void handleRunButton(){

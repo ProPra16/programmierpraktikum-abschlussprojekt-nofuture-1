@@ -1,4 +1,7 @@
-Copyright [2016] [NoFuture-1]
+Copyright 2016
+<div color:HOTPINK;">Anne "HOTPINK" Abraham</div>, Anne "CORNFLOWERBLUE" Brecklinghaus,
+Philipp "BURLYWOOD" Bruehn, Tim "PAPAYAWHIP" Matussek,
+Cedric "LIGHTGOLDENRODYELLOW" Wolffs
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
