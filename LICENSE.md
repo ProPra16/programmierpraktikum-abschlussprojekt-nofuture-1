@@ -1,6 +1,7 @@
 Copyright 2016
-<span style="color: hotpink"> Anne "HOTPINK" Abraham </span>
-<div color:HOTPINK;"></div>, Anne "CORNFLOWERBLUE" Brecklinghaus,
+
+Software Developer:
+Anne "HOTPINK" Abraham , Anne "CORNFLOWERBLUE" Brecklinghaus,
 Philipp "BURLYWOOD" Bruehn, Tim "PAPAYAWHIP" Matussek,
 Cedric "LIGHTGOLDENRODYELLOW" Wolffs
 
