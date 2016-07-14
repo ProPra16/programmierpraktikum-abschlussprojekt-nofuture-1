@@ -180,7 +180,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="rainbow" onAction="#rainbow" mnemonicParsing="false" text="Hübsch" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="rainbow" onAction="#rainbow" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <opaqueInsets>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </opaqueInsets>
