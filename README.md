@@ -16,7 +16,7 @@
 ### LIZENZ
 Copyright 2016
 
-Software Developer:
+Software Developer: <br />
 Anne "HOTPINK" Abraham , Anne "CORNFLOWERBLUE" Brecklinghaus,
 Philipp "BURLYWOOD" Bruehn, Tim "PAPAYAWHIP" Matussek,
 Cedric "LIGHTGOLDENRODYELLOW" Wolffs
