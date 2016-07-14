@@ -50,60 +50,14 @@
                 <RowConstraints maxHeight="423.0" minHeight="10.0" prefHeight="238.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="dauerText" text="Bitte Dauer in Minuten wählen" visible="false">
+                  <Label fx:id="dauerText" text="Bitte Dauer in Sekunden wählen: " visible="false">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding></Label>
-                        <HBox fx:id="timerBox" visible="false" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                       <children>
-                           <fx:define>
-                               <ToggleGroup fx:id="babystepTimeGroup"/>
-                           </fx:define>
-                        <RadioButton fx:id="two" mnemonicParsing="false" text="2"
-                                     toggleGroup="$babystepTimeGroup"
-                                     onAction="#setTimerToTwo">
-                             <HBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                             </HBox.margin>
-                             <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                             </padding>
-                          </RadioButton>
-                          <RadioButton fx:id="three" mnemonicParsing="false" text="3" selected="true"
-                                       toggleGroup="$babystepTimeGroup"
-                                       onAction="#setTimerToThree">>
-                             <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                             </padding>
-                             <HBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                             </HBox.margin>
-                          </RadioButton>
-                          <RadioButton fx:id="four" mnemonicParsing="false" text="4"
-                                       toggleGroup="$babystepTimeGroup"
-                                       onAction="#setTimerToFour">>
-                             <HBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                             </HBox.margin>
-                             <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                             </padding>
-                          </RadioButton>
-                          <RadioButton fx:id="five" mnemonicParsing="false" text="5"
-                                       toggleGroup="$babystepTimeGroup"
-                                       onAction="#setTimerToFive">>
-                             <HBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                             </HBox.margin>
-                             <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                             </padding>
-                          </RadioButton>
-                     </children>
-                  </HBox>
+                        <Slider fx:id="timerSlider" visible="false" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1"/>
                </children>
             </GridPane>
             <Label fx:id="errorExercise" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">

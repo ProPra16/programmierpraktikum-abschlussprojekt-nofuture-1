@@ -1,12 +1,14 @@
 package tddtLayout;
 
 import javafx.application.Platform;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import tddtMain.TDDTMain;
 
@@ -25,7 +27,7 @@ public class LayoutMenuController {
     private static boolean hasRainbow = false;
     private static String[] LabelRainbowButton = {"Hübsch", "Hässlich"};
     private static int changeLabelRainbow = 0;
-    private static int timer = 180;
+    private static DoubleProperty timer;
     private static String exerciseText;
     private HashMap<StringBuilder, StringBuilder> datenListe = new HashMap<>();
     private ObservableList<String> data = FXCollections.observableArrayList();
@@ -39,7 +41,7 @@ public class LayoutMenuController {
     @FXML
     TextArea exercise;
     @FXML
-    HBox timerBox;
+    Slider timerSlider;
     @FXML
     Label dauerText;
     @FXML
@@ -56,22 +58,30 @@ public class LayoutMenuController {
         rainbow.setText(LabelRainbowButton[changeLabelRainbow]);
     }
 
-    // Checkboxen Handles
-    public void setTimerToTwo () { timer = 120; }
-    public void setTimerToThree () { timer = 180; }
-    public void setTimerToFour () { timer = 240; }
-    public void setTimerToFive () { timer = 300; }
-
    // Buttonhandles
     public void handleBabystep() {
         if (!hasBabysteps) {
             setHasBabysteps(true);
-            timerBox.setVisible(true);
+            timerSlider.setMin(1);
+            timerSlider.setMax(5);
+            timerSlider.setShowTickLabels(true);
+            timerSlider.setShowTickMarks(true);
+            timerSlider.setMajorTickUnit(1);
+            timerSlider.setMinorTickCount(60);
+            timerSlider.setValue(2);
+            timerSlider.setVisible(true);
             dauerText.setVisible(true);
+            timer = timerSlider.valueProperty();
+            timerSlider.valueProperty().addListener(new ChangeListener<Number>() {
+                @Override
+                public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                    dauerText.setText("Bitte Dauer in Sekunden wählen: " + (int)(newValue.doubleValue()*60) + "s");
+                }
+            });
         }
         else {
             setHasBabysteps(false);
-            timerBox.setVisible(false);
+            timerSlider.setVisible(false);
             dauerText.setVisible(false);
         }
     }
@@ -214,7 +224,7 @@ public class LayoutMenuController {
     }
 
     // getter-setter Bereich
-    static int getTimer() { return timer; }
+    static int getTimer() { return (int)(timer.doubleValue()*60); }
     static boolean getBabysteps() { return hasBabysteps; }
     static String getExerciseText() {
         return exerciseText;
