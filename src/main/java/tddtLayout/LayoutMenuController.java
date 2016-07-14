@@ -22,11 +22,11 @@ public class LayoutMenuController {
     // Variablen
     private static boolean hasAtdd = false;
     private static boolean hasBabysteps = false;
+    private boolean hasRainbow = false;
     private static int timer = 180;
     private static String exerciseText;
     private HashMap<StringBuilder, StringBuilder> datenListe = new HashMap<>();
     private ObservableList<String> data = FXCollections.observableArrayList();
-    private int rain=0;
 
     // FXML
     @FXML
@@ -131,15 +131,15 @@ public class LayoutMenuController {
 
     }
     public void rainbow() {
-        if(rain==0) {
+        if(!hasRainbow) {
             TDDTMain.rootPane.setStyle(" -fx-background-image: url('./Bilder/rainbow.png');  -fx-background-repeat: stretch; -fx-font-weight: bold;");
             rainbow.setText("Hässlich");
-            rain++;
+            hasRainbow = true;
         }
-        else if(rain==1){
+        else {
             TDDTMain.rootPane.setStyle("-fx-background-color: white;");
             rainbow.setText("Hübsch");
-            rain--;
+            hasRainbow = false;
         }
     }
 
