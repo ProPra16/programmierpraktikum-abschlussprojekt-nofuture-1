@@ -1,10 +1,3 @@
-
-
-import org.junit.Test;
-import vk.core.api.CompilationUnit;
-
- import static org.junit.Assert.*;
-
 public class TDDTMainTest
 {
 /*   Allgemeinen Test für JavaFX

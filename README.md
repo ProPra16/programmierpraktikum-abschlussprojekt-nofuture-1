@@ -32,3 +32,9 @@ Branch zu vollziehen.
 * geclontes NoFuture Repository unter Lokal hinzufügen
 * bietet bessere Übersicht über alle Branches und Veränderungen
 
+### Gradle Build
+`gradlew tasks`  zeigt an welche *tasks* zur Verfügung stehen.
+ 
+`gradlew build`  baut das Programm.
+
+`gradlew run`  startet das Programm.

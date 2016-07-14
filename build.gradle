@@ -1,8 +1,16 @@
 group 'de.hhu.propra16'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'application'
 apply plugin: 'java'
 
+mainClassName = 'tddtMain.TDDTMain'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'tddtMain.TDDTMain'
+    }
+}
 
 
 repositories {

@@ -1,6 +1,1 @@
-﻿Schreiben Sie eine Klasse Auto, die einen Konstruktor
-enthält der den Tachostand bei Beginn der Reise und am Ende,
-sowie die verbrauchten Liter, übergeben bekommt.
-Die Methode Verbrauch() soll die Kilometer pro Liter
-zurückgeben. Alle Zahlen sind ganze Zahlen,
-denken Sie an Datenkapselung.
+﻿Schreiben Sie eine Klasse Auto, die einen Konstruktor enthält der den Tachostand bei Beginn der Reise und am Ende, sowie die verbrauchten Liter, übergeben bekommt. Die Methode Verbrauch() soll die Kilometer pro Liter zurückgeben. Alle Zahlen sind ganze Zahlen, denken Sie an Datenkapselung.
