@@ -191,19 +191,11 @@ public class LayoutTDDTController
    }
 
    public void handleRefactor(){
-      if (isAtdd) {
-         atddRefactoring();
-      }
-      else {
-         tddRefactoring();
-      }
+      tddRefactoring();
    }
 
-   private void atddRefactoring() {
 
-   }
-
-   private void tddRefactoring() {
+   protected void tddRefactoring() {
       cycle.compile(sourceCode.getText(), testCode.getText());
       if (!cycle.hasCompileErrors() && !cycle.hasFailingTest())
       {

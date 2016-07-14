@@ -53,46 +53,6 @@ public class LayoutATDDController extends LayoutTDDTController
       super.handleRunButton();
    }
 
-   public void handleRefactor(){
-      if (buttonClicked == 0 && cycle.getPhase().equals("green")) {
-         buttonClicked++;
-         if (LayoutMenuController.getBabysteps()) {
-            babysteps.stop();
-         }
-         setPhaseRefactor();
-         labelTime.setVisible(false);
-         textRemainingTime.setVisible(false);
-
-      } else {
-         cycle.compile(sourceCode.getText(), testCode.getText());
-
-         if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
-            setPhaseRed();
-            if (LayoutMenuController.getBabysteps()) {
-               babysteps.reset();
-               babysteps.start();
-            }
-            statusCycle.setText("Schreibe einen neuen Test.");
-            if (LayoutMenuController.getBabysteps()) {
-               labelTime.setVisible(true);
-               textRemainingTime.setVisible(true);
-            }
-            cycle.compile(acceptanceTestCode.getText());
-
-               if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
-                  setPhaseRefactor();
-                  accomplishAcceptanceTest();
-               }
-
-         }
-         else {
-            cycle.getCompileErrorsCode().forEach((s) -> {
-               compilationError.setText(s + "\n");
-            });
-         }
-      }
-   }
-
    public void handleAcceptance()
    {
       setToNormal();
@@ -103,6 +63,53 @@ public class LayoutATDDController extends LayoutTDDTController
       if (LayoutMenuController.getBabysteps()) {
          babysteps.stop();
       }
+   }
+
+   @Override
+   public void handleRefactor(){
+      atddRefactoring();
+   }
+
+   private void atddRefactoring() {
+      cycle.compile(acceptanceTestCode.getText(), sourceCode.getText(), testCode.getText());
+      if (!cycle.hasCompileErrors() && !cycle.hasFailingTest())
+      {
+         if (buttonClicked == 0 && cycle.getPhase().equals("green")) {
+            buttonClicked++;
+            if (LayoutMenuController.getBabysteps()) {
+               babysteps.stop();
+            }
+            accomplishAcceptanceTest();
+            labelTime.setVisible(false);
+            textRemainingTime.setVisible(false);
+
+         } else {
+            cycle.compile(acceptanceTestCode.getText(), sourceCode.getText(), testCode.getText());
+
+            if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
+               setPhaseRed();
+               if (LayoutMenuController.getBabysteps()) {
+                  babysteps.reset();
+                  babysteps.start();
+               }
+               statusCycle.setText("Schreibe einen neuen Test.");
+               if (LayoutMenuController.getBabysteps()) {
+                  labelTime.setVisible(true);
+                  textRemainingTime.setVisible(true);
+               }
+            }
+            else {
+               cycle.getCompileErrorsCode().forEach((s) -> {
+                  compilationError.setText(s + "\n");
+               });
+
+            }
+         }
+      }
+      else {
+         tddRefactoring();
+      }
+
    }
 
    private void setPhaseAcceptance()
@@ -120,11 +127,19 @@ public class LayoutATDDController extends LayoutTDDTController
 
    private void accomplishAcceptanceTest()
    {
-      labelAkzeptanzTest.setStyle("-fx-text-fill: MEDIUMSEAGREEN; -fx-font-weight: bold;");
-      setPhaseRefactor();
-      acceptanceTestCode.setEditable(true);
-      statusCycle.setText("Dein Akzeptanztest wird erfüllt! Verbessere deinen Code mit Refactor");
-//      acceptanceTestCode.setText(acceptanceCode);
+      if (!cycle.hasCompileErrors() && !cycle.hasFailingTest()) {
+         labelAkzeptanzTest.setStyle("-fx-text-fill: MEDIUMSEAGREEN; -fx-font-weight: bold;");
+         System.out.println("Mache akzept");
+         setPhaseRefactor();
+         acceptanceTestCode.setEditable(true);
+         statusCycle.setText("Dein Akzeptanztest wird erfüllt! Verbessere deinen Code mit Refactor");
+         acceptanceTestCode.setText(acceptanceCode);
+      }
+      else
+      {
+         setPhaseRefactor();
+         System.out.println("mache fehler");
+      }
    }
 
    private void chooseLastPhase()
