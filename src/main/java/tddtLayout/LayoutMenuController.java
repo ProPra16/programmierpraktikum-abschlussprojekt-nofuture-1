@@ -65,7 +65,9 @@ public class LayoutMenuController {
             timerSlider.setMin(1);
             timerSlider.setMax(5);
             timerSlider.setShowTickLabels(true);
+            timerSlider.setShowTickMarks(true);
             timerSlider.setMajorTickUnit(1);
+            timerSlider.setMinorTickCount(60);
             timerSlider.setValue(2);
             timerSlider.setVisible(true);
             dauerText.setVisible(true);
@@ -73,7 +75,7 @@ public class LayoutMenuController {
             timerSlider.valueProperty().addListener(new ChangeListener<Number>() {
                 @Override
                 public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                    dauerText.setText("Bitte Dauer in Minuten wählen: " + newValue.intValue() + "min");
+                    dauerText.setText("Bitte Dauer in Sekunden wählen: " + (int)(newValue.doubleValue()*60) + "s");
                 }
             });
         }
@@ -222,7 +224,7 @@ public class LayoutMenuController {
     }
 
     // getter-setter Bereich
-    static int getTimer() { return timer.intValue() * 60; }
+    static int getTimer() { return (int)(timer.doubleValue()*60); }
     static boolean getBabysteps() { return hasBabysteps; }
     static String getExerciseText() {
         return exerciseText;

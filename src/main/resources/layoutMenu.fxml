@@ -50,7 +50,7 @@
                 <RowConstraints maxHeight="423.0" minHeight="10.0" prefHeight="238.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="dauerText" text="Bitte Dauer in Minuten wählen: " visible="false">
+                  <Label fx:id="dauerText" text="Bitte Dauer in Sekunden wählen: " visible="false">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
