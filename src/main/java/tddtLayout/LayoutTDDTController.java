@@ -227,8 +227,9 @@ public class LayoutTDDTController
             }
             else {
                compilationError.setText("");
-               cycle.getCompileErrorsCode().forEach((s) -> compilationError.appendText(s + "\n")
-               );
+               cycle.getCompileErrorsCode().forEach((s) -> {
+                  compilationError.appendText(s + "\n");
+               });
             }
          }
       }

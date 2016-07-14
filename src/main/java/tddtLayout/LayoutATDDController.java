@@ -47,8 +47,12 @@ public class LayoutATDDController extends LayoutTDDTController
             if (LayoutMenuController.getBabysteps()) {
                babysteps.start();
             }
-            cycle.getCompileErrorsAkzeptanz().forEach((s) -> compilationError.setText(s + "\n")
-            );
+
+//            TODO das wird nicht ausgegeben, warum???
+            compilationError.setText("");
+            cycle.getCompileErrorsTest().forEach((s) -> {
+               compilationError.appendText(s + "\n");
+            });
          }
       }
       super.handleRunButton();
@@ -91,10 +95,8 @@ public class LayoutATDDController extends LayoutTDDTController
                isNewAcceptancePhase();
             }
             else {
-               cycle.getCompileErrorsCode().forEach((s) -> {
-                  compilationError.setText(s + "\n");
-               });
-
+               compilationError.setText("");
+               cycle.getCompileErrorsCode().forEach((s) -> compilationError.appendText(s + "\n"));
             }
          }
       }
