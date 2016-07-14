@@ -122,8 +122,9 @@ public class LayoutTDDTController
                          setPhaseGreen();
                      }
                  }
+                 compilationError.setText("");
                  cycle.getCompileErrorsTest().forEach((s) -> {
-                     compilationError.setText(s + "\n");
+                     compilationError.appendText(s + "\n");
                  });
              } else if (cycle.hasFailingTest()) {
                 oldTestCode = testCode.getText();
@@ -153,8 +154,9 @@ public class LayoutTDDTController
             compilationError.setText("");
             buttonClicked = 0;
          }else{
+             compilationError.setText("");
              cycle.getCompileErrorsCode().forEach((s) -> {
-                 compilationError.setText(s + "\n");
+                 compilationError.appendText(s + "\n");
              });
          }
       }
@@ -214,8 +216,9 @@ public class LayoutTDDTController
             }
          }
          else {
+             compilationError.setText("");
              cycle.getCompileErrorsCode().forEach((s) -> {
-                 compilationError.setText(s + "\n");
+                 compilationError.appendText(s + "\n");
              });
 
          }
