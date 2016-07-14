@@ -48,6 +48,7 @@ public class LayoutATDDController extends LayoutTDDTController
             );
          }
       }
+      chooseLastPhase();
       super.handleRunButton();
    }
 
